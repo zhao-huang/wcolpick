@@ -1,0 +1,136 @@
+/*
+Colpick REMIX - Color Picker
+
+Copyright (C) 2017 Salvatore Peluso (Firestorm): fire-space.weebly.com
+Dual licensed under GPL v3.0 and MIT licenses.
+
+Based on Jose Vargas' Color Picker (https://github.com/josedvq/colpick-jQuery-Color-Picker) licensed under GPL and MIT license.
+
+Description, how to use, and examples: fire-space.weebly.com/colpick-remix
+
+Last Edit: 2017/10/03 21:54
+*/
+
+
+
+/*
+////////// DEFAULT COLOR SCHEMES //////////
+*/
+
+
+/*Light - Color scheme*/
+.colpickRmx_light {
+  background: transparent;
+  border-color: transparent;
+}
+.colpickRmx_light .colpickRmx_color {
+  outline-color: rgba(170, 170, 170, 0.5);
+}
+.colpickRmx_light .colpickRmx_hue_larr {
+	border-left-color: black;
+}
+.colpickRmx_light .colpickRmx_hue_rarr {
+	border-right-color: black;
+}
+.colpickRmx_light .colpickRmx_field, .colpickRmx_light .colpickRmx_hex_field {
+  background: white;
+  color: #b8b8b8;
+  border-color: #bdbdbd;
+}
+.colpickRmx_light .colpickRmx_focus {
+	border-color: #999;
+}
+.colpickRmx_light .colpickRmx_field_letter {
+  background: #f5f5f5;
+  color: #777;
+}
+.colpickRmx_light .colpickRmx_field input, .colpickRmx_light .colpickRmx_hex_field input {
+  background: white;
+  color: #555;
+}
+.colpickRmx_light .colpickRmx_field_uarr {
+	border-bottom-color: #999;
+}
+.colpickRmx_light .colpickRmx_field_darr {
+	border-top-color: #999;
+}
+.colpickRmx_light .colpickRmx_submit {
+	background: white;
+	border-color: #777;
+	color: #777;
+}
+
+/*Dark - Color scheme*/
+.colpickRmx_dark {
+	background: transparent;
+  border-color: transparent;
+}
+.colpickRmx_dark .colpickRmx_color {
+	outline-color: rgba(213, 213, 213, 0.5);
+}
+.colpickRmx_dark .colpickRmx_hue_larr {
+	border-left-color: white;
+}
+.colpickRmx_dark .colpickRmx_hue_rarr {
+	border-right-color: white;
+}
+.colpickRmx_dark .colpickRmx_field, .colpickRmx_dark .colpickRmx_hex_field {
+	background: transparent;
+  color: #b8b8b8;
+	border-color: #d5d5d5;
+}
+.colpickRmx_dark .colpickRmx_focus {
+	border-color: #d5d5d5;
+}
+.colpickRmx_dark .colpickRmx_field_letter {
+	background: #d5d5d5;
+	color: black;
+}
+.colpickRmx_dark .colpickRmx_field input, .colpickRmx_dark .colpickRmx_hex_field input {
+	background: transparent;
+	color: #d5d5d5;
+}
+.colpickRmx_dark .colpickRmx_field_uarr {
+	border-bottom-color: #d5d5d5;
+}
+.colpickRmx_dark .colpickRmx_field_darr {
+	border-top-color: #d5d5d5;
+}
+.colpickRmx_dark .colpickRmx_submit {
+	background: transparent;
+	border-color: white;
+	color: white;
+}
+
+
+
+/*
+////////// ALTERNATIVE COLOR SCHEMES //////////
+*/
+
+
+/*Light Full - Color scheme*/
+.colpickRmx_light--full {
+	background: white;
+	border-color: #666666;
+}
+
+/*Dark Full - Color scheme*/
+.colpickRmx_dark--full {
+	background: black;
+	border-color: white;
+}
+
+
+
+/*
+////////// SET THE HUE'S ARROWS COLOR TO A LIGHT COLOR, IF REQUESTED //////////
+*/
+
+
+.colpickRmx_lightHueArrs .colpickRmx_hue_larr {
+	border-left-color: white;
+}
+.colpickRmx_lightHueArrs .colpickRmx_hue_rarr {
+	border-right-color: white;
+}

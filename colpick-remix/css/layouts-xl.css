@@ -1,0 +1,396 @@
+/*
+Colpick REMIX - Color Picker (Extra-Large Variant)
+
+Copyright (C) 2017 Salvatore Peluso (Firestorm): fire-space.weebly.com
+Dual licensed under GPL v3.0 and MIT licenses.
+
+Based on Jose Vargas' Color Picker (https://github.com/josedvq/colpick-jQuery-Color-Picker) licensed under GPL and MIT license.
+
+Description, how to use, and examples: fire-space.weebly.com/colpick-remix
+
+Last Edit: 2017/10/03 21:54
+*/
+
+
+
+/*
+////////// DEFAULT EXTRA-LARGE FULL LAYOUT //////////
+*/
+
+
+/*Main container*/
+.colpickRmx_xl {
+	width: 756px;
+	height: 314px;
+	border-radius: 10px;
+}
+/*Color selection box with gradients*/
+.colpickRmx_xl .colpickRmx_color {
+	left: 7px;
+	top: 7px;
+	width: 300px;
+	height: 300px;
+}
+.colpickRmx_xl .colpickRmx_color_overlay1 {
+	width: 300px;
+	height: 300px;
+}
+.colpickRmx_xl .colpickRmx_color_overlay2 {
+	width: 300px;
+	height: 300px;
+}
+/*Circular color selector*/
+.colpickRmx_xl .colpickRmx_selector_outer {
+	width: 16px;
+	height: 16px;
+	margin-top: -9px;
+	margin-left: -9px;
+}
+.colpickRmx_xl .colpickRmx_selector_inner {
+	width: 14px;
+	height: 14px;
+}
+/*Vertical hue bar*/
+.colpickRmx_xl .colpickRmx_hue {
+	top: 7px;
+	left: 338px;
+	width: 25px;
+	height: 300px;
+}
+/*Hue bar sliding indicator*/
+.colpickRmx_xl .colpickRmx_hue_arrs {
+	left: -8px;
+	width: 41px;
+	height: 7px;
+	margin-top: -6px;
+}
+.colpickRmx_xl .colpickRmx_hue_larr {
+	border-top-width: 6px;
+	border-bottom-width: 6px;
+	border-left-width: 7px;
+}
+.colpickRmx_xl .colpickRmx_hue_rarr {
+	border-top-width: 6px;
+	border-bottom-width: 6px;
+	border-right-width: 7px;
+}
+/*New color box*/
+.colpickRmx_xl .colpickRmx_new_color {
+	left: 413px;
+	top: 7px;
+	width: 336px;
+	height: 65px;
+}
+/*Current color box*/
+.colpickRmx_xl .colpickRmx_current_color {
+	left: 413px;
+	top: 72px;
+	width: 336px;
+	height: 65px;
+}
+/*Input field containers*/
+.colpickRmx_xl .colpickRmx_field, .colpickRmx_xl .colpickRmx_hex_field {
+	height: 40px;
+	width: 100px;
+	font-size: 12px;
+}
+.colpickRmx_xl .colpickRmx_rgb_r {
+	top: 161px;
+	left: 413px;
+}
+.colpickRmx_xl .colpickRmx_rgb_g {
+	top: 213px;
+	left: 413px;
+}
+.colpickRmx_xl .colpickRmx_rgb_b {
+	top: 265px;
+	left: 413px;
+}
+.colpickRmx_xl .colpickRmx_hsb_h {
+	top: 161px;
+	left: 530px;
+}
+.colpickRmx_xl .colpickRmx_hsb_s {
+	top: 213px;
+	left: 530px;
+}
+.colpickRmx_xl .colpickRmx_hsb_b {
+	top: 265px;
+	left: 530px;
+}
+.colpickRmx_xl .colpickRmx_hex_field {
+	top: 161px;
+	left: 647px;
+}
+/*Field label container*/
+.colpickRmx_xl .colpickRmx_field_letter {
+	min-width: 12px;
+	max-width: 12px;
+	height: 40px;
+	line-height: 40px;
+	padding-left: 3px;
+}
+/*Text inputs*/
+.colpickRmx_xl .colpickRmx_field input, .colpickRmx_xl .colpickRmx_hex_field input {
+	right: 20px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 15px;
+}
+.colpickRmx_xl .colpickRmx_hex_field input {
+	right: 4px;
+}
+/*Field up/down arrows*/
+.colpickRmx_xl .colpickRmx_field_arrs {
+	width: 9px;
+	height: 40px;
+}
+.colpickRmx_xl .colpickRmx_field_uarr {
+	top: 5px;
+	border-left-width: 4px;
+	border-right-width: 4px;
+	border-bottom-width: 4px;
+}
+.colpickRmx_xl .colpickRmx_field_darr {
+	bottom: 5px;
+	border-left-width: 4px;
+	border-right-width: 4px;
+	border-top-width: 4px;
+}
+/*Submit/Select button*/
+.colpickRmx_xl .colpickRmx_submit {
+	top: 265px;
+	left: 707px;
+	height: 40px;
+	width: 40px;
+	line-height: 40px;
+	font-size: 12px;
+}
+
+
+
+/*
+////////// ALTERNATIVE EXTRA-LARGE LAYOUTS //////////
+*/
+
+
+/*default full layout with no submit button*/
+.colpickRmx_xl_full_ns  .colpickRmx_submit, .colpickRmx_xl_full_ns .colpickRmx_current_color {
+	display: none;
+}
+.colpickRmx_xl_full_ns .colpickRmx_new_color {
+	height: 130px;
+}
+
+/*rgbhex layout*/
+.colpickRmx_xl_rgbhex {
+	width: 639px;
+}
+.colpickRmx_xl_rgbhex .colpickRmx_hsb_h, .colpickRmx_xl_rgbhex .colpickRmx_hsb_s, .colpickRmx_xl_rgbhex .colpickRmx_hsb_b {
+	display: none;
+}
+.colpickRmx_xl_rgbhex .colpickRmx_hex_field {
+	left: 530px;
+}
+.colpickRmx_xl_rgbhex .colpickRmx_submit {
+	left: 590px;
+}
+.colpickRmx_xl_rgbhex .colpickRmx_new_color {
+	width: 219px;
+}
+.colpickRmx_xl_rgbhex .colpickRmx_current_color {
+	width: 219px;
+}
+/*rgbhex layout, no submit button*/
+.colpickRmx_xl_rgbhex_ns .colpickRmx_submit, .colpickRmx_xl_rgbhex_ns .colpickRmx_current_color {
+	display: none;
+}
+.colpickRmx_xl_rgbhex_ns .colpickRmx_new_color {
+	height: 130px;
+}
+
+/*hex layout*/
+.colpickRmx_xl_hex {
+	width: 522px;
+}
+.colpickRmx_xl_hex .colpickRmx_hsb_h, .colpickRmx_xl_hex .colpickRmx_hsb_s, .colpickRmx_xl_hex .colpickRmx_hsb_b, .colpickRmx_xl_hex .colpickRmx_rgb_r, .colpickRmx_xl_hex .colpickRmx_rgb_g, .colpickRmx_xl_hex .colpickRmx_rgb_b {
+	display: none;
+}
+.colpickRmx_xl_hex .colpickRmx_hex_field {
+	left: 413px;
+}
+.colpickRmx_xl_hex .colpickRmx_submit {
+	left: 443px;
+}
+.colpickRmx_xl_hex .colpickRmx_new_color {
+	width: 102px;
+}
+.colpickRmx_xl_hex .colpickRmx_current_color {
+	width: 102px;
+}
+/*hex layout, no submit button*/
+.colpickRmx_xl_hex_ns .colpickRmx_submit, .colpickRmx_xl_hex_ns .colpickRmx_current_color {
+	display: none;
+}
+.colpickRmx_xl_hex_ns .colpickRmx_hex_field {
+	top: 265px;
+}
+.colpickRmx_xl_hex_ns .colpickRmx_new_color {
+	height: 130px;
+}
+
+
+
+/*
+////////// ADAPTING LAYOUT TO LOW RESOLUTIONS //////////
+*/
+
+
+@media screen and (max-width: 840px) {
+
+
+	/*
+	////////// DEFAULT EXTRA-LARGE FULL LAYOUT //////////
+	*/
+
+
+	/*Main container*/
+	.colpickRmx_xl {
+		width: 378px;
+		height: 480px;
+	}
+	/*New color box*/
+	.colpickRmx_xl .colpickRmx_new_color {
+		left: 7px;
+		top: 327px;
+		height: 47px;
+		width: 88px;
+	}
+	/*Current color box*/
+	.colpickRmx_xl .colpickRmx_current_color {
+		left: 7px;
+		top: 374px;
+		height: 47px;
+		width: 88px;
+	}
+	/*Input field containers*/
+	.colpickRmx_xl .colpickRmx_rgb_r {
+		top: 327px;
+		left: 105px;
+		width: 80px;
+	}
+	.colpickRmx_xl .colpickRmx_rgb_g {
+		top: 327px;
+		left: 197px;
+		width: 80px;
+	}
+	.colpickRmx_xl .colpickRmx_rgb_b {
+		top: 327px;
+		left: 289px;
+		width: 80px;
+	}
+	.colpickRmx_xl .colpickRmx_hsb_h {
+		top: 379px;
+		left: 105px;
+		width: 80px;
+	}
+	.colpickRmx_xl .colpickRmx_hsb_s {
+		top: 379px;
+		left: 197px;
+		width: 80px;
+	}
+	.colpickRmx_xl .colpickRmx_hsb_b {
+		top: 379px;
+		left: 289px;
+		width: 80px;
+	}
+	.colpickRmx_xl .colpickRmx_hex_field {
+		top: 431px;
+		left: 7px;
+		width: 86px;
+	}
+	/*Submit/Select button*/
+	.colpickRmx_xl .colpickRmx_submit {
+		top: 431px;
+		left: 329px;
+	}
+
+
+
+	/*
+	////////// ALTERNATIVE EXTRA-LARGE LAYOUTS //////////
+	*/
+
+
+	/*default full layout with no submit button*/
+	.colpickRmx_xl_full_ns .colpickRmx_current_color, .colpickRmx_xl_full_ns  .colpickRmx_submit {
+		display: none;
+	}
+	.colpickRmx_xl_full_ns .colpickRmx_new_color {
+		height: 94px;
+	}
+
+	/*rgbhex layout*/
+	.colpickRmx_xl_rgbhex {
+		height: 428px;
+	}
+	.colpickRmx_xl_rgbhex .colpickRmx_hsb_h, .colpickRmx_xl_rgbhex .colpickRmx_hsb_s, .colpickRmx_xl_rgbhex .colpickRmx_hsb_b {
+		display: none;
+	}
+	.colpickRmx_xl_rgbhex .colpickRmx_hex_field {
+		top: 379px;
+		left: 105px;
+		width: 80px;
+	}
+	.colpickRmx_xl_rgbhex .colpickRmx_new_color {
+		width: 88px;
+	}
+	.colpickRmx_xl_rgbhex .colpickRmx_current_color {
+		width: 88px;
+	}
+	.colpickRmx_xl_rgbhex .colpickRmx_submit {
+		top: 379px;
+		left: 329px;
+	}
+	/*rgbhex layout, no submit button*/
+	.colpickRmx_xl_rgbhex_ns .colpickRmx_current_color, .colpickRmx_xl_rgbhex_ns .colpickRmx_submit {
+		display: none;
+	}
+	.colpickRmx_xl_rgbhex_ns .colpickRmx_new_color {
+		height: 94px;
+	}
+
+	/*hex layout*/
+	.colpickRmx_xl_hex {
+		height: 376px;
+	}
+	.colpickRmx_xl_hex .colpickRmx_hsb_h, .colpickRmx_xl_hex .colpickRmx_hsb_s, .colpickRmx_xl_hex .colpickRmx_hsb_b, .colpickRmx_xl_hex .colpickRmx_rgb_r, .colpickRmx_xl_hex .colpickRmx_rgb_g, .colpickRmx_xl_hex .colpickRmx_rgb_b {
+		display: none;
+	}
+	.colpickRmx_xl_hex .colpickRmx_new_color {
+		height: 42px;
+		width: 60px;
+	}
+	.colpickRmx_xl_hex .colpickRmx_current_color {
+		left: 67px;
+		top: 327px;
+		height: 42px;
+		width: 60px;
+	}
+	.colpickRmx_xl_hex .colpickRmx_hex_field {
+		top: 327px;
+		left: 137px;
+		width: 86px;
+	}
+	.colpickRmx_xl_hex .colpickRmx_submit {
+		top: 327px;
+		left: 329px;
+	}
+	/*hex layout, no submit button*/
+	.colpickRmx_xl_hex_ns .colpickRmx_current_color, .colpickRmx_xl_hex_ns .colpickRmx_submit {
+		display: none;
+	}
+	.colpickRmx_xl_hex_ns .colpickRmx_new_color {
+		width: 120px;
+	}
+}

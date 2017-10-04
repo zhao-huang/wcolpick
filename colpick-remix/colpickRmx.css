@@ -1,0 +1,23 @@
+/*
+Colpick REMIX - Color Picker
+
+Copyright (C) 2017 Salvatore Peluso (Firestorm): fire-space.weebly.com
+Dual licensed under GPL v3.0 and MIT licenses.
+
+Based on Jose Vargas' Color Picker (https://github.com/josedvq/colpick-jQuery-Color-Picker) licensed under GPL and MIT license.
+
+Description, how to use, and examples: fire-space.weebly.com/colpick-remix
+
+Last Edit: 2017/10/03 21:54
+*/
+
+
+
+/*Loading main layout variant (standard)*/
+@import 'css/layouts.css';
+/*Loading alternative layout variants*/
+@import 'css/layouts-s.css';
+@import 'css/layouts-xl.css';
+
+/*Loading color schemes*/
+@import 'css/color-schemes.css';
