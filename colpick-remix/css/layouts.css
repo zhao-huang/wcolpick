@@ -33,7 +33,7 @@ Last Edit: 2017/10/03 22:31
 	-webkit-border-radius: 7.5px;
 	-moz-border-radius: 7.5px;
 	border-radius: 7.5px;
-	z-index: 1;
+	z-index: 1000;
 
 	/*Prevents selecting text when dragging the selectors*/
 	-webkit-user-select: none;
