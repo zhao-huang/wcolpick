@@ -8,7 +8,7 @@ Based on Jose Vargas' Color Picker (https://github.com/josedvq/colpick-jQuery-Co
 
 Description, how to use, and examples: fire-space.weebly.com/colpick-remix
 
-Last Edit: 2017/10/05 00:32
+Last Edit: 2017/10/05 20:30
 */
 
 
@@ -30,6 +30,7 @@ Last Edit: 2017/10/05 00:32
 				color: '222222', //Default Selected Color: Visible in almost all themes.
 				livePreview: true, //If is "true", the color is updated immediately when changing a parameter.
 				polyfill: false, //If true, the color picker is only activated when no native browser behavior is available.
+				onLoaded: function() {},
 				onBeforeShow: function() {},
 				onShow: function () {},
 				onHide: function () {},
@@ -465,6 +466,7 @@ Last Edit: 2017/10/05 00:32
 				setSelector(col, cal.get(0));
 				setHue(col, cal.get(0));
 				setNewColor(col, cal.get(0));
+				cal.data('colpickRmx').onChange.apply(cal.parent(), [col, hsbToHex(col), hsbToRgb(col), cal.data('colpickRmx').el, 0]);
 			};
 		return {
 			init: function (opt) {
@@ -602,6 +604,8 @@ Last Edit: 2017/10/05 00:32
 								position:'absolute'
 							});
 						}
+						//Loading completed
+						cal.data('colpickRmx').onLoaded.apply(cal.parent(), [cal.get(0), cal.data('colpickRmx').el]);
 					}
 				});
 			},
@@ -659,6 +663,10 @@ Last Edit: 2017/10/05 00:32
 				$('html').off('mousedown', hide);
 				//Destroying picker
 				cal.remove();
+			},
+			getCurrentColor: function() {
+				var cal = $('#' + $(this).data('colpickRmxId'));
+				return cal.data('colpickRmx').origColor;
 			}
 		};
 	}();
@@ -727,11 +735,12 @@ Last Edit: 2017/10/05 00:32
 		return rgbToHex(hsbToRgb(hsb));
 	};
 	$.fn.extend({
-		colpickRmx: colpickRmx.init,
-		colpickRmxHide: colpickRmx.hidePicker,
-		colpickRmxShow: colpickRmx.showPicker,
-		colpickRmxSetColor: colpickRmx.setColor,
-		colpickRmxDestroy: colpickRmx.destroy
+		newColpick: colpickRmx.init,
+		hideColpick: colpickRmx.hidePicker,
+		showColpick: colpickRmx.showPicker,
+		destroyColpick: colpickRmx.destroy,
+		setColpickColor: colpickRmx.setColor,
+		getCurrentColpickColor: colpickRmx.getCurrentColor
 	});
 	$.extend({
 		colpickRmx:{
