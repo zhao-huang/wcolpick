@@ -8,7 +8,7 @@ Based on Jose Vargas' Color Picker (https://github.com/josedvq/colpick-jQuery-Co
 
 Description, how to use, and examples: fire-space.weebly.com/colpick-remix
 
-Last Edit: 2017/10/06 01:27
+Last Edit: 2017/10/06 22:07
 */
 
 
@@ -389,16 +389,18 @@ Last Edit: 2017/10/06 01:27
 				}
 				cal.data('colpickRmx').onBeforeShow.apply(this, [cal.get(0), cal.data('colpickRmx').el]);
 
-				//var pos = $(this).offset();
+				//Position the color picker
 				var pos = $(this).position();
 				var top = pos.top + this.offsetHeight;
 				var left = pos.left;
-				var viewPort = getViewport();
-				var calW = cal.width();
-				if (left + calW > viewPort.l + viewPort.w) {
-					left -= calW;
+				//Fix if the color picker is showing outside of viewport
+				if (outOfViewportHeight(cal, $(this), this) && $(this).offset().top - $(window).scrollTop() >= cal.outerHeight()){
+					top -= (cal.outerHeight() + this.offsetHeight);
 				}
-
+				if (outOfViewportWidth(cal, $(this), this) && $(this).offset().left - $(window).scrollLeft() + this.offsetWidth >= cal.outerWidth()){
+					left -= (cal.outerWidth() - this.offsetWidth);
+				}
+				//Apply the result
 				cal.css({left: left + 'px', top: top + 'px'});
 
 				if (cal.data('colpickRmx').onShow.apply(this, [cal.get(0), cal.data('colpickRmx').el]) != false) {
@@ -418,12 +420,18 @@ Last Edit: 2017/10/06 01:27
 				}
 				$('html').off('mousedown', hide);
 			},
-			getViewport = function () {
-				var m = document.compatMode == 'CSS1Compat';
-				return {
-					l : window.pageXOffset || (m ? document.documentElement.scrollLeft : document.body.scrollLeft),
-					w : window.innerWidth || (m ? document.documentElement.clientWidth : document.body.clientWidth)
-				};
+			//Detect if the color picker is out of viewport
+			outOfViewportHeight = function (cal, wrapEl, domEl) {
+				var calViewTop = wrapEl.offset().top - $(window).scrollTop() + domEl.offsetHeight; //Top of the color picker in viewport
+				var calHeight = cal.outerHeight(); //Height of the color picker
+				var viewHeight = $(window).height(); //Viewport height
+				return (calViewTop + calHeight > viewHeight);
+			},
+			outOfViewportWidth = function (cal, wrapEl, domEl){
+				var calViewLeft = wrapEl.offset().left - $(window).scrollLeft(); //Left of the color picker in viewport
+				var calWidth = cal.outerWidth(); //Width of the color picker
+				var viewWidth = $(window).width(); //Viewport width
+				return (calViewLeft + calWidth > viewWidth);
 			},
 			//Fix the values if the user enters a negative or high value
 			fixHSB = function (hsb) {
