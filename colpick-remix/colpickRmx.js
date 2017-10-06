@@ -8,7 +8,7 @@ Based on Jose Vargas' Color Picker (https://github.com/josedvq/colpick-jQuery-Co
 
 Description, how to use, and examples: fire-space.weebly.com/colpick-remix
 
-Last Edit: 2017/10/05 20:30
+Last Edit: 2017/10/06 01:27
 */
 
 
@@ -19,7 +19,6 @@ Last Edit: 2017/10/05 20:30
 			tpl = '<div class="colpickRmx"><div class="colpickRmx_color"><div class="colpickRmx_color_overlay1"><div class="colpickRmx_color_overlay2"><div class="colpickRmx_selector_outer"><div class="colpickRmx_selector_inner"></div></div></div></div></div><div class="colpickRmx_hue"><div class="colpickRmx_hue_arrs"><div class="colpickRmx_hue_larr"></div><div class="colpickRmx_hue_rarr"></div></div></div><div class="colpickRmx_new_color"></div><div class="colpickRmx_current_color"></div><div class="colpickRmx_hex_field"><div class="colpickRmx_field_letter">#</div><input type="text" maxlength="6" size="6" /></div><div class="colpickRmx_rgb_r colpickRmx_field"><div class="colpickRmx_field_letter">R</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_rgb_g colpickRmx_field"><div class="colpickRmx_field_letter">G</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_rgb_b colpickRmx_field"><div class="colpickRmx_field_letter">B</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_hsb_h colpickRmx_field"><div class="colpickRmx_field_letter">H</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_hsb_s colpickRmx_field"><div class="colpickRmx_field_letter">S</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_hsb_b colpickRmx_field"><div class="colpickRmx_field_letter">B</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_submit"></div></div>',
 			defaults = {
 				flat: true, //If is "true", the color picker is displayed regardless.
-				appendToBody: false, //FIX ONLY FOR NON FLAT MODE (if necessary, for some cases, you can force the plugin to append to body).
 				showEvent: 'click', //The event that shows the color picker (if flat is set to "true", this property is useless).
 				variant: 'standard', //There are 3 variants: standard, small, extra-large.
 				layout: 'full', //There are 3 types of layouts: full, rgbhex, hex.
@@ -389,7 +388,9 @@ Last Edit: 2017/10/05 20:30
 					ev.preventDefault();
 				}
 				cal.data('colpickRmx').onBeforeShow.apply(this, [cal.get(0), cal.data('colpickRmx').el]);
-				var pos = $(this).offset();
+
+				//var pos = $(this).offset();
+				var pos = $(this).position();
 				var top = pos.top + this.offsetHeight;
 				var left = pos.left;
 				var viewPort = getViewport();
@@ -397,7 +398,9 @@ Last Edit: 2017/10/05 20:30
 				if (left + calW > viewPort.l + viewPort.w) {
 					left -= calW;
 				}
+
 				cal.css({left: left + 'px', top: top + 'px'});
+
 				if (cal.data('colpickRmx').onShow.apply(this, [cal.get(0), cal.data('colpickRmx').el]) != false) {
 					cal.show();
 				}
@@ -590,7 +593,7 @@ Last Edit: 2017/10/05 20:30
 						setSelector(options.color, cal.get(0));
 						setCurrentColor(options.color, cal.get(0));
 						setNewColor(options.color, cal.get(0));
-						//Append to body if flat=false, else show in place
+						//Append to parent if flat=false, else show in place
 						if (options.flat) {
 							cal.appendTo(this).show();
 							cal.css({
@@ -598,7 +601,7 @@ Last Edit: 2017/10/05 20:30
 								display: 'block'
 							});
 						} else {
-							if(!options.appendToBody){ cal.appendTo($(this).parent()); } else { cal.appendTo(document.body); }
+							cal.appendTo($(this).parent());
 							$(this).on(options.showEvent, show);
 							cal.css({
 								position:'absolute'
