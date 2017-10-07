@@ -8,7 +8,7 @@ Based on Jose Vargas' Color Picker (https://github.com/josedvq/colpick-jQuery-Co
 
 Description, how to use, and examples: fire-space.weebly.com/colpick-remix
 
-Last Edit: 2017/10/06 22:07
+Last Edit: 2017/10/07 18:27
 */
 
 
@@ -24,6 +24,8 @@ Last Edit: 2017/10/06 22:07
 				layout: 'full', //There are 3 types of layouts: full, rgbhex, hex.
 				submit: true, //The 3 layouts have 2 sub-layouts for each: with submit button or without.
 				submitText: 'OK', //Text of the submit button.
+				readonlyFields: false, //Setup the readonly attribute to all fields.
+				readonlyHexField: false, //Setup the readonly attribute only to hex field (only if it is "true").
 				colorScheme: 'light--full', //There are 4 types of color schemes: light, dark, light--full, dark--full.
 				lightArrows: false, //ONLY FOR LIGHT COLOR SCHEME! Set the hue's arrows color to a light color (ex. white).
 				color: '222222', //Default Selected Color: Visible in almost all themes.
@@ -565,6 +567,16 @@ Last Edit: 2017/10/06 22:07
 						cal.find('div.colpickRmx_submit').html(options.submitText).click(clickSubmit);
 						//Setup input fields
 						options.fields = cal.find('input').change(change).blur(blur).focus(focus);
+						//Setup readonly attribute to fields
+						options.fields.eq(0).prop('readonly', options.readonlyFields);
+						options.fields.eq(1).prop('readonly', options.readonlyFields);
+						options.fields.eq(2).prop('readonly', options.readonlyFields);
+						options.fields.eq(3).prop('readonly', options.readonlyFields);
+						options.fields.eq(4).prop('readonly', options.readonlyFields);
+						options.fields.eq(5).prop('readonly', options.readonlyFields);
+						options.fields.eq(6).prop('readonly', options.readonlyFields);
+						if(options.readonlyHexField){options.fields.eq(0).prop('readonly', options.readonlyHexField);}
+						//Setup restoreOriginal to current color's click event
 						cal.find('div.colpickRmx_field_arrs').mousedown(downIncrement).end().find('div.colpickRmx_current_color').click(restoreOriginal);
 						//Setup hue selector
 						options.selector = cal.find('div.colpickRmx_color').on('mousedown touchstart',downSelector);
@@ -592,8 +604,9 @@ Last Edit: 2017/10/06 22:07
 						cal.find('div.colpickRmx_hue').on('mousedown touchstart',downHue);
 						options.newColor = cal.find('div.colpickRmx_new_color');
 						options.currentColor = cal.find('div.colpickRmx_current_color');
-						//Store options and fill with default color
+						//Store options
 						cal.data('colpickRmx', options);
+						//Fill with default color
 						fillRGBFields(options.color, cal.get(0));
 						fillHSBFields(options.color, cal.get(0));
 						fillHexFields(options.color, cal.get(0));
@@ -601,6 +614,8 @@ Last Edit: 2017/10/06 22:07
 						setSelector(options.color, cal.get(0));
 						setCurrentColor(options.color, cal.get(0));
 						setNewColor(options.color, cal.get(0));
+						//Loading completed
+						cal.data('colpickRmx').onLoaded.apply(cal.parent(), [cal.get(0), cal.data('colpickRmx').el]);
 						//Append to parent if flat=false, else show in place
 						if (options.flat) {
 							cal.appendTo(this).show();
@@ -615,8 +630,6 @@ Last Edit: 2017/10/06 22:07
 								position:'absolute'
 							});
 						}
-						//Loading completed
-						cal.data('colpickRmx').onLoaded.apply(cal.parent(), [cal.get(0), cal.data('colpickRmx').el]);
 					}
 				});
 			},
