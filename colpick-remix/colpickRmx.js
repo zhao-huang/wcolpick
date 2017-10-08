@@ -8,7 +8,7 @@ Based on Jose Vargas' Color Picker (https://github.com/josedvq/colpick-jQuery-Co
 
 Description, how to use, and examples: fire-space.weebly.com/colpick-remix
 
-Last Edit: 2017/10/07 18:27
+Last Edit: 2017/10/08 10:58
 */
 
 
@@ -396,11 +396,17 @@ Last Edit: 2017/10/07 18:27
 				var top = pos.top + this.offsetHeight;
 				var left = pos.left;
 				//Fix if the color picker is showing outside of viewport
-				if (outOfViewportHeight(cal, $(this), this) && $(this).offset().top - $(window).scrollTop() >= cal.outerHeight()){
+				if (outOfViewportHeight(cal, $(this), this) && $(this).offset().top - $(window).scrollTop() >= cal.outerHeight()) {
 					top -= (cal.outerHeight() + this.offsetHeight);
 				}
-				if (outOfViewportWidth(cal, $(this), this) && $(this).offset().left - $(window).scrollLeft() + this.offsetWidth >= cal.outerWidth()){
-					left -= (cal.outerWidth() - this.offsetWidth);
+				if (outOfViewportWidth(cal, $(this), this)) {
+					if ($(this).offset().left - $(window).scrollLeft() + this.offsetWidth >= cal.outerWidth()) {
+						left -= (cal.outerWidth() - this.offsetWidth);
+					} else {
+						var leftMargin = $(this).offset().left - $(window).scrollLeft();
+						var outWidth = leftMargin + cal.outerWidth() - $(window).width();
+						if (leftMargin > outWidth) { left -= outWidth; } else { left -= leftMargin; }
+					}
 				}
 				//Apply the result
 				cal.css({left: left + 'px', top: top + 'px'});
@@ -614,8 +620,6 @@ Last Edit: 2017/10/07 18:27
 						setSelector(options.color, cal.get(0));
 						setCurrentColor(options.color, cal.get(0));
 						setNewColor(options.color, cal.get(0));
-						//Loading completed
-						cal.data('colpickRmx').onLoaded.apply(cal.parent(), [cal.get(0), cal.data('colpickRmx').el]);
 						//Append to parent if flat=false, else show in place
 						if (options.flat) {
 							cal.appendTo(this).show();
@@ -630,6 +634,8 @@ Last Edit: 2017/10/07 18:27
 								position:'absolute'
 							});
 						}
+						//Loading completed
+						cal.data('colpickRmx').onLoaded.apply(cal.parent(), [cal.get(0), cal.data('colpickRmx').el]);
 					}
 				});
 			},
