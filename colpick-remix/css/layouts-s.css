@@ -8,122 +8,124 @@ Based on Jose Vargas' Color Picker (https://github.com/josedvq/colpick-jQuery-Co
 
 Description, how to use, and examples: fire-space.weebly.com/colpick-remix
 
-Last Edit: 2017/10/03 21:54
+Last Edit: 2017/10/09 18:00
 */
 
 
 
 /*
-////////// DEFAULT SMALL FULL LAYOUT //////////
+////////// DEFAULT STYLE //////////
 */
 
 
+/*///////// FULL LAYOUT /////////*/
+
 /*Main container*/
-.colpickRmx_s {
+.colpickRmxS {
 	width: 379px;
 	height: 158px;
 	border-radius: 6px;
 }
 /*Color selection box with gradients*/
-.colpickRmx_s .colpickRmx_color {
+.colpickRmxS .colpickRmx_color {
 	left: 4px;
 	top: 4px;
 	width: 150px;
 	height: 150px;
 }
-.colpickRmx_s .colpickRmx_color_overlay1 {
+.colpickRmxS .colpickRmx_color_overlay1 {
 	width: 150px;
 	height: 150px;
 }
-.colpickRmx_s .colpickRmx_color_overlay2 {
+.colpickRmxS .colpickRmx_color_overlay2 {
 	width: 150px;
 	height: 150px;
 }
 /*Circular color selector*/
-.colpickRmx_s .colpickRmx_selector_outer {
+.colpickRmxS .colpickRmx_selector_outer {
 	width: 12px;
 	height: 12px;
 	margin-top: -7px;
 	margin-left: -7px;
 }
-.colpickRmx_s .colpickRmx_selector_inner {
+.colpickRmxS .colpickRmx_selector_inner {
 	width: 10px;
 	height: 10px;
 }
 /*Vertical hue bar*/
-.colpickRmx_s .colpickRmx_hue {
+.colpickRmxS .colpickRmx_hue {
 	top: 4px;
 	left: 169px;
 	width: 13px;
 	height: 150px;
 }
 /*Hue bar sliding indicator*/
-.colpickRmx_s .colpickRmx_hue_arrs {
+.colpickRmxS .colpickRmx_hue_arrs {
 	left: -6px;
 	width: 25px;
 	height: 5px;
 	margin-top: -4px;
 }
-.colpickRmx_s .colpickRmx_hue_larr {
+.colpickRmxS .colpickRmx_hue_larr {
 	border-top-width: 4px;
 	border-bottom-width: 4px;
 	border-left-width: 5px;
 }
-.colpickRmx_s .colpickRmx_hue_rarr {
+.colpickRmxS .colpickRmx_hue_rarr {
 	border-top-width: 4px;
 	border-bottom-width: 4px;
 	border-right-width: 5px;
 }
 /*New color box*/
-.colpickRmx_s .colpickRmx_new_color {
+.colpickRmxS .colpickRmx_new_color {
 	left: 207px;
 	top: 4px;
 	width: 168px;
 	height: 33px;
 }
 /*Current color box*/
-.colpickRmx_s .colpickRmx_current_color {
+.colpickRmxS .colpickRmx_current_color {
 	left: 207px;
 	top: 37px;
 	width: 168px;
 	height: 33px;
 }
 /*Input field containers*/
-.colpickRmx_s .colpickRmx_field, .colpickRmx_s .colpickRmx_hex_field {
+.colpickRmxS .colpickRmx_field, .colpickRmxS .colpickRmx_hex_field {
 	height: 20px;
 	width: 50px;
 	font-size: 8px;
 }
-.colpickRmx_s .colpickRmx_rgb_r {
+.colpickRmxS .colpickRmx_rgb_r {
 	top: 80px;
 	left: 207px;
 }
-.colpickRmx_s .colpickRmx_rgb_g {
+.colpickRmxS .colpickRmx_rgb_g {
 	top: 106px;
 	left: 207px;
 }
-.colpickRmx_s .colpickRmx_rgb_b {
+.colpickRmxS .colpickRmx_rgb_b {
 	top: 132px;
 	left: 207px;
 }
-.colpickRmx_s .colpickRmx_hsb_h {
+.colpickRmxS .colpickRmx_hsb_h {
 	top: 80px;
 	left: 265px;
 }
-.colpickRmx_s .colpickRmx_hsb_s {
+.colpickRmxS .colpickRmx_hsb_s {
 	top: 106px;
 	left: 265px;
 }
-.colpickRmx_s .colpickRmx_hsb_b {
+.colpickRmxS .colpickRmx_hsb_b {
 	top: 132px;
 	left: 265px;
 }
-.colpickRmx_s .colpickRmx_hex_field {
+.colpickRmxS .colpickRmx_hex_field {
 	top: 80px;
 	left: 323px;
 }
 /*Field label container*/
-.colpickRmx_s .colpickRmx_field_letter {
+.colpickRmxS .colpickRmx_field_letter {
 	min-width: 7px;
 	max-width: 7px;
 	height: 20px;
@@ -131,7 +133,7 @@ Last Edit: 2017/10/03 21:54
 	padding-left: 1px;
 }
 /*Text inputs*/
-.colpickRmx_s .colpickRmx_field input, .colpickRmx_s .colpickRmx_hex_field input {
+.colpickRmxS .colpickRmx_field input, .colpickRmxS .colpickRmx_hex_field input {
 	right: 10px;
 	padding-top: 1px;
 	height: 20px;
@@ -139,21 +141,21 @@ Last Edit: 2017/10/03 21:54
 	font-size: 8px;
 	font-weight: bold;
 }
-.colpickRmx_s .colpickRmx_hex_field input {
+.colpickRmxS .colpickRmx_hex_field input {
 	right: 2px;
 }
 /*Field up/down arrows*/
-.colpickRmx_s .colpickRmx_field_arrs {
+.colpickRmxS .colpickRmx_field_arrs {
 	height: 20px;
 }
-.colpickRmx_s .colpickRmx_field_uarr {
+.colpickRmxS .colpickRmx_field_uarr {
 	top: 3px;
 }
-.colpickRmx_s .colpickRmx_field_darr {
+.colpickRmxS .colpickRmx_field_darr {
 	bottom: 3px;
 }
 /*Submit/Select button*/
-.colpickRmx_s .colpickRmx_submit {
+.colpickRmxS .colpickRmx_submit {
 	top: 132px;
 	left: 353px;
 	height: 20px;
@@ -162,230 +164,360 @@ Last Edit: 2017/10/03 21:54
 	font-size: 8px;
 }
 
-
-
-/*
-////////// ALTERNATIVE SMALL LAYOUTS //////////
-*/
-
+/*///////// ALTERNATIVE LAYOUTS /////////*/
 
 /*default full layout with no submit button*/
-.colpickRmx_s_full_ns .colpickRmx_submit, .colpickRmx_s_full_ns .colpickRmx_current_color {
+.colpickRmxS_full_ns .colpickRmx_submit, .colpickRmxS_full_ns .colpickRmx_current_color {
 	display: none;
 }
-.colpickRmx_s_full_ns .colpickRmx_new_color {
+.colpickRmxS_full_ns .colpickRmx_new_color {
 	height: 66px;
 }
 
 /*rgbhex layout*/
-.colpickRmx_s_rgbhex {
+.colpickRmxS_rgbhex {
 	width: 321px;
 }
-.colpickRmx_s_rgbhex .colpickRmx_hsb_h, .colpickRmx_s_rgbhex .colpickRmx_hsb_s, .colpickRmx_s_rgbhex .colpickRmx_hsb_b {
+.colpickRmxS_rgbhex .colpickRmx_hsb_h, .colpickRmxS_rgbhex .colpickRmx_hsb_s, .colpickRmxS_rgbhex .colpickRmx_hsb_b {
 	display: none;
 }
-.colpickRmx_s_rgbhex .colpickRmx_hex_field {
+.colpickRmxS_rgbhex .colpickRmx_hex_field {
 	left: 265px;
 }
-.colpickRmx_s_rgbhex .colpickRmx_submit {
+.colpickRmxS_rgbhex .colpickRmx_submit {
 	left: 295px;
 }
-.colpickRmx_s_rgbhex .colpickRmx_new_color {
+.colpickRmxS_rgbhex .colpickRmx_new_color {
 	width: 110px;
 }
-.colpickRmx_s_rgbhex .colpickRmx_current_color {
+.colpickRmxS_rgbhex .colpickRmx_current_color {
 	width: 110px;
 }
 /*rgbhex layout, no submit button*/
-.colpickRmx_s_rgbhex_ns .colpickRmx_submit, .colpickRmx_s_rgbhex_ns .colpickRmx_current_color {
+.colpickRmxS_rgbhex_ns .colpickRmx_submit, .colpickRmxS_rgbhex_ns .colpickRmx_current_color {
 	display: none;
 }
-.colpickRmx_s_rgbhex_ns .colpickRmx_new_color {
+.colpickRmxS_rgbhex_ns .colpickRmx_new_color {
 	height: 66px;
 }
 
 /*hex layout*/
-.colpickRmx_s_hex {
+.colpickRmxS_hex {
 	width: 263px;
 }
-.colpickRmx_s_hex .colpickRmx_hsb_h, .colpickRmx_s_hex .colpickRmx_hsb_s, .colpickRmx_s_hex .colpickRmx_hsb_b, .colpickRmx_s_hex .colpickRmx_rgb_r, .colpickRmx_s_hex .colpickRmx_rgb_g, .colpickRmx_s_hex .colpickRmx_rgb_b {
+.colpickRmxS_hex .colpickRmx_hsb_h, .colpickRmxS_hex .colpickRmx_hsb_s, .colpickRmxS_hex .colpickRmx_hsb_b, .colpickRmxS_hex .colpickRmx_rgb_r, .colpickRmxS_hex .colpickRmx_rgb_g, .colpickRmxS_hex .colpickRmx_rgb_b {
 	display: none;
 }
-.colpickRmx_s_hex .colpickRmx_hex_field {
+.colpickRmxS_hex .colpickRmx_hex_field {
 	left: 207px;
 }
-.colpickRmx_s_hex .colpickRmx_submit {
+.colpickRmxS_hex .colpickRmx_submit {
 	left: 222px;
 }
-.colpickRmx_s_hex .colpickRmx_new_color {
+.colpickRmxS_hex .colpickRmx_new_color {
 	width: 52px;
 }
-.colpickRmx_s_hex .colpickRmx_current_color {
+.colpickRmxS_hex .colpickRmx_current_color {
 	width: 52px;
 }
 /*hex layout, no submit button*/
-.colpickRmx_s_hex_ns .colpickRmx_submit, .colpickRmx_s_hex_ns .colpickRmx_current_color {
+.colpickRmxS_hex_ns .colpickRmx_submit, .colpickRmxS_hex_ns .colpickRmx_current_color {
 	display: none;
 }
-.colpickRmx_s_hex_ns .colpickRmx_hex_field {
+.colpickRmxS_hex_ns .colpickRmx_hex_field {
 	top: 132px;
 }
-.colpickRmx_s_hex_ns .colpickRmx_new_color {
+.colpickRmxS_hex_ns .colpickRmx_new_color {
 	height: 66px;
 }
 
 
 
 /*
-////////// ADAPTING LAYOUT TO LOW RESOLUTIONS //////////
+////////// COMPACT STYLE //////////
+*/
+
+
+/*///////// FULL LAYOUT /////////*/
+
+/*Main container*/
+.colpickRmxS_compact_full {
+	width: 192px;
+	height: 242px;
+}
+/*New color box*/
+.colpickRmxS_compact_full .colpickRmx_new_color {
+	left: 4px;
+	top: 164px;
+	height: 24px;
+	width: 46px;
+}
+/*Current color box*/
+.colpickRmxS_compact_full .colpickRmx_current_color {
+	left: 4px;
+	top: 188px;
+	height: 24px;
+	width: 46px;
+}
+/*Input field containers*/
+.colpickRmxS_compact_full .colpickRmx_rgb_r {
+	top: 164px;
+	left: 54px;
+	width: 40px;
+}
+.colpickRmxS_compact_full .colpickRmx_rgb_g {
+	top: 164px;
+	left: 100px;
+	width: 40px;
+}
+.colpickRmxS_compact_full .colpickRmx_rgb_b {
+	top: 164px;
+	left: 146px;
+	width: 40px;
+}
+.colpickRmxS_compact_full .colpickRmx_hsb_h {
+	top: 190px;
+	left: 54px;
+	width: 40px;
+}
+.colpickRmxS_compact_full .colpickRmx_hsb_s {
+	top: 190px;
+	left: 100px;
+	width: 40px;
+}
+.colpickRmxS_compact_full .colpickRmx_hsb_b {
+	top: 190px;
+	left: 146px;
+	width: 40px;
+}
+.colpickRmxS_compact_full .colpickRmx_hex_field {
+	top: 216px;
+	left: 4px;
+	width: 44px;
+}
+/*Submit/Select button*/
+.colpickRmxS_compact_full .colpickRmx_submit {
+	top: 216px;
+	left: 166px;
+}
+
+/*///////// ALTERNATIVE LAYOUTS /////////*/
+
+/*default full layout with no submit button*/
+.colpickRmxS_compact_full_ns .colpickRmx_current_color, .colpickRmxS_compact_full_ns  .colpickRmx_submit {
+	display: none;
+}
+.colpickRmxS_compact_full_ns .colpickRmx_new_color {
+	height: 48px;
+}
+
+/*rgbhex layout*/
+.colpickRmxS_compact_rgbhex {
+	height: 216px;
+}
+.colpickRmxS_compact_rgbhex .colpickRmx_hsb_h, .colpickRmxS_compact_rgbhex .colpickRmx_hsb_s, .colpickRmxS_compact_rgbhex .colpickRmx_hsb_b {
+	display: none;
+}
+.colpickRmxS_compact_rgbhex .colpickRmx_hex_field {
+	top: 190px;
+	left: 54px;
+	width: 40px;
+}
+.colpickRmxS_compact_rgbhex .colpickRmx_new_color {
+	width: 46px;
+}
+.colpickRmxS_compact_rgbhex .colpickRmx_current_color {
+	width: 46px;
+}
+.colpickRmxS_compact_rgbhex .colpickRmx_submit {
+	top: 190px;
+	left: 166px;
+}
+/*rgbhex layout, no submit button*/
+.colpickRmxS_compact_rgbhex_ns .colpickRmx_current_color, .colpickRmxS_compact_rgbhex_ns .colpickRmx_submit {
+	display: none;
+}
+.colpickRmxS_compact_rgbhex_ns .colpickRmx_new_color {
+	height: 48px;
+}
+
+/*hex layout*/
+.colpickRmxS_compact_hex {
+	height: 190px;
+}
+.colpickRmxS_compact_hex .colpickRmx_hsb_h, .colpickRmxS_compact_hex .colpickRmx_hsb_s, .colpickRmxS_compact_hex .colpickRmx_hsb_b, .colpickRmxS_compact_hex .colpickRmx_rgb_r, .colpickRmxS_compact_hex .colpickRmx_rgb_g, .colpickRmxS_compact_hex .colpickRmx_rgb_b {
+	display: none;
+}
+.colpickRmxS_compact_hex .colpickRmx_new_color {
+	height: 22px;
+	width: 30px;
+}
+.colpickRmxS_compact_hex .colpickRmx_current_color {
+	left: 34px;
+	top: 164px;
+	height: 22px;
+	width: 30px;
+}
+.colpickRmxS_compact_hex .colpickRmx_hex_field {
+	top: 164px;
+	left: 68px;
+	width: 44px;
+}
+.colpickRmxS_compact_hex .colpickRmx_submit {
+	top: 164px;
+	left: 166px;
+}
+/*hex layout, no submit button*/
+.colpickRmxS_compact_hex_ns .colpickRmx_current_color, .colpickRmxS_compact_hex_ns .colpickRmx_submit {
+	display: none;
+}
+.colpickRmxS_compact_hex_ns .colpickRmx_new_color {
+	width: 60px;
+}
+
+
+
+/*
+////////// ADAPTING LAYOUTS TO LOW RESOLUTIONS //////////
 */
 
 
 @media screen and (max-width: 460px) {
 
-
-	/*
-	////////// DEFAULT SMALL FULL LAYOUT //////////
-	*/
-
+	/*///////// FULL LAYOUT /////////*/
 
 	/*Main container*/
-	.colpickRmx_s {
+	.colpickRmxS {
 		width: 192px;
 		height: 242px;
 	}
 	/*New color box*/
-	.colpickRmx_s .colpickRmx_new_color {
+	.colpickRmxS .colpickRmx_new_color {
 		left: 4px;
 		top: 164px;
 		height: 24px;
 		width: 46px;
 	}
 	/*Current color box*/
-	.colpickRmx_s .colpickRmx_current_color {
+	.colpickRmxS .colpickRmx_current_color {
 		left: 4px;
 		top: 188px;
 		height: 24px;
 		width: 46px;
 	}
 	/*Input field containers*/
-	.colpickRmx_s .colpickRmx_rgb_r {
+	.colpickRmxS .colpickRmx_rgb_r {
 		top: 164px;
 		left: 54px;
 		width: 40px;
 	}
-	.colpickRmx_s .colpickRmx_rgb_g {
+	.colpickRmxS .colpickRmx_rgb_g {
 		top: 164px;
 		left: 100px;
 		width: 40px;
 	}
-	.colpickRmx_s .colpickRmx_rgb_b {
+	.colpickRmxS .colpickRmx_rgb_b {
 		top: 164px;
 		left: 146px;
 		width: 40px;
 	}
-	.colpickRmx_s .colpickRmx_hsb_h {
+	.colpickRmxS .colpickRmx_hsb_h {
 		top: 190px;
 		left: 54px;
 		width: 40px;
 	}
-	.colpickRmx_s .colpickRmx_hsb_s {
+	.colpickRmxS .colpickRmx_hsb_s {
 		top: 190px;
 		left: 100px;
 		width: 40px;
 	}
-	.colpickRmx_s .colpickRmx_hsb_b {
+	.colpickRmxS .colpickRmx_hsb_b {
 		top: 190px;
 		left: 146px;
 		width: 40px;
 	}
-	.colpickRmx_s .colpickRmx_hex_field {
+	.colpickRmxS .colpickRmx_hex_field {
 		top: 216px;
 		left: 4px;
 		width: 44px;
 	}
 	/*Submit/Select button*/
-	.colpickRmx_s .colpickRmx_submit {
+	.colpickRmxS .colpickRmx_submit {
 		top: 216px;
 		left: 166px;
 	}
 
-
-
-	/*
-	////////// ALTERNATIVE SMALL LAYOUTS //////////
-	*/
-
+	/*///////// ALTERNATIVE LAYOUTS /////////*/
 
 	/*default full layout with no submit button*/
-	.colpickRmx_s_full_ns .colpickRmx_current_color, .colpickRmx_s_full_ns  .colpickRmx_submit {
+	.colpickRmxS_full_ns .colpickRmx_current_color, .colpickRmxS_full_ns  .colpickRmx_submit {
 		display: none;
 	}
-	.colpickRmx_s_full_ns .colpickRmx_new_color {
+	.colpickRmxS_full_ns .colpickRmx_new_color {
 		height: 48px;
 	}
 
 	/*rgbhex layout*/
-	.colpickRmx_s_rgbhex {
+	.colpickRmxS_rgbhex {
 		height: 216px;
 	}
-	.colpickRmx_s_rgbhex .colpickRmx_hsb_h, .colpickRmx_s_rgbhex .colpickRmx_hsb_s, .colpickRmx_s_rgbhex .colpickRmx_hsb_b {
+	.colpickRmxS_rgbhex .colpickRmx_hsb_h, .colpickRmxS_rgbhex .colpickRmx_hsb_s, .colpickRmxS_rgbhex .colpickRmx_hsb_b {
 		display: none;
 	}
-	.colpickRmx_s_rgbhex .colpickRmx_hex_field {
+	.colpickRmxS_rgbhex .colpickRmx_hex_field {
 		top: 190px;
 		left: 54px;
 		width: 40px;
 	}
-	.colpickRmx_s_rgbhex .colpickRmx_new_color {
+	.colpickRmxS_rgbhex .colpickRmx_new_color {
 		width: 46px;
 	}
-	.colpickRmx_s_rgbhex .colpickRmx_current_color {
+	.colpickRmxS_rgbhex .colpickRmx_current_color {
 		width: 46px;
 	}
-	.colpickRmx_s_rgbhex .colpickRmx_submit {
+	.colpickRmxS_rgbhex .colpickRmx_submit {
 		top: 190px;
 		left: 166px;
 	}
 	/*rgbhex layout, no submit button*/
-	.colpickRmx_s_rgbhex_ns .colpickRmx_current_color, .colpickRmx_s_rgbhex_ns .colpickRmx_submit {
+	.colpickRmxS_rgbhex_ns .colpickRmx_current_color, .colpickRmxS_rgbhex_ns .colpickRmx_submit {
 		display: none;
 	}
-	.colpickRmx_s_rgbhex_ns .colpickRmx_new_color {
+	.colpickRmxS_rgbhex_ns .colpickRmx_new_color {
 		height: 48px;
 	}
 
 	/*hex layout*/
-	.colpickRmx_s_hex {
+	.colpickRmxS_hex {
 		height: 190px;
 	}
-	.colpickRmx_s_hex .colpickRmx_hsb_h, .colpickRmx_s_hex .colpickRmx_hsb_s, .colpickRmx_s_hex .colpickRmx_hsb_b, .colpickRmx_s_hex .colpickRmx_rgb_r, .colpickRmx_s_hex .colpickRmx_rgb_g, .colpickRmx_s_hex .colpickRmx_rgb_b {
+	.colpickRmxS_hex .colpickRmx_hsb_h, .colpickRmxS_hex .colpickRmx_hsb_s, .colpickRmxS_hex .colpickRmx_hsb_b, .colpickRmxS_hex .colpickRmx_rgb_r, .colpickRmxS_hex .colpickRmx_rgb_g, .colpickRmxS_hex .colpickRmx_rgb_b {
 		display: none;
 	}
-	.colpickRmx_s_hex .colpickRmx_new_color {
+	.colpickRmxS_hex .colpickRmx_new_color {
 		height: 22px;
 		width: 30px;
 	}
-	.colpickRmx_s_hex .colpickRmx_current_color {
+	.colpickRmxS_hex .colpickRmx_current_color {
 		left: 34px;
 		top: 164px;
 		height: 22px;
 		width: 30px;
 	}
-	.colpickRmx_s_hex .colpickRmx_hex_field {
+	.colpickRmxS_hex .colpickRmx_hex_field {
 		top: 164px;
 		left: 68px;
 		width: 44px;
 	}
-	.colpickRmx_s_hex .colpickRmx_submit {
+	.colpickRmxS_hex .colpickRmx_submit {
 		top: 164px;
 		left: 166px;
 	}
 	/*hex layout, no submit button*/
-	.colpickRmx_s_hex_ns .colpickRmx_current_color, .colpickRmx_s_hex_ns .colpickRmx_submit {
+	.colpickRmxS_hex_ns .colpickRmx_current_color, .colpickRmxS_hex_ns .colpickRmx_submit {
 		display: none;
 	}
-	.colpickRmx_s_hex_ns .colpickRmx_new_color {
+	.colpickRmxS_hex_ns .colpickRmx_new_color {
 		width: 60px;
 	}
 }

@@ -8,15 +8,17 @@ Based on Jose Vargas' Color Picker (https://github.com/josedvq/colpick-jQuery-Co
 
 Description, how to use, and examples: fire-space.weebly.com/colpick-remix
 
-Last Edit: 2017/10/06 03:00
+Last Edit: 2017/10/09 18:00
 */
 
 
 
 /*
-////////// DEFAULT STANDARD FULL LAYOUT //////////
+////////// DEFAULT STYLE //////////
 */
 
+
+/*///////// FULL LAYOUT /////////*/
 
 /*Main container*/
 .colpickRmx {
@@ -280,12 +282,7 @@ Last Edit: 2017/10/06 03:00
 	cursor: pointer;
 }
 
-
-
-/*
-////////// ALTERNATIVE STANDARD LAYOUTS //////////
-*/
-
+/*///////// ALTERNATIVE LAYOUTS /////////*/
 
 /*default full layout with no submit button*/
 .colpickRmx_full_ns .colpickRmx_submit, .colpickRmx_full_ns .colpickRmx_current_color {
@@ -355,17 +352,157 @@ Last Edit: 2017/10/06 03:00
 
 
 /*
-////////// ADAPTING LAYOUT TO LOW RESOLUTIONS //////////
+////////// COMPACT STYLE //////////
+*/
+
+
+/*///////// FULL LAYOUT /////////*/
+
+/*Main container*/
+.colpickRmx_compact_full {
+	width: 283px;
+	height: 362px;
+}
+/*New color box*/
+.colpickRmx_compact_full .colpickRmx_new_color {
+	left: 5px;
+	top: 245px;
+	height: 36px;
+	width: 63px;
+}
+/*Current color box*/
+.colpickRmx_compact_full .colpickRmx_current_color {
+	left: 5px;
+	top: 281px;
+	height: 36px;
+	width: 63px;
+}
+/*Input field containers*/
+.colpickRmx_compact_full .colpickRmx_rgb_r {
+	top: 245px;
+	left: 76px;
+	width: 60px;
+}
+.colpickRmx_compact_full .colpickRmx_rgb_g {
+	top: 245px;
+	left: 146px;
+	width: 60px;
+}
+.colpickRmx_compact_full .colpickRmx_rgb_b {
+	top: 245px;
+	left: 216px;
+	width: 60px;
+}
+.colpickRmx_compact_full .colpickRmx_hsb_h {
+	top: 285px;
+	left: 76px;
+	width: 60px;
+}
+.colpickRmx_compact_full .colpickRmx_hsb_s {
+	top: 285px;
+	left: 146px;
+	width: 60px;
+}
+.colpickRmx_compact_full .colpickRmx_hsb_b {
+	top: 285px;
+	left: 216px;
+	width: 60px;
+}
+.colpickRmx_compact_full .colpickRmx_hex_field {
+	top: 325px;
+	left: 5px;
+	width: 61px;
+}
+/*Submit/Select button*/
+.colpickRmx_compact_full .colpickRmx_submit {
+	top: 325px;
+	left: 246px;
+}
+
+/*///////// ALTERNATIVE LAYOUTS /////////*/
+
+/*default full layout with no submit button*/
+.colpickRmx_compact_full_ns .colpickRmx_current_color, .colpickRmx_compact_full_ns .colpickRmx_submit {
+	display: none;
+}
+.colpickRmx_compact_full_ns .colpickRmx_new_color {
+	height: 72px;
+}
+
+/*rgbhex layout*/
+.colpickRmx_compact_rgbhex {
+	height: 322px;
+}
+.colpickRmx_compact_rgbhex .colpickRmx_hsb_h, .colpickRmx_compact_rgbhex .colpickRmx_hsb_s, .colpickRmx_compact_rgbhex .colpickRmx_hsb_b {
+	display: none;
+}
+.colpickRmx_compact_rgbhex .colpickRmx_hex_field {
+	top: 285px;
+	left: 76px;
+	width: 60px;
+}
+.colpickRmx_compact_rgbhex .colpickRmx_new_color {
+	width: 63px;
+}
+.colpickRmx_compact_rgbhex .colpickRmx_current_color {
+	width: 63px;
+}
+.colpickRmx_compact_rgbhex .colpickRmx_submit {
+	top: 285px;
+	left: 246px;
+}
+/*rgbhex layout, no submit button*/
+.colpickRmx_compact_rgbhex_ns .colpickRmx_current_color, .colpickRmx_compact_rgbhex_ns .colpickRmx_submit {
+	display: none;
+}
+.colpickRmx_compact_rgbhex_ns .colpickRmx_new_color {
+	height: 72px;
+}
+
+/*hex layout*/
+.colpickRmx_compact_hex {
+	height: 282px;
+}
+.colpickRmx_compact_hex .colpickRmx_hsb_h, .colpickRmx_compact_hex .colpickRmx_hsb_s, .colpickRmx_compact_hex .colpickRmx_hsb_b, .colpickRmx_compact_hex .colpickRmx_rgb_r, .colpickRmx_compact_hex .colpickRmx_rgb_g, .colpickRmx_compact_hex .colpickRmx_rgb_b {
+	display: none;
+}
+.colpickRmx_compact_hex .colpickRmx_new_color {
+	height: 32px;
+	width: 45px;
+}
+.colpickRmx_compact_hex .colpickRmx_current_color {
+	left: 50px;
+	top: 245px;
+	height: 32px;
+	width: 45px;
+}
+.colpickRmx_compact_hex .colpickRmx_hex_field {
+	top: 245px;
+	left: 103px;
+	width: 61px;
+}
+.colpickRmx_compact_hex .colpickRmx_submit {
+	top: 245px;
+	left: 246px;
+}
+/*hex layout, no submit button*/
+.colpickRmx_compact_hex_ns .colpickRmx_current_color, .colpickRmx_compact_hex_ns .colpickRmx_submit {
+	display: none;
+}
+.colpickRmx_compact_hex_ns .colpickRmx_new_color {
+	width: 90px;
+}
+
+
+
+/*
+////////// ADAPTING LAYOUTS TO LOW RESOLUTIONS //////////
 */
 
 
 @media screen and (max-width: 650px) {
 
-
-	/*
-	////////// DEFAULT STANDARD FULL LAYOUT //////////
-	*/
-
+	/*///////// FULL LAYOUT /////////*/
 
 	/*Main container*/
 	.colpickRmx {
@@ -428,12 +565,7 @@ Last Edit: 2017/10/06 03:00
 		left: 246px;
 	}
 
-
-
-	/*
-	////////// ALTERNATIVE STANDARD LAYOUTS //////////
-	*/
-
+	/*///////// ALTERNATIVE LAYOUTS /////////*/
 
 	/*default full layout with no submit button*/
 	.colpickRmx_full_ns .colpickRmx_current_color, .colpickRmx_full_ns .colpickRmx_submit {
