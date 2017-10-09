@@ -9,6 +9,7 @@ Features: <br>
   * 2 Main-skins: Light and Dark
   * 2 Sub-skins: Light Full and Dark Full
 * 3 Main Layouts: Full, only RGB + HEX, only HEX, each with or without the "Select color" button
+* Compact Style: Makes the layouts more compact, to save space! **[NEW]** 
 * Responsive
 * Easy to implement <br>
 
