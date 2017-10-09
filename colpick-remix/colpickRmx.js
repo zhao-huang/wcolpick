@@ -8,7 +8,7 @@ Based on Jose Vargas' Color Picker (https://github.com/josedvq/colpick-jQuery-Co
 
 Description, how to use, and examples: fire-space.weebly.com/colpick-remix
 
-Last Edit: 2017/10/08 10:58
+Last Edit: 2017/10/09 20:16
 */
 
 
@@ -22,6 +22,7 @@ Last Edit: 2017/10/08 10:58
 				showEvent: 'click', //The event that shows the color picker (if flat is set to "true", this property is useless).
 				variant: 'standard', //There are 3 variants: standard, small, extra-large.
 				layout: 'full', //There are 3 types of layouts: full, rgbhex, hex.
+				compactStyle: false, //Switch between normal and compact style.
 				submit: true, //The 3 layouts have 2 sub-layouts for each: with submit button or without.
 				submitText: 'OK', //Text of the submit button.
 				readonlyFields: false, //Setup the readonly attribute to all fields.
@@ -30,7 +31,8 @@ Last Edit: 2017/10/08 10:58
 				lightArrows: false, //ONLY FOR LIGHT COLOR SCHEME! Set the hue's arrows color to a light color (ex. white).
 				color: '222222', //Default Selected Color: Visible in almost all themes.
 				livePreview: true, //If is "true", the color is updated immediately when changing a parameter.
-				polyfill: false, //If true, the color picker is only activated when no native browser behavior is available.
+				polyfill: false, //If "true", the color picker is only activated when no native browser behavior is available.
+				appendToBody: false, //If "true", force the color picker to append to body (only for "non flat" version).
 				onLoaded: function() {},
 				onBeforeShow: function() {},
 				onShow: function () {},
@@ -391,8 +393,16 @@ Last Edit: 2017/10/08 10:58
 				}
 				cal.data('colpickRmx').onBeforeShow.apply(this, [cal.get(0), cal.data('colpickRmx').el]);
 
+				if(cal.data('colpickRmx').flat){ //If flat is true, simply shows the color picker!
+					if (cal.data('colpickRmx').onShow.apply(this, [cal.get(0), cal.data('colpickRmx').el]) != false) {
+						cal.show();
+					}
+					return;
+				}
+
 				//Position the color picker
-				var pos = $(this).position();
+				var pos;
+				if (cal.data('colpickRmx').appendedToBody) { pos = $(this).offset(); } else { pos = $(this).position(); }
 				var top = pos.top + this.offsetHeight;
 				var left = pos.left;
 				//Fix if the color picker is showing outside of viewport
@@ -528,16 +538,35 @@ Last Edit: 2017/10/08 10:58
 						//Switching between the 3 variants
 						switch (options.variant) {
 							case 'small': //Add class according to layout (small)
-								cal.addClass('colpickRmx_s');
-								cal.addClass('colpickRmx_s_'+options.layout+(options.submit?'':' colpickRmx_s_'+options.layout+'_ns'));
+								cal.addClass('colpickRmxS');
+								cal.addClass('colpickRmxS_'+options.layout+(options.submit?'':' colpickRmxS_'+options.layout+'_ns'));
 								break;
 							case 'extra-large': //Add class according to layout (extra-large)
-								cal.addClass('colpickRmx_xl');
-								cal.addClass('colpickRmx_xl_'+options.layout+(options.submit?'':' colpickRmx_xl_'+options.layout+'_ns'));
+								cal.addClass('colpickRmxXL');
+								cal.addClass('colpickRmxXL_'+options.layout+(options.submit?'':' colpickRmxXL_'+options.layout+'_ns'));
 								break;
 							default: //Add class according to layout (default -> standard)
 								cal.addClass('colpickRmx_'+options.layout+(options.submit?'':' colpickRmx_'+options.layout+'_ns'));
 								break;
+						}
+
+						//Compact Style
+						if(options.compactStyle) {
+							//Switching between the 3 variants
+							switch (options.variant) {
+								case 'small': //Add class according to layout (small)
+									cal.addClass('colpickRmxS_compact_full');
+									cal.addClass('colpickRmxS_compact_'+options.layout+(options.submit?'':' colpickRmxS_compact_'+options.layout+'_ns'));
+									break;
+								case 'extra-large': //Add class according to layout (extra-large)
+									cal.addClass('colpickRmxXL_compact_full');
+									cal.addClass('colpickRmxXL_compact_'+options.layout+(options.submit?'':' colpickRmxXL_compact_'+options.layout+'_ns'));
+									break;
+								default: //Add class according to layout (default -> standard)
+									cal.addClass('colpickRmx_compact_full');
+									cal.addClass('colpickRmx_compact_'+options.layout+(options.submit?'':' colpickRmx_compact_'+options.layout+'_ns'));
+									break;
+							}
 						}
 
 						//Loading color scheme
@@ -569,6 +598,7 @@ Last Edit: 2017/10/08 10:58
 						if(options.lightArrows) {
 							cal.addClass('colpickRmx_lightHueArrs');
 						}
+
 						//Setup submit button
 						cal.find('div.colpickRmx_submit').html(options.submitText).click(clickSubmit);
 						//Setup input fields
@@ -628,7 +658,8 @@ Last Edit: 2017/10/08 10:58
 								display: 'block'
 							});
 						} else {
-							cal.appendTo($(this).parent());
+							cal.data('colpickRmx').appendedToBody = options.appendToBody;
+							if (!options.appendToBody) { cal.appendTo($(this).parent()); } else { cal.appendTo(document.body); }
 							$(this).on(options.showEvent, show);
 							cal.css({
 								position:'absolute'
