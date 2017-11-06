@@ -1,5 +1,5 @@
 /*
-Colpick REMIX - Color Picker
+Colpick RemiX - Color Picker
 
 Copyright (C) 2017 Salvatore Peluso (Firestorm): fire-space.weebly.com
 Dual licensed under GPL v3.0 and MIT licenses.
@@ -8,7 +8,7 @@ Based on Jose Vargas' Color Picker (https://github.com/josedvq/colpick-jQuery-Co
 
 Description, how to use, and examples: fire-space.weebly.com/colpick-remix
 
-Last Edit: 2017/10/09 20:16
+Last Edit: 2017/11/06 02:42 WIP! TOPPO
 */
 
 
@@ -16,7 +16,7 @@ Last Edit: 2017/10/09 20:16
 (function ($) {
 	var colpickRmx = function () {
 		var
-			tpl = '<div class="colpickRmx"><div class="colpickRmx_color"><div class="colpickRmx_color_overlay1"><div class="colpickRmx_color_overlay2"><div class="colpickRmx_selector_outer"><div class="colpickRmx_selector_inner"></div></div></div></div></div><div class="colpickRmx_hue"><div class="colpickRmx_hue_arrs"><div class="colpickRmx_hue_larr"></div><div class="colpickRmx_hue_rarr"></div></div></div><div class="colpickRmx_new_color"></div><div class="colpickRmx_current_color"></div><div class="colpickRmx_hex_field"><div class="colpickRmx_field_letter">#</div><input type="text" maxlength="6" size="6" /></div><div class="colpickRmx_rgb_r colpickRmx_field"><div class="colpickRmx_field_letter">R</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_rgb_g colpickRmx_field"><div class="colpickRmx_field_letter">G</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_rgb_b colpickRmx_field"><div class="colpickRmx_field_letter">B</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_hsb_h colpickRmx_field"><div class="colpickRmx_field_letter">H</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_hsb_s colpickRmx_field"><div class="colpickRmx_field_letter">S</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_hsb_b colpickRmx_field"><div class="colpickRmx_field_letter">B</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_submit"></div></div>',
+			tpl = '<div class="colpickRmx"><div class="colpickRmx_color"><div class="colpickRmx_color_overlay1"><div class="colpickRmx_color_overlay2"><div class="colpickRmx_selector_outer"><div class="colpickRmx_selector_inner"></div></div></div></div></div><div class="colpickRmx_hue"><div class="colpickRmx_hue_arrs"><div class="colpickRmx_hue_larr"></div><div class="colpickRmx_hue_rarr"></div></div></div><div class="colpickRmx_alpha_checkerboard"><div class="colpickRmx_alpha_arrs"><div class="colpickRmx_alpha_darr"></div><div class="colpickRmx_alpha_uarr"></div></div></div><div class="colpickRmx_alpha_color_overlay"></div><div class="colpickRmx_new_color"></div><div class="colpickRmx_current_color"></div><div class="colpickRmx_hex_field"><div class="colpickRmx_field_letter">#</div><input type="text" maxlength="6" size="6" /></div><div class="colpickRmx_rgb_r colpickRmx_field"><div class="colpickRmx_field_letter">R</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_rgb_g colpickRmx_field"><div class="colpickRmx_field_letter">G</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_rgb_b colpickRmx_field"><div class="colpickRmx_field_letter">B</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_hsb_h colpickRmx_field"><div class="colpickRmx_field_letter">H</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_hsb_s colpickRmx_field"><div class="colpickRmx_field_letter">S</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_hsb_b colpickRmx_field"><div class="colpickRmx_field_letter">B</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_alpha colpickRmx_field"><div class="colpickRmx_field_letter">A</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_submit"></div><div class="colpickRmx_tear"></div></div>',
 			defaults = {
 				flat: true, //If is "true", the color picker is displayed regardless.
 				showEvent: 'click', //The event that shows the color picker (if flat is set to "true", this property is useless).
@@ -24,12 +24,13 @@ Last Edit: 2017/10/09 20:16
 				layout: 'full', //There are 3 types of layouts: full, rgbhex, hex.
 				compactStyle: false, //Switch between normal and compact style.
 				submit: true, //The 3 layouts have 2 sub-layouts for each: with submit button or without.
-				submitText: 'OK', //Text of the submit button.
+				submitText: '', //Text of the submit button.
 				readonlyFields: false, //Setup the readonly attribute to all fields.
 				readonlyHexField: false, //Setup the readonly attribute only to hex field (only if it is "true").
 				colorScheme: 'light--full', //There are 4 types of color schemes: light, dark, light--full, dark--full.
 				lightArrows: false, //ONLY FOR LIGHT COLOR SCHEME! Set the hue's arrows color to a light color (ex. white).
-				color: '222222', //Default Selected Color: Visible in almost all themes.
+				color: 'ac2310', //Default Selected Color: Visible in almost all themes.
+				alphaVal: 200, //Default alpha value (Verrà eliminato nella versione finale!)
 				livePreview: true, //If is "true", the color is updated immediately when changing a parameter.
 				polyfill: false, //If "true", the color picker is only activated when no native browser behavior is available.
 				appendToBody: false, //If "true", force the color picker to append to body (only for "non flat" version).
@@ -39,12 +40,7 @@ Last Edit: 2017/10/09 20:16
 				onHide: function () {},
 				onDestroy: function () {},
 				onChange: function () {},
-				onSubmit: function () {},
-
-				//VALUES BELOW, ARE DEPENDING FROM CSS (DON'T CHANGE IT WITHOUT CHANGING CSS VALUES)
-				height: 225, //Standard Version!
-				sHeight: 150, //Small Version!
-				xlHeight: 300 //Extra Large Version!
+				onSubmit: function () {}
 			},
 			//Fill the inputs of the plugin
 			fillRGBFields = function  (hsb, cal) {
@@ -60,50 +56,30 @@ Last Edit: 2017/10/09 20:16
 					.eq(5).val(Math.round(hsb.s)).end()
 					.eq(6).val(Math.round(hsb.b)).end();
 			},
+			fillAlphaFields = function (alpha, cal){
+				$(cal).data('colpickRmx').fields.eq(7).val(alpha).end();
+			},
 			fillHexFields = function (hsb, cal) {
 				$(cal).data('colpickRmx').fields.eq(0).val(hsbToHex(hsb));
 			},
 			//Set the round selector position
 			setSelector = function (hsb, cal) {
 				$(cal).data('colpickRmx').selector.css('backgroundColor', '#' + hsbToHex({h: hsb.h, s: 100, b: 100}));
-
-				//Switching between the 3 variants
-				switch ($(cal).data('colpickRmx').variant) {
-					case 'small':
-						$(cal).data('colpickRmx').selectorIndic.css({
-							left: parseInt($(cal).data('colpickRmx').sHeight * hsb.s/100, 10),
-							top: parseInt($(cal).data('colpickRmx').sHeight * (100-hsb.b)/100, 10)
-						});
-						break;
-					case 'extra-large':
-						$(cal).data('colpickRmx').selectorIndic.css({
-							left: parseInt($(cal).data('colpickRmx').xlHeight * hsb.s/100, 10),
-							top: parseInt($(cal).data('colpickRmx').xlHeight * (100-hsb.b)/100, 10)
-						});
-						break;
-					default: //default -> standard
-						$(cal).data('colpickRmx').selectorIndic.css({
-							left: parseInt($(cal).data('colpickRmx').height * hsb.s/100, 10),
-							top: parseInt($(cal).data('colpickRmx').height * (100-hsb.b)/100, 10)
-						});
-						break;
-				}
+				$(cal).data('colpickRmx').selectorIndic.css({
+					left: parseInt($(cal).data('colpickRmx').size * hsb.s/100, 10),
+					top: parseInt($(cal).data('colpickRmx').size * (100-hsb.b)/100, 10)
+				});
 			},
 			//Set the hue selector position
 			setHue = function (hsb, cal) {
-
-				//Switching between the 3 variants
-				switch ($(cal).data('colpickRmx').variant) {
-					case 'small':
-						$(cal).data('colpickRmx').hue.css('top', parseInt($(cal).data('colpickRmx').sHeight - $(cal).data('colpickRmx').sHeight * hsb.h/360, 10));
-						break;
-					case 'extra-large':
-						$(cal).data('colpickRmx').hue.css('top', parseInt($(cal).data('colpickRmx').xlHeight - $(cal).data('colpickRmx').xlHeight * hsb.h/360, 10));
-						break;
-					default: //default -> standard
-						$(cal).data('colpickRmx').hue.css('top', parseInt($(cal).data('colpickRmx').height - $(cal).data('colpickRmx').height * hsb.h/360, 10));
-						break;
-				}
+				$(cal).data('colpickRmx').hue.css('top', parseInt($(cal).data('colpickRmx').size - $(cal).data('colpickRmx').size * hsb.h/360, 10));
+			},
+			setAlpha = function (aval, cal){
+				$(cal).data('colpickRmx').alpha.css('left', parseInt($(cal).data('colpickRmx').size / 255 * aval, 10));
+			},
+			setAlphaBarColor = function (col, cal){ //ALPHAAA
+				var hex = hsbToHex(col);
+				$(cal).data('colpickRmx').alphaBar.css('background', 'linear-gradient(to right,#'+hex+'00,#'+hex+'ff)');
 			},
 			//Set current and new colors
 			setCurrentColor = function (hsb, cal) {
@@ -114,32 +90,38 @@ Last Edit: 2017/10/09 20:16
 			},
 			//Called when the new color is changed
 			change = function (ev) {
-				var cal = $(this).parent().parent(), col;
-				if (this.parentNode.className.indexOf('_hex') > 0) {
-					cal.data('colpickRmx').color = col = hexToHsb(fixHex(this.value));
-					fillRGBFields(col, cal.get(0));
-					fillHSBFields(col, cal.get(0));
-				} else if (this.parentNode.className.indexOf('_hsb') > 0) {
-					cal.data('colpickRmx').color = col = fixHSB({
-						h: parseInt(cal.data('colpickRmx').fields.eq(4).val(), 10),
-						s: parseInt(cal.data('colpickRmx').fields.eq(5).val(), 10),
-						b: parseInt(cal.data('colpickRmx').fields.eq(6).val(), 10)
-					});
-					fillRGBFields(col, cal.get(0));
-					fillHexFields(col, cal.get(0));
+				var cal = $(this).parent().parent(), col, alpha;
+				if (this.parentNode.className.indexOf('_alpha') > 0){
+					cal.data('colpickRmx').alphaVal = alpha = cal.data('colpickRmx').fields.eq(7).val();
+					setAlpha(alpha, cal.get(0));
 				} else {
-					cal.data('colpickRmx').color = col = rgbToHsb(fixRGB({
-						r: parseInt(cal.data('colpickRmx').fields.eq(1).val(), 10),
-						g: parseInt(cal.data('colpickRmx').fields.eq(2).val(), 10),
-						b: parseInt(cal.data('colpickRmx').fields.eq(3).val(), 10)
-					}));
-					fillHexFields(col, cal.get(0));
-					fillHSBFields(col, cal.get(0));
+					if (this.parentNode.className.indexOf('_hex') > 0) {
+						cal.data('colpickRmx').color = col = hexToHsb(fixHex(this.value));
+						fillRGBFields(col, cal.get(0));
+						fillHSBFields(col, cal.get(0));
+					} else if (this.parentNode.className.indexOf('_hsb') > 0) {
+						cal.data('colpickRmx').color = col = fixHSB({
+							h: parseInt(cal.data('colpickRmx').fields.eq(4).val(), 10),
+							s: parseInt(cal.data('colpickRmx').fields.eq(5).val(), 10),
+							b: parseInt(cal.data('colpickRmx').fields.eq(6).val(), 10)
+						});
+						fillRGBFields(col, cal.get(0));
+						fillHexFields(col, cal.get(0));
+					} else {
+						cal.data('colpickRmx').color = col = rgbToHsb(fixRGB({
+							r: parseInt(cal.data('colpickRmx').fields.eq(1).val(), 10),
+							g: parseInt(cal.data('colpickRmx').fields.eq(2).val(), 10),
+							b: parseInt(cal.data('colpickRmx').fields.eq(3).val(), 10)
+						}));
+						fillHexFields(col, cal.get(0));
+						fillHSBFields(col, cal.get(0));
+					}
+					setAlphaBarColor(col, cal.get(0));
+					setSelector(col, cal.get(0));
+					setHue(col, cal.get(0));
+					setNewColor(col, cal.get(0));
+					cal.data('colpickRmx').onChange.apply(cal.parent(), [col, hsbToHex(col), hsbToRgb(col), cal.data('colpickRmx').el, 0]);
 				}
-				setSelector(col, cal.get(0));
-				setHue(col, cal.get(0));
-				setNewColor(col, cal.get(0));
-				cal.data('colpickRmx').onChange.apply(cal.parent(), [col, hsbToHex(col), hsbToRgb(col), cal.data('colpickRmx').el, 0]);
 			},
 			//Change style on blur and on focus of inputs
 			blur = function (ev) {
@@ -178,6 +160,40 @@ Last Edit: 2017/10/09 20:16
 				$(document).off('mousemove', moveIncrement);
 				return false;
 			},
+			//Alpha slider functions
+			downAlpha = function (ev) {
+				ev.preventDefault ? ev.preventDefault() : ev.returnValue = false;
+				var current = {
+					cal: $(this).parent(),
+					x: $(this).offset().left
+				};
+				$(document).on('mouseup touchend',current,upAlpha);
+				$(document).on('mousemove touchmove',current,moveAlpha);
+				var pageX = ((ev.type == 'touchstart') ? ev.originalEvent.changedTouches[0].pageX : ev.pageX );
+				change.apply(
+					current.cal.data('colpickRmx')
+					.fields.eq(7).val(parseInt(255*Math.max(0,Math.min(current.cal.data('colpickRmx').size,(pageX - current.x)))/current.cal.data('colpickRmx').size, 10))
+						.get(0),
+					[current.cal.data('colpickRmx').livePreview]
+				);
+				return false;
+			},
+			moveAlpha = function (ev) {
+				var pageX = ((ev.type == 'touchmove') ? ev.originalEvent.changedTouches[0].pageX : ev.pageX );
+				change.apply(
+					ev.data.cal.data('colpickRmx')
+					.fields.eq(7).val(parseInt(255*Math.max(0,Math.min(ev.data.cal.data('colpickRmx').size,(pageX - ev.data.x)))/ev.data.cal.data('colpickRmx').size, 10))
+						.get(0),
+					[ev.data.preview]
+				);
+				return false;
+			},
+			upAlpha = function (ev) {
+				fillAlphaFields(ev.data.cal.data('colpickRmx').alphaVal, ev.data.cal.get(0));
+				$(document).off('mouseup touchend',upAlpha);
+				$(document).off('mousemove touchmove',moveAlpha);
+				return false;
+			},
 			//Hue slider functions
 			downHue = function (ev) {
 				ev.preventDefault ? ev.preventDefault() : ev.returnValue = false;
@@ -187,70 +203,24 @@ Last Edit: 2017/10/09 20:16
 				};
 				$(document).on('mouseup touchend',current,upHue);
 				$(document).on('mousemove touchmove',current,moveHue);
-
 				var pageY = ((ev.type == 'touchstart') ? ev.originalEvent.changedTouches[0].pageY : ev.pageY );
-
-				//Switching between the 3 variants
-				switch (current.cal.data('colpickRmx').variant) {
-					case 'small':
-						change.apply(
-							current.cal.data('colpickRmx')
-							.fields.eq(4).val(parseInt(360*(current.cal.data('colpickRmx').sHeight - (pageY - current.y))/current.cal.data('colpickRmx').sHeight, 10))
-								.get(0),
-							[current.cal.data('colpickRmx').livePreview]
-						);
-						break;
-					case 'extra-large':
-						change.apply(
-							current.cal.data('colpickRmx')
-							.fields.eq(4).val(parseInt(360*(current.cal.data('colpickRmx').xlHeight - (pageY - current.y))/current.cal.data('colpickRmx').xlHeight, 10))
-								.get(0),
-							[current.cal.data('colpickRmx').livePreview]
-						);
-						break;
-					default: //default -> standard
-						change.apply(
-							current.cal.data('colpickRmx')
-							.fields.eq(4).val(parseInt(360*(current.cal.data('colpickRmx').height - (pageY - current.y))/current.cal.data('colpickRmx').height, 10))
-								.get(0),
-							[current.cal.data('colpickRmx').livePreview]
-						);
-						break;
-				}
-
+				change.apply(
+					current.cal.data('colpickRmx')
+					.fields.eq(4).val(parseInt(360*(current.cal.data('colpickRmx').size - (pageY - current.y))/current.cal.data('colpickRmx').size, 10))
+						.get(0),
+					[current.cal.data('colpickRmx').livePreview]
+				);
 				return false;
 			},
 			moveHue = function (ev) {
 				var pageY = ((ev.type == 'touchmove') ? ev.originalEvent.changedTouches[0].pageY : ev.pageY );
 
-				//Switching between the 3 variants
-				switch (ev.data.cal.data('colpickRmx').variant) {
-					case 'small':
-						change.apply(
-							ev.data.cal.data('colpickRmx')
-							.fields.eq(4).val(parseInt(360*(ev.data.cal.data('colpickRmx').sHeight - Math.max(0,Math.min(ev.data.cal.data('colpickRmx').sHeight,(pageY - ev.data.y))))/ev.data.cal.data('colpickRmx').sHeight, 10))
-								.get(0),
-							[ev.data.preview]
-						);
-						break;
-					case 'extra-large':
-						change.apply(
-							ev.data.cal.data('colpickRmx')
-							.fields.eq(4).val(parseInt(360*(ev.data.cal.data('colpickRmx').xlHeight - Math.max(0,Math.min(ev.data.cal.data('colpickRmx').xlHeight,(pageY - ev.data.y))))/ev.data.cal.data('colpickRmx').xlHeight, 10))
-								.get(0),
-							[ev.data.preview]
-						);
-						break;
-					default: //default -> standard
-						change.apply(
-							ev.data.cal.data('colpickRmx')
-							.fields.eq(4).val(parseInt(360*(ev.data.cal.data('colpickRmx').height - Math.max(0,Math.min(ev.data.cal.data('colpickRmx').height,(pageY - ev.data.y))))/ev.data.cal.data('colpickRmx').height, 10))
-								.get(0),
-							[ev.data.preview]
-						);
-						break;
-				}
-
+				change.apply(
+					ev.data.cal.data('colpickRmx')
+					.fields.eq(4).val(parseInt(360*(ev.data.cal.data('colpickRmx').size - Math.max(0,Math.min(ev.data.cal.data('colpickRmx').size,(pageY - ev.data.y))))/ev.data.cal.data('colpickRmx').size, 10))
+						.get(0),
+					[ev.data.preview]
+				);
 				return false;
 			},
 			upHue = function (ev) {
@@ -268,10 +238,8 @@ Last Edit: 2017/10/09 20:16
 					pos: $(this).offset()
 				};
 				current.preview = current.cal.data('colpickRmx').livePreview;
-
 				$(document).on('mouseup touchend',current,upSelector);
 				$(document).on('mousemove touchmove',current,moveSelector);
-
 				var pageX,pageY;
 				if(ev.type == 'touchstart') {
 					pageX = ev.originalEvent.changedTouches[0].pageX;
@@ -280,38 +248,13 @@ Last Edit: 2017/10/09 20:16
 					pageX = ev.pageX;
 					pageY = ev.pageY;
 				}
-
-				//Switching between the 3 variants
-				switch (current.cal.data('colpickRmx').variant) {
-					case 'small':
-						change.apply(
-							current.cal.data('colpickRmx').fields
-							.eq(6).val(parseInt(100*(current.cal.data('colpickRmx').sHeight - (pageY - current.pos.top))/current.cal.data('colpickRmx').sHeight, 10)).end()
-							.eq(5).val(parseInt(100*(pageX - current.pos.left)/current.cal.data('colpickRmx').sHeight, 10))
-							.get(0),
-							[current.preview]
-						);
-						break;
-					case 'extra-large':
-						change.apply(
-							current.cal.data('colpickRmx').fields
-							.eq(6).val(parseInt(100*(current.cal.data('colpickRmx').xlHeight - (pageY - current.pos.top))/current.cal.data('colpickRmx').xlHeight, 10)).end()
-							.eq(5).val(parseInt(100*(pageX - current.pos.left)/current.cal.data('colpickRmx').xlHeight, 10))
-							.get(0),
-							[current.preview]
-						);
-						break;
-					default: //default -> standard
-						change.apply(
-							current.cal.data('colpickRmx').fields
-							.eq(6).val(parseInt(100*(current.cal.data('colpickRmx').height - (pageY - current.pos.top))/current.cal.data('colpickRmx').height, 10)).end()
-							.eq(5).val(parseInt(100*(pageX - current.pos.left)/current.cal.data('colpickRmx').height, 10))
-							.get(0),
-							[current.preview]
-						);
-						break;
-				}
-
+				change.apply(
+					current.cal.data('colpickRmx').fields
+					.eq(6).val(parseInt(100*(current.cal.data('colpickRmx').size - (pageY - current.pos.top))/current.cal.data('colpickRmx').size, 10)).end()
+					.eq(5).val(parseInt(100*(pageX - current.pos.left)/current.cal.data('colpickRmx').size, 10))
+					.get(0),
+					[current.preview]
+				);
 				return false;
 			},
 			moveSelector = function (ev) {
@@ -323,38 +266,13 @@ Last Edit: 2017/10/09 20:16
 					pageX = ev.pageX;
 					pageY = ev.pageY;
 				}
-
-				//Switching between the 3 variants
-				switch (ev.data.cal.data('colpickRmx').variant) {
-					case 'small':
-						change.apply(
-							ev.data.cal.data('colpickRmx').fields
-							.eq(6).val(parseInt(100*(ev.data.cal.data('colpickRmx').sHeight - Math.max(0,Math.min(ev.data.cal.data('colpickRmx').sHeight,(pageY - ev.data.pos.top))))/ev.data.cal.data('colpickRmx').sHeight, 10)).end()
-							.eq(5).val(parseInt(100*(Math.max(0,Math.min(ev.data.cal.data('colpickRmx').sHeight,(pageX - ev.data.pos.left))))/ev.data.cal.data('colpickRmx').sHeight, 10))
-							.get(0),
-							[ev.data.preview]
-						);
-						break;
-					case 'extra-large':
-						change.apply(
-							ev.data.cal.data('colpickRmx').fields
-							.eq(6).val(parseInt(100*(ev.data.cal.data('colpickRmx').xlHeight - Math.max(0,Math.min(ev.data.cal.data('colpickRmx').xlHeight,(pageY - ev.data.pos.top))))/ev.data.cal.data('colpickRmx').xlHeight, 10)).end()
-							.eq(5).val(parseInt(100*(Math.max(0,Math.min(ev.data.cal.data('colpickRmx').xlHeight,(pageX - ev.data.pos.left))))/ev.data.cal.data('colpickRmx').xlHeight, 10))
-							.get(0),
-							[ev.data.preview]
-						);
-						break;
-					default: //default -> standard
-						change.apply(
-							ev.data.cal.data('colpickRmx').fields
-							.eq(6).val(parseInt(100*(ev.data.cal.data('colpickRmx').height - Math.max(0,Math.min(ev.data.cal.data('colpickRmx').height,(pageY - ev.data.pos.top))))/ev.data.cal.data('colpickRmx').height, 10)).end()
-							.eq(5).val(parseInt(100*(Math.max(0,Math.min(ev.data.cal.data('colpickRmx').height,(pageX - ev.data.pos.left))))/ev.data.cal.data('colpickRmx').height, 10))
-							.get(0),
-							[ev.data.preview]
-						);
-						break;
-				}
-
+				change.apply(
+					ev.data.cal.data('colpickRmx').fields
+					.eq(6).val(parseInt(100*(ev.data.cal.data('colpickRmx').size - Math.max(0,Math.min(ev.data.cal.data('colpickRmx').size,(pageY - ev.data.pos.top))))/ev.data.cal.data('colpickRmx').size, 10)).end()
+					.eq(5).val(parseInt(100*(Math.max(0,Math.min(ev.data.cal.data('colpickRmx').size,(pageX - ev.data.pos.left))))/ev.data.cal.data('colpickRmx').size, 10))
+					.get(0),
+					[ev.data.preview]
+				);
 				return false;
 			},
 			upSelector = function (ev) {
@@ -380,8 +298,8 @@ Last Edit: 2017/10/09 20:16
 				}
 				var cal = $('#' + $(this).data('colpickRmxId'));
 
-				//Trying to access to a variable (e.g. height)
-				try { var temp = cal.data('colpickRmx').height; }
+				//Trying to access to a variable (e.g. color)
+				try { var temp = cal.data('colpickRmx').color; }
 				catch (e) {
 					//If an error is generated: abort showing!
 					//window.alert("Failed to show color picker! Probably it was destroyed!"); //If you want to show this error message, uncomment this line.
@@ -492,6 +410,7 @@ Last Edit: 2017/10/09 20:16
 				fillRGBFields(col, cal.get(0));
 				fillHexFields(col, cal.get(0));
 				fillHSBFields(col, cal.get(0));
+				setAlphaBarColor(col, cal.get(0));
 				setSelector(col, cal.get(0));
 				setHue(col, cal.get(0));
 				setNewColor(col, cal.get(0));
@@ -535,7 +454,16 @@ Last Edit: 2017/10/09 20:16
 						//Set the tpl's ID and get the HTML
 						var cal = $(tpl).attr('id', id);
 
-						//Switching between the 3 variants
+						//Setup size of the selected variant (Add other "else-if" for other future variants)
+						if (options.variant == 'small') {
+							options.size = 150; //Small Version!
+						} else if (options.variant == 'extra-large') {
+							options.size = 300; //Extra Large Version!
+						} else {
+							options.size = 225; //Standard Version!
+						}
+
+						//Switching between the 3 layout variants
 						switch (options.variant) {
 							case 'small': //Add class according to layout (small)
 								cal.addClass('colpickRmxS');
@@ -611,6 +539,7 @@ Last Edit: 2017/10/09 20:16
 						options.fields.eq(4).prop('readonly', options.readonlyFields);
 						options.fields.eq(5).prop('readonly', options.readonlyFields);
 						options.fields.eq(6).prop('readonly', options.readonlyFields);
+						options.fields.eq(7).prop('readonly', options.readonlyFields);
 						if(options.readonlyHexField){options.fields.eq(0).prop('readonly', options.readonlyHexField);}
 						//Setup restoreOriginal to current color's click event
 						cal.find('div.colpickRmx_field_arrs').mousedown(downIncrement).end().find('div.colpickRmx_current_color').click(restoreOriginal);
@@ -620,6 +549,8 @@ Last Edit: 2017/10/09 20:16
 						//Store parts of the plugin
 						options.el = this;
 						options.hue = cal.find('div.colpickRmx_hue_arrs');
+						options.alpha = cal.find('div.colpickRmx_alpha_arrs');
+						options.alphaBar = cal.find('div.colpickRmx_alpha_color_overlay');
 						var huebar = options.hue.parent();
 						//Paint the hue bar
 						var UA = navigator.userAgent.toLowerCase();
@@ -638,6 +569,7 @@ Last Edit: 2017/10/09 20:16
 							huebar.attr('style','background:-webkit-linear-gradient(top,'+stopList+'); background: -o-linear-gradient(top,'+stopList+'); background: -ms-linear-gradient(top,'+stopList+'); background:-moz-linear-gradient(top,'+stopList+'); -webkit-linear-gradient(top,'+stopList+'); background:linear-gradient(to bottom,'+stopList+'); ');
 						}
 						cal.find('div.colpickRmx_hue').on('mousedown touchstart',downHue);
+						cal.find('div.colpickRmx_alpha_color_overlay').on('mousedown touchstart',downAlpha);
 						options.newColor = cal.find('div.colpickRmx_new_color');
 						options.currentColor = cal.find('div.colpickRmx_current_color');
 						//Store options
@@ -647,6 +579,9 @@ Last Edit: 2017/10/09 20:16
 						fillHSBFields(options.color, cal.get(0));
 						fillHexFields(options.color, cal.get(0));
 						setHue(options.color, cal.get(0));
+						setAlpha(options.alphaVal, cal.get(0)); //ALPHAAA
+						setAlphaBarColor(options.color, cal.get(0)); //Colora la barra alpha col colore scelto
+						fillAlphaFields(options.alphaVal, cal.get(0)); //Riempie il campo input alpha
 						setSelector(options.color, cal.get(0));
 						setCurrentColor(options.color, cal.get(0));
 						setNewColor(options.color, cal.get(0));
