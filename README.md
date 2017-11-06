@@ -2,25 +2,16 @@
 
 Photoshop-like jQuery Color Picker plugin with various skins and layouts, touch, and responsive. <br>
 
-Features: <br>
-* Photoshop-like interface
-* 3 Variants: Standard (default), Small, Extra Large
-* 4 Skins:
-  * 2 Main-skins: Light and Dark
-  * 2 Sub-skins: Light Full and Dark Full
-* 3 Main Layouts: Full, only RGB + HEX, only HEX, each with or without the "Select color" button
-* Compact Style: Makes the layouts more compact, to save space! **[NEW]** 
-* Responsive
-* Easy to implement <br>
+# IMPORTANT
+<b> This is only a prototype of the plugin with the support of alpha channel!
+I've added the bar of alpha channel and the inputbox of alpha value, but they currently do nothing, apart from changing the value of the inputbox!
+And... I've completed only the standard layout! </b>
 
-There are 3 versions of the plugin: Extra Large, Standard, Small <br><br>
+### Screenshot of "Prototype version 1"
+![pv1](https://user-images.githubusercontent.com/32025549/32422287-cf84d828-c29f-11e7-8c66-cffec669b494.png) <br><br>
 
-Description, how to use, and examples: <a href="http://fire-space.weebly.com/colpick-remix">http://fire-space.weebly.com/colpick-remix</a> <br><br>
 
-### Example of a full standard color picker with full light theme
-![picker-standard](https://user-images.githubusercontent.com/32025549/30749703-801ecea0-9fb4-11e7-9569-d85b2b904acd.png) <br><br>
-
-### Latest release
+### Latest stable release
 Download link: <a href="https://github.com/firestormxyz/colpick-remix/releases/latest">https://github.com/firestormxyz/colpick-remix/releases/latest</a> <br><br>
 
 ### Requirements
