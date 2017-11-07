@@ -8,7 +8,7 @@ Based on Jose Vargas' Color Picker (https://github.com/josedvq/colpick-jQuery-Co
 
 Description, how to use, and examples: fire-space.weebly.com/colpick-remix
 
-Last Edit: 2017/11/07 01:50 PV2 TOPPO
+Last Edit: 2017/11/07 19:35 PV3 TOPPO
 */
 
 
@@ -22,14 +22,17 @@ Last Edit: 2017/11/07 01:50 PV2 TOPPO
 				showEvent: 'click', //The event that shows the color picker (if flat is set to "true", this property is useless).
 				variant: 'standard', //There are 3 variants: standard, small, extra-large.
 				layout: 'full', //There are 3 types of layouts: full, rgbhex, hex.
+				colorScheme: 'light--full', //There are 4 types of color schemes: light, dark, light--full, dark--full.
 				compactStyle: false, //Switch between normal and compact style.
 				submit: true, //The 3 layouts have 2 sub-layouts for each: with submit button or without.
 				readonlyFields: false, //Setup the readonly attribute to all fields.
 				readonlyHexField: false, //Setup the readonly attribute only to hex field (only if it is "true").
-				colorScheme: 'light--full', //There are 4 types of color schemes: light, dark, light--full, dark--full.
-				lightArrows: false, //ONLY FOR LIGHT COLOR SCHEME! Set the hue's arrows color to a light color (ex. white).
-				color: 'ac2310', //Default Selected Color: Visible in almost all themes.
-				alphaVal: 200, //Default alpha value (Verrà eliminato nella versione finale!)
+				lightArrows: false, //ONLY FOR LIGHT COLOR SCHEME! Set the hue's and the alpha's arrows color to a light color (e.g. white).
+				colorSelOutline: true, //Show or hide color selector's outline
+				hueOutline: true, //Show or hide hue's outline
+				alphaOutline: true, //Show or hide alpha's outline
+				colorOutline: true, //Show or hide color's outline
+				color: '222222', //Default Selected Color: Visible in almost all themes.
 				livePreview: true, //If is "true", the color is updated immediately when changing a parameter.
 				polyfill: false, //If "true", the color picker is only activated when no native browser behavior is available.
 				appendToBody: false, //If "true", force the color picker to append to body (only for "non flat" version).
@@ -39,7 +42,9 @@ Last Edit: 2017/11/07 01:50 PV2 TOPPO
 				onHide: function () {},
 				onDestroy: function () {},
 				onChange: function () {},
-				onSubmit: function () {}
+				onSubmit: function () {},
+
+				alphaVal: 255 //Default alpha value (Verrà eliminato nella versione finale!)
 			},
 			//Fill the inputs of the plugin
 			fillRGBFields = function  (hsb, cal) {
@@ -73,12 +78,14 @@ Last Edit: 2017/11/07 01:50 PV2 TOPPO
 			setHue = function (hsb, cal) {
 				$(cal).data('colpickRmx').hue.css('top', parseInt($(cal).data('colpickRmx').size - $(cal).data('colpickRmx').size * hsb.h/360, 10));
 			},
-			setAlpha = function (aval, cal){
-				$(cal).data('colpickRmx').alpha.css('left', parseInt($(cal).data('colpickRmx').size / 255 * aval, 10));
+			//Set the alpha selector position
+			setAlpha = function (alpha, cal){
+				$(cal).data('colpickRmx').alpha.css('left', parseInt($(cal).data('colpickRmx').size / 255 * alpha, 10));
 			},
-			setAlphaBarColor = function (col, cal){ //ALPHAAA
+			//Update the color of alpha bar with the choosen color
+			setAlphaBarColor = function (col, cal){
 				var hex = hsbToHex(col);
-				$(cal).data('colpickRmx').alphaBar.css('background', 'linear-gradient(to right,#'+hex+'00,#'+hex+'ff)');
+				$(cal).data('colpickRmx').alphaBar.attr('style','background: -webkit-linear-gradient(left,#'+hex+'00,#'+hex+'ff); background: -moz-linear-gradient(left,#'+hex+'00,#'+hex+'ff); background: -o-linear-gradient(left,#'+hex+'00,#'+hex+'ff); background: linear-gradient(to right,#'+hex+'00,#'+hex+'ff);');
 			},
 			//Set current and new colors
 			setCurrentColor = function (hsb, cal) {
@@ -205,7 +212,7 @@ Last Edit: 2017/11/07 01:50 PV2 TOPPO
 				var pageY = ((ev.type == 'touchstart') ? ev.originalEvent.changedTouches[0].pageY : ev.pageY );
 				change.apply(
 					current.cal.data('colpickRmx')
-					.fields.eq(4).val(parseInt(360*(current.cal.data('colpickRmx').size - (pageY - current.y))/current.cal.data('colpickRmx').size, 10))
+					.fields.eq(4).val(parseInt(360*(current.cal.data('colpickRmx').size - Math.max(0,Math.min(current.cal.data('colpickRmx').size,(pageY - current.y))))/current.cal.data('colpickRmx').size, 10))
 						.get(0),
 					[current.cal.data('colpickRmx').livePreview]
 				);
@@ -249,8 +256,8 @@ Last Edit: 2017/11/07 01:50 PV2 TOPPO
 				}
 				change.apply(
 					current.cal.data('colpickRmx').fields
-					.eq(6).val(parseInt(100*(current.cal.data('colpickRmx').size - (pageY - current.pos.top))/current.cal.data('colpickRmx').size, 10)).end()
-					.eq(5).val(parseInt(100*(pageX - current.pos.left)/current.cal.data('colpickRmx').size, 10))
+					.eq(6).val(parseInt(100*(current.cal.data('colpickRmx').size - Math.max(0,Math.min(current.cal.data('colpickRmx').size,(pageY - current.pos.top))))/current.cal.data('colpickRmx').size, 10)).end()
+					.eq(5).val(parseInt(100*(Math.max(0,Math.min(current.cal.data('colpickRmx').size,(pageX - current.pos.left))))/current.cal.data('colpickRmx').size, 10))
 					.get(0),
 					[current.preview]
 				);
@@ -521,6 +528,19 @@ Last Edit: 2017/11/07 01:50 PV2 TOPPO
 							cal.addClass('colpickRmx_light'); //Loading default color scheme for all (light)
 							cal.addClass('colpickRmx_'+options.colorScheme); //Loading the strange color scheme
 						}
+						//Hide outlines, if requested
+						if(!options.colorSelOutline){
+							cal.addClass('colpickRmx_noCSOutline');
+						}
+						if(!options.hueOutline){
+							cal.addClass('colpickRmx_noHOutline');
+						}
+						if(!options.alphaOutline){
+							cal.addClass('colpickRmx_noAOutline');
+						}
+						if(!options.colorOutline){
+							cal.addClass('colpickRmx_noNCOutline');
+						}
 						//Set the hue's arrows color to a light color, if requested
 						if(options.lightArrows) {
 							cal.addClass('colpickRmx_lightHueArrs');
@@ -565,7 +585,7 @@ Last Edit: 2017/11/07 01:50 PV2 TOPPO
 							}
 						} else {
 							var stopList = stops.join(',');
-							huebar.attr('style','background:-webkit-linear-gradient(top,'+stopList+'); background: -o-linear-gradient(top,'+stopList+'); background: -ms-linear-gradient(top,'+stopList+'); background:-moz-linear-gradient(top,'+stopList+'); -webkit-linear-gradient(top,'+stopList+'); background:linear-gradient(to bottom,'+stopList+'); ');
+							huebar.attr('style','background:-webkit-linear-gradient(top,'+stopList+'); background: -o-linear-gradient(top,'+stopList+'); background: -ms-linear-gradient(top,'+stopList+'); background:-moz-linear-gradient(top,'+stopList+'); -webkit-linear-gradient(top,'+stopList+'); background:linear-gradient(to bottom,'+stopList+');');
 						}
 						cal.find('div.colpickRmx_hue').on('mousedown touchstart',downHue);
 						cal.find('div.colpickRmx_alpha_checkerboard').on('mousedown touchstart',downAlpha);
