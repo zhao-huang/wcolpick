@@ -8,7 +8,7 @@ Based on Jose Vargas' Color Picker (https://github.com/josedvq/colpick-jQuery-Co
 
 Description, how to use, and examples: fire-space.weebly.com/colpick-remix
 
-Last Edit: 2017/10/09 18:00
+Last Edit: 2017/11/07 01:46 PV2
 */
 
 
@@ -23,7 +23,9 @@ Last Edit: 2017/10/09 18:00
 /*Main container*/
 .colpickRmx {
 	position: absolute;
-	box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
 	text-align: left;
 	width: 566px;
 	height: 274px;
@@ -113,6 +115,8 @@ Last Edit: 2017/10/09 18:00
 	left: 242px;
 	width: 20px;
 	height: 225px;
+	outline-style: solid;
+	outline-width: 1px;
 	cursor: ns-resize;
 }
 /*Hue bar sliding indicator*/
@@ -162,11 +166,14 @@ Last Edit: 2017/10/09 18:00
   -o-background-size: 10px 10px; /* Opera 11.10+ */
   background-size: 10px 10px;
   background-position: 0 0, 5px 0, 5px -5px, 0px 5px;
+	outline-style: solid;
+	outline-width: 1px;
+	cursor: ew-resize;
 }
 .colpickRmx_alpha_color_overlay {
   position: absolute;
-	top: 242px;
-	left: 5px;
+	top: 0px;
+	left: 0px;
   height: 20px;
   width: 225px;
 	/*DA ELIMINARE E IMPOSTARE DA JAVASCRIPT!*/
@@ -175,7 +182,6 @@ Last Edit: 2017/10/09 18:00
   background: -o-linear-gradient(left,#00ff0000,#00ff00ff); /* Opera 11.10+ */
   background: linear-gradient(to right,#00ff0000,#00ff00ff);
 	/*DA ELIMINARE E IMPOSTARE DA JAVASCRIPT!*/
-	cursor: ew-resize;
 }
 /*Alpha bar sliding indicator*/
 .colpickRmx_alpha_arrs {
@@ -208,7 +214,7 @@ Last Edit: 2017/10/09 18:00
 /*//////////////////////////////////// ///////// ///////////////////////*/
 
 
-/*New color box*/
+/*New color and current color boxes*/
 .colpickRmx_new_color {
 	position: absolute;
 	left: 308px;
@@ -217,7 +223,6 @@ Last Edit: 2017/10/09 18:00
 	height: 48px;
 	background: #f00;
 }
-/*Current color box*/
 .colpickRmx_current_color {
 	position: absolute;
 	left: 308px;
@@ -225,6 +230,27 @@ Last Edit: 2017/10/09 18:00
 	width: 253px;
 	height: 48px;
 	background: #f00;
+}
+/*New color and current color checkerboard*/
+.colpickRmx_nc_color_checkerboard {
+  position: absolute;
+	left: 308px;
+	top: 5px;
+	width: 253px;
+  height: 96px;
+  background-color: white;
+  background-image: -webkit-linear-gradient(45deg, #ccc 25%, transparent 25%), -webkit-linear-gradient(-45deg, #ccc 25%, transparent 25%), -webkit-linear-gradient(45deg, transparent 75%, #ccc 75%), -webkit-linear-gradient(-45deg, transparent 75%, #ccc 75%); /* Chrome10+,Safari5.1+ */
+  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, #ccc), color-stop(.25, transparent)), -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.25, #ccc), color-stop(.25, transparent)), -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.75, transparent), color-stop(.75, #ccc)), -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.75, transparent), color-stop(.75, #ccc)); /* Chrome,Safari4+ */
+  background-image: -moz-linear-gradient(45deg, #ccc 25%, transparent 25%), -moz-linear-gradient(-45deg, #ccc 25%, transparent 25%), -moz-linear-gradient(45deg, transparent 75%, #ccc 75%), -moz-linear-gradient(-45deg, transparent 75%, #ccc 75%); /* FF3.6+ */
+  background-image: -o-linear-gradient(45deg, #ccc 25%, transparent 25%), -o-linear-gradient(-45deg, #ccc 25%, transparent 25%), -o-linear-gradient(45deg, transparent 75%, #ccc 75%), -o-linear-gradient(-45deg, transparent 75%, #ccc 75%); /* Opera 11.10+ */
+  background-image: linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(135deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(135deg, transparent 75%, #ccc 75%);
+  -webkit-background-size: 10px 10px; /* Chrome10+,Safari5.1+ */
+  -moz-background-size: 10px 10px; /* FF3.6+ */
+  -o-background-size: 10px 10px; /* Opera 11.10+ */
+  background-size: 10px 10px;
+  background-position: 0 0, 5px 0, 5px -5px, 0px 5px;
+	outline-style: solid;
+	outline-width: 1px;
 }
 /*Input field containers*/
 .colpickRmx_field, .colpickRmx_hex_field {
@@ -356,8 +382,8 @@ Last Edit: 2017/10/09 18:00
 }
 .colpickRmx_tear {
 	position: absolute;
-	top: 247px;
-	left: 537px;
+	top: 9px;
+	left: 8px;
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
@@ -366,10 +392,6 @@ Last Edit: 2017/10/09 18:00
   border: none;
   -webkit-border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
   border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
-  font: normal 100%/normal Arial, Helvetica, sans-serif;
-  color: rgba(0,0,0,1);
-  -o-text-overflow: clip;
-  text-overflow: clip;
   background: #777;
   -webkit-transform: rotateZ(-45deg);
   transform: rotateZ(-45deg);
