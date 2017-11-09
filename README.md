@@ -14,8 +14,8 @@ And... I've completed only the standard layout! </b>
 5. Fixed a bug that allowed to set a hue value, and saturation and brightness values, beyond the limits!
 
 
-### Screenshot of "Prototype Version"
-![pv1](https://user-images.githubusercontent.com/32025549/32422287-cf84d828-c29f-11e7-8c66-cffec669b494.png) <br><br>
+### Screenshot of "Prototype Version 4"
+![pv4](https://user-images.githubusercontent.com/32025549/32614140-e2279676-c56c-11e7-8ac9-88ae855440f8.png) <br><br>
 
 
 ### Latest stable release

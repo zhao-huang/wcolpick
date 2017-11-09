@@ -8,7 +8,7 @@ Based on Jose Vargas' Color Picker (https://github.com/josedvq/colpick-jQuery-Co
 
 Description, how to use, and examples: fire-space.weebly.com/colpick-remix
 
-Last Edit: 2017/11/07 19:35 PV3 TOPPO
+Last Edit: 2017/11/09 16:27 PV4 TOPPO
 */
 
 
@@ -16,10 +16,11 @@ Last Edit: 2017/11/07 19:35 PV3 TOPPO
 (function ($) {
 	var colpickRmx = function () {
 		var
-			tpl = '<div class="colpickRmx"><div class="colpickRmx_color"><div class="colpickRmx_color_overlay1"><div class="colpickRmx_color_overlay2"><div class="colpickRmx_selector_outer"><div class="colpickRmx_selector_inner"></div></div></div></div></div><div class="colpickRmx_hue"><div class="colpickRmx_hue_arrs"><div class="colpickRmx_hue_larr"></div><div class="colpickRmx_hue_rarr"></div></div></div><div class="colpickRmx_alpha_checkerboard"><div class="colpickRmx_alpha_color_overlay"></div><div class="colpickRmx_alpha_arrs"><div class="colpickRmx_alpha_darr"></div><div class="colpickRmx_alpha_uarr"></div></div></div><div class="colpickRmx_nc_color_checkerboard"></div><div class="colpickRmx_new_color"></div><div class="colpickRmx_current_color"></div><div class="colpickRmx_hex_field"><div class="colpickRmx_field_letter">#</div><input type="text" maxlength="6" size="6" /></div><div class="colpickRmx_rgb_r colpickRmx_field"><div class="colpickRmx_field_letter">R</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_rgb_g colpickRmx_field"><div class="colpickRmx_field_letter">G</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_rgb_b colpickRmx_field"><div class="colpickRmx_field_letter">B</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_hsb_h colpickRmx_field"><div class="colpickRmx_field_letter">H</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_hsb_s colpickRmx_field"><div class="colpickRmx_field_letter">S</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_hsb_b colpickRmx_field"><div class="colpickRmx_field_letter">B</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_alpha colpickRmx_field"><div class="colpickRmx_field_letter">A</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_submit"><div class="colpickRmx_tear"></div></div></div>',
+			tpl = '<div class="colpickRmx"><div class="colpickRmx_color"><div class="colpickRmx_color_overlay1"><div class="colpickRmx_color_overlay2"><div class="colpickRmx_selector_outer"><div class="colpickRmx_selector_inner"></div></div></div></div></div><div class="colpickRmx_hue"><div class="colpickRmx_hue_arrs"><div class="colpickRmx_hue_larr"></div><div class="colpickRmx_hue_rarr"></div></div></div><div class="colpickRmx_alpha_checkerboard"><div class="colpickRmx_alpha_color_overlay"></div><div class="colpickRmx_alpha_arrs"><div class="colpickRmx_alpha_darr"></div><div class="colpickRmx_alpha_uarr"></div></div></div><div class="colpickRmx_nc_color_checkerboard"></div><div class="colpickRmx_new_color"></div><div class="colpickRmx_current_color"></div><div class="colpickRmx_hex_field"><div class="colpickRmx_field_letter">#</div><input type="text" maxlength="8" size="6" /></div><div class="colpickRmx_rgb_r colpickRmx_field"><div class="colpickRmx_field_letter">R</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_rgb_g colpickRmx_field"><div class="colpickRmx_field_letter">G</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_rgb_b colpickRmx_field"><div class="colpickRmx_field_letter">B</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_hsb_h colpickRmx_field"><div class="colpickRmx_field_letter">H</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_hsb_s colpickRmx_field"><div class="colpickRmx_field_letter">S</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_hsb_b colpickRmx_field"><div class="colpickRmx_field_letter">B</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_alpha colpickRmx_field"><div class="colpickRmx_field_letter">A</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_submit"><div class="colpickRmx_tear"></div></div></div>',
 			defaults = {
 				flat: true, //If is "true", the color picker is displayed regardless.
 				showEvent: 'click', //The event that shows the color picker (if flat is set to "true", this property is useless).
+				enableAlpha: true, //Enable or disable alpha channel
 				variant: 'standard', //There are 3 variants: standard, small, extra-large.
 				layout: 'full', //There are 3 types of layouts: full, rgbhex, hex.
 				colorScheme: 'light--full', //There are 4 types of color schemes: light, dark, light--full, dark--full.
@@ -28,10 +29,11 @@ Last Edit: 2017/11/07 19:35 PV3 TOPPO
 				readonlyFields: false, //Setup the readonly attribute to all fields.
 				readonlyHexField: false, //Setup the readonly attribute only to hex field (only if it is "true").
 				lightArrows: false, //ONLY FOR LIGHT COLOR SCHEME! Set the hue's and the alpha's arrows color to a light color (e.g. white).
-				colorSelOutline: true, //Show or hide color selector's outline
-				hueOutline: true, //Show or hide hue's outline
-				alphaOutline: true, //Show or hide alpha's outline
-				colorOutline: true, //Show or hide color's outline
+				colorSelOutline: true, //Show or hide color selector's outline.
+				hueOutline: true, //Show or hide hue's outline.
+				alphaOutline: true, //Show or hide alpha's outline.
+				colorOutline: true, //Show or hide color's outline.
+				border: 1, //Width, in pixel, of the external border.
 				color: '222222', //Default Selected Color: Visible in almost all themes.
 				livePreview: true, //If is "true", the color is updated immediately when changing a parameter.
 				polyfill: false, //If "true", the color picker is only activated when no native browser behavior is available.
@@ -79,13 +81,17 @@ Last Edit: 2017/11/07 19:35 PV3 TOPPO
 				$(cal).data('colpickRmx').hue.css('top', parseInt($(cal).data('colpickRmx').size - $(cal).data('colpickRmx').size * hsb.h/360, 10));
 			},
 			//Set the alpha selector position
-			setAlpha = function (alpha, cal){
-				$(cal).data('colpickRmx').alpha.css('left', parseInt($(cal).data('colpickRmx').size / 255 * alpha, 10));
+			setAlpha = function (alpha, cal) {
+				if($(cal).data('colpickRmx').enableAlpha) {
+					$(cal).data('colpickRmx').alpha.css('left', parseInt($(cal).data('colpickRmx').size / 255 * alpha, 10));
+				}
 			},
 			//Update the color of alpha bar with the choosen color
-			setAlphaBarColor = function (col, cal){
-				var hex = hsbToHex(col);
-				$(cal).data('colpickRmx').alphaBar.attr('style','background: -webkit-linear-gradient(left,#'+hex+'00,#'+hex+'ff); background: -moz-linear-gradient(left,#'+hex+'00,#'+hex+'ff); background: -o-linear-gradient(left,#'+hex+'00,#'+hex+'ff); background: linear-gradient(to right,#'+hex+'00,#'+hex+'ff);');
+			setAlphaBarColor = function (col, cal) {
+				if($(cal).data('colpickRmx').enableAlpha) {
+					var hex = hsbToHex(col);
+					$(cal).data('colpickRmx').alphaBar.attr('style','background: -webkit-linear-gradient(left,#'+hex+'00,#'+hex+'ff); background: -moz-linear-gradient(left,#'+hex+'00,#'+hex+'ff); background: -o-linear-gradient(left,#'+hex+'00,#'+hex+'ff); background: linear-gradient(to right,#'+hex+'00,#'+hex+'ff);');
+				}
 			},
 			//Set current and new colors
 			setCurrentColor = function (hsb, cal) {
@@ -484,6 +490,12 @@ Last Edit: 2017/11/07 19:35 PV3 TOPPO
 								break;
 						}
 
+						//Enable or disable alpha channel
+						if(!options.enableAlpha) {
+							cal.addClass('colpickRmx_full_noalpha');
+							cal.addClass('colpickRmx_'+options.layout+'_noalpha');
+						}
+
 						//Compact Style
 						if(options.compactStyle) {
 							//Switching between the 3 variants
@@ -500,6 +512,11 @@ Last Edit: 2017/11/07 19:35 PV3 TOPPO
 									cal.addClass('colpickRmx_compact_full');
 									cal.addClass('colpickRmx_compact_'+options.layout+(options.submit?'':' colpickRmx_compact_'+options.layout+'_ns'));
 									break;
+							}
+							//Enable or disable alpha channel
+							if(!options.enableAlpha) {
+								cal.addClass('colpickRmx_compact_full_noalpha');
+								cal.addClass('colpickRmx_compact_'+options.layout+'_noalpha');
 							}
 						}
 
@@ -528,6 +545,10 @@ Last Edit: 2017/11/07 19:35 PV3 TOPPO
 							cal.addClass('colpickRmx_light'); //Loading default color scheme for all (light)
 							cal.addClass('colpickRmx_'+options.colorScheme); //Loading the strange color scheme
 						}
+						//Set the hue's arrows color to a light color, if requested
+						if(options.lightArrows) {
+							cal.addClass('colpickRmx_lightHueArrs');
+						}
 						//Hide outlines, if requested
 						if(!options.colorSelOutline){
 							cal.addClass('colpickRmx_noCSOutline');
@@ -541,10 +562,8 @@ Last Edit: 2017/11/07 19:35 PV3 TOPPO
 						if(!options.colorOutline){
 							cal.addClass('colpickRmx_noNCOutline');
 						}
-						//Set the hue's arrows color to a light color, if requested
-						if(options.lightArrows) {
-							cal.addClass('colpickRmx_lightHueArrs');
-						}
+						//Set border width
+						cal.css('border-width', options.border +'px');
 
 						//Setup submit button
 						cal.find('div.colpickRmx_submit').click(clickSubmit);

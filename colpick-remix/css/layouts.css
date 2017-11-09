@@ -8,7 +8,7 @@ Based on Jose Vargas' Color Picker (https://github.com/josedvq/colpick-jQuery-Co
 
 Description, how to use, and examples: fire-space.weebly.com/colpick-remix
 
-Last Edit: 2017/11/08 00:32 PV3
+Last Edit: 2017/11/09 16:27 PV4
 */
 
 
@@ -28,7 +28,7 @@ Last Edit: 2017/11/08 00:32 PV3
   box-sizing: content-box;
 	text-align: left;
 	width: 549px;
-	height: 274px;
+	height: 276px;
 	overflow: hidden;
 	display: none;
 	font-family: "aktiv-grotesk-std", sans-serif;
@@ -112,7 +112,7 @@ Last Edit: 2017/11/08 00:32 PV3
 .colpickRmx_hue {
 	position: absolute;
 	top: 5px;
-	left: 243px;
+	left: 244px;
 	width: 20px;
 	height: 225px;
 	outline-style: solid;
@@ -147,7 +147,7 @@ Last Edit: 2017/11/08 00:32 PV3
 /*Horizontal alpha bar*/
 .colpickRmx_alpha_checkerboard {
   position: absolute;
-	top: 243px;
+	top: 244px;
 	left: 5px;
   height: 20px;
   width: 225px;
@@ -240,35 +240,35 @@ Last Edit: 2017/11/08 00:32 PV3
 	border-radius: 3px;
 }
 .colpickRmx_rgb_r {
-	top: 117px;
+	top: 113px;
 	left: 291px;
 }
 .colpickRmx_rgb_g {
-	top: 157px;
+	top: 153px;
 	left: 291px;
 }
 .colpickRmx_rgb_b {
-	top: 197px;
+	top: 193px;
 	left: 291px;
 }
 .colpickRmx_hsb_h {
-	top: 117px;
+	top: 113px;
 	left: 379px;
 }
 .colpickRmx_hsb_s {
-	top: 157px;
+	top: 153px;
 	left: 379px;
 }
 .colpickRmx_hsb_b {
-	top: 197px;
+	top: 193px;
 	left: 379px;
 }
 .colpickRmx_alpha {
-	top: 237px;
+	top: 233px;
 	left: 291px;
 }
 .colpickRmx_hex_field {
-	top: 117px;
+	top: 113px;
 	left: 467px;
 }
 /*Text field container on focus*/
@@ -333,8 +333,8 @@ Last Edit: 2017/11/08 00:32 PV3
 /*Submit/Select button*/
 .colpickRmx_submit {
 	position: absolute;
-	top: 236px;
-	left: 511px;
+	top: 239px;
+	left: 512px;
 	height: 31px;
 	width: 31px;
 	line-height: 30px;
@@ -387,9 +387,6 @@ Last Edit: 2017/11/08 00:32 PV3
 .colpickRmx_rgbhex .colpickRmx_hex_field {
 	left: 379px;
 }
-.colpickRmx_rgbhex .colpickRmx_submit {
-	left: 423px;
-}
 .colpickRmx_rgbhex .colpickRmx_new_color {
 	width: 165px;
 }
@@ -398,6 +395,9 @@ Last Edit: 2017/11/08 00:32 PV3
 }
 .colpickRmx_rgbhex .colpickRmx_nc_color_checkerboard {
 	width: 165px;
+}
+.colpickRmx_rgbhex .colpickRmx_submit {
+	left: 424px;
 }
 /*rgbhex layout, no submit button*/
 .colpickRmx_rgbhex_ns .colpickRmx_submit, .colpickRmx_rgbhex_ns .colpickRmx_current_color {
@@ -417,9 +417,6 @@ Last Edit: 2017/11/08 00:32 PV3
 .colpickRmx_hex .colpickRmx_hex_field {
 	left: 291px;
 }
-.colpickRmx_hex .colpickRmx_submit {
-	left: 313px;
-}
 .colpickRmx_hex .colpickRmx_new_color {
 	width: 77px;
 }
@@ -428,6 +425,9 @@ Last Edit: 2017/11/08 00:32 PV3
 }
 .colpickRmx_hex .colpickRmx_nc_color_checkerboard {
 	width: 77px;
+}
+.colpickRmx_hex .colpickRmx_submit {
+	left: 313px;
 }
 /*hex layout, no submit button*/
 .colpickRmx_hex_ns .colpickRmx_submit, .colpickRmx_hex_ns .colpickRmx_current_color {
@@ -443,6 +443,23 @@ Last Edit: 2017/11/08 00:32 PV3
 
 
 /*
+////////// DISABLE ALPHA, IF REQUESTED //////////
+*/
+
+
+.colpickRmx_full_noalpha {
+	height: 235px;
+}
+.colpickRmx_full_noalpha .colpickRmx_alpha_checkerboard, .colpickRmx_full_noalpha .colpickRmx_alpha {
+	display: none;
+}
+.colpickRmx_full_noalpha .colpickRmx_submit {
+	top: 198px;
+}
+
+
+
+/*
 ////////// COMPACT STYLE //////////
 */
 
@@ -451,63 +468,82 @@ Last Edit: 2017/11/08 00:32 PV3
 
 /*Main container*/
 .colpickRmx_compact_full {
-	width: 283px;
-	height: 362px;
+	width: 277px;
+	height: 392px;
 }
 /*New color box*/
 .colpickRmx_compact_full .colpickRmx_new_color {
 	left: 5px;
-	top: 245px;
+	top: 277px;
 	height: 36px;
-	width: 63px;
+	width: 66px;
 }
 /*Current color box*/
 .colpickRmx_compact_full .colpickRmx_current_color {
 	left: 5px;
-	top: 281px;
+	top: 313px;
 	height: 36px;
-	width: 63px;
+	width: 66px;
+}
+/*New color and current color checkerboard*/
+.colpickRmx_compact_full .colpickRmx_nc_color_checkerboard {
+	left: 5px;
+	top: 277px;
+	height: 72px;
+	width: 66px;
 }
 /*Input field containers*/
 .colpickRmx_compact_full .colpickRmx_rgb_r {
-	top: 245px;
-	left: 76px;
-	width: 60px;
+	top: 277px;
+	left: 77px;
+	width: 43px;
 }
 .colpickRmx_compact_full .colpickRmx_rgb_g {
-	top: 245px;
-	left: 146px;
-	width: 60px;
+	top: 277px;
+	left: 127px;
+	width: 43px;
 }
 .colpickRmx_compact_full .colpickRmx_rgb_b {
-	top: 245px;
-	left: 216px;
-	width: 60px;
+	top: 277px;
+	left: 177px;
+	width: 43px;
 }
 .colpickRmx_compact_full .colpickRmx_hsb_h {
-	top: 285px;
-	left: 76px;
-	width: 60px;
+	top: 317px;
+	left: 77px;
+	width: 43px;
 }
 .colpickRmx_compact_full .colpickRmx_hsb_s {
-	top: 285px;
-	left: 146px;
-	width: 60px;
+	top: 317px;
+	left: 127px;
+	width: 43px;
 }
 .colpickRmx_compact_full .colpickRmx_hsb_b {
-	top: 285px;
-	left: 216px;
-	width: 60px;
+	top: 317px;
+	left: 177px;
+	width: 43px;
+}
+.colpickRmx_compact_full .colpickRmx_alpha {
+	top: 277px;
+	left: 227px;
+	width: 43px;
 }
 .colpickRmx_compact_full .colpickRmx_hex_field {
-	top: 325px;
+	top: 355px;
 	left: 5px;
-	width: 61px;
+	width: 64px;
+}
+/*Text inputs*/
+.colpickRmx_compact_full .colpickRmx_field input{
+	right: 10px;
+}
+.colpickRmx_compact_full .colpickRmx_hex_field input {
+	right: 2px;
 }
 /*Submit/Select button*/
 .colpickRmx_compact_full .colpickRmx_submit {
-	top: 325px;
-	left: 246px;
+	top: 355px;
+	left: 240px;
 }
 
 /*///////// ALTERNATIVE LAYOUTS /////////*/
@@ -522,25 +558,25 @@ Last Edit: 2017/11/08 00:32 PV3
 
 /*rgbhex layout*/
 .colpickRmx_compact_rgbhex {
-	height: 322px;
+	height: 354px;
 }
 .colpickRmx_compact_rgbhex .colpickRmx_hsb_h, .colpickRmx_compact_rgbhex .colpickRmx_hsb_s, .colpickRmx_compact_rgbhex .colpickRmx_hsb_b {
 	display: none;
 }
 .colpickRmx_compact_rgbhex .colpickRmx_hex_field {
-	top: 285px;
-	left: 76px;
-	width: 60px;
+	top: 317px;
+	left: 77px;
+	width: 64px;
 }
 .colpickRmx_compact_rgbhex .colpickRmx_new_color {
-	width: 63px;
+	width: 66px;
 }
 .colpickRmx_compact_rgbhex .colpickRmx_current_color {
-	width: 63px;
+	width: 66px;
 }
 .colpickRmx_compact_rgbhex .colpickRmx_submit {
-	top: 285px;
-	left: 246px;
+	top: 317px;
+	left: 240px;
 }
 /*rgbhex layout, no submit button*/
 .colpickRmx_compact_rgbhex_ns .colpickRmx_current_color, .colpickRmx_compact_rgbhex_ns .colpickRmx_submit {
@@ -552,7 +588,7 @@ Last Edit: 2017/11/08 00:32 PV3
 
 /*hex layout*/
 .colpickRmx_compact_hex {
-	height: 282px;
+	height: 314px;
 }
 .colpickRmx_compact_hex .colpickRmx_hsb_h, .colpickRmx_compact_hex .colpickRmx_hsb_s, .colpickRmx_compact_hex .colpickRmx_hsb_b, .colpickRmx_compact_hex .colpickRmx_rgb_r, .colpickRmx_compact_hex .colpickRmx_rgb_g, .colpickRmx_compact_hex .colpickRmx_rgb_b {
 	display: none;
@@ -563,18 +599,23 @@ Last Edit: 2017/11/08 00:32 PV3
 }
 .colpickRmx_compact_hex .colpickRmx_current_color {
 	left: 50px;
-	top: 245px;
+	top: 277px;
 	height: 32px;
 	width: 45px;
 }
+.colpickRmx_compact_hex .colpickRmx_nc_color_checkerboard {
+	top: 277px;
+	width: 90px;
+	height: 32px;
+}
 .colpickRmx_compact_hex .colpickRmx_hex_field {
-	top: 245px;
-	left: 103px;
-	width: 61px;
+	top: 277px;
+	left: 101px;
+	width: 64px;
 }
 .colpickRmx_compact_hex .colpickRmx_submit {
-	top: 245px;
-	left: 246px;
+	top: 277px;
+	left: 240px;
 }
 /*hex layout, no submit button*/
 .colpickRmx_compact_hex_ns .colpickRmx_current_color, .colpickRmx_compact_hex_ns .colpickRmx_submit {
@@ -583,6 +624,94 @@ Last Edit: 2017/11/08 00:32 PV3
 .colpickRmx_compact_hex_ns .colpickRmx_new_color {
 	width: 90px;
 }
+
+
+
+/*
+////////// DISABLE ALPHA, IF REQUESTED //////////
+*/
+
+
+/*///////// FULL LAYOUT /////////*/
+
+.colpickRmx_compact_full_noalpha {
+	height: 359px;
+}
+.colpickRmx_compact_full_noalpha .colpickRmx_new_color {
+	top: 244px;
+}
+.colpickRmx_compact_full_noalpha .colpickRmx_current_color {
+	top: 280px;
+}
+.colpickRmx_compact_full_noalpha .colpickRmx_nc_color_checkerboard {
+	top: 244px;
+}
+.colpickRmx_compact_full_noalpha .colpickRmx_rgb_r {
+	top: 244px;
+	width: 60px;
+}
+.colpickRmx_compact_full_noalpha .colpickRmx_rgb_g {
+	top: 244px;
+	left: 144px;
+	width: 60px;
+}
+.colpickRmx_compact_full_noalpha .colpickRmx_rgb_b {
+	top: 244px;
+	left: 211px;
+	width: 59px;
+}
+.colpickRmx_compact_full_noalpha .colpickRmx_hsb_h {
+	top: 284px;
+	width: 60px;
+}
+.colpickRmx_compact_full_noalpha .colpickRmx_hsb_s {
+	top: 284px;
+	left: 144px;
+	width: 60px;
+}
+.colpickRmx_compact_full_noalpha .colpickRmx_hsb_b {
+	top: 284px;
+	left: 211px;
+	width: 59px;
+}
+.colpickRmx_compact_full_noalpha .colpickRmx_hex_field {
+	top: 322px;
+}
+.colpickRmx_compact_full_noalpha .colpickRmx_submit {
+	top: 322px;
+}
+
+/*///////// ALTERNATIVE LAYOUTS /////////*/
+
+/*rgbhex layout*/
+.colpickRmx_compact_rgbhex_noalpha {
+	height: 321px;
+}
+.colpickRmx_compact_rgbhex_noalpha .colpickRmx_hex_field {
+	top: 284px;
+	width: 60px;
+}
+.colpickRmx_compact_rgbhex_noalpha .colpickRmx_submit {
+	top: 284px;
+}
+
+/*hex layout*/
+.colpickRmx_compact_hex_noalpha {
+	height: 281px;
+}
+.colpickRmx_compact_hex_noalpha .colpickRmx_current_color {
+	top: 244px;
+}
+.colpickRmx_compact_hex_noalpha .colpickRmx_hex_field {
+	top: 244px;
+	width: 60px;
+}
+.colpickRmx_compact_hex_noalpha .colpickRmx_submit {
+	top: 244px;
+}
+
+
+
 
 
 
@@ -597,63 +726,82 @@ Last Edit: 2017/11/08 00:32 PV3
 
 	/*Main container*/
 	.colpickRmx {
-		width: 283px;
-		height: 362px;
+		width: 277px;
+		height: 392px;
 	}
 	/*New color box*/
 	.colpickRmx_new_color {
 		left: 5px;
-		top: 245px;
+		top: 277px;
 		height: 36px;
-		width: 63px;
+		width: 66px;
 	}
 	/*Current color box*/
 	.colpickRmx_current_color {
 		left: 5px;
-		top: 281px;
+		top: 313px;
 		height: 36px;
-		width: 63px;
+		width: 66px;
+	}
+	/*New color and current color checkerboard*/
+	.colpickRmx_nc_color_checkerboard {
+		left: 5px;
+		top: 277px;
+		height: 72px;
+		width: 66px;
 	}
 	/*Input field containers*/
 	.colpickRmx_rgb_r {
-		top: 245px;
-		left: 76px;
-		width: 60px;
+		top: 277px;
+		left: 77px;
+		width: 43px;
 	}
 	.colpickRmx_rgb_g {
-		top: 245px;
-		left: 146px;
-		width: 60px;
+		top: 277px;
+		left: 127px;
+		width: 43px;
 	}
 	.colpickRmx_rgb_b {
-		top: 245px;
-		left: 216px;
-		width: 60px;
+		top: 277px;
+		left: 177px;
+		width: 43px;
 	}
 	.colpickRmx_hsb_h {
-		top: 285px;
-		left: 76px;
-		width: 60px;
+		top: 317px;
+		left: 77px;
+		width: 43px;
 	}
 	.colpickRmx_hsb_s {
-		top: 285px;
-		left: 146px;
-		width: 60px;
+		top: 317px;
+		left: 127px;
+		width: 43px;
 	}
 	.colpickRmx_hsb_b {
-		top: 285px;
-		left: 216px;
-		width: 60px;
+		top: 317px;
+		left: 177px;
+		width: 43px;
+	}
+	.colpickRmx_alpha {
+		top: 277px;
+		left: 227px;
+		width: 43px;
 	}
 	.colpickRmx_hex_field {
-		top: 325px;
+		top: 355px;
 		left: 5px;
-		width: 61px;
+		width: 64px;
+	}
+	/*Text inputs*/
+	.colpickRmx_field input{
+		right: 10px;
+	}
+	.colpickRmx_hex_field input {
+		right: 2px;
 	}
 	/*Submit/Select button*/
 	.colpickRmx_submit {
-		top: 325px;
-		left: 246px;
+		top: 355px;
+		left: 240px;
 	}
 
 	/*///////// ALTERNATIVE LAYOUTS /////////*/
@@ -668,25 +816,31 @@ Last Edit: 2017/11/08 00:32 PV3
 
 	/*rgbhex layout*/
 	.colpickRmx_rgbhex {
-		height: 322px;
+		height: 354px;
 	}
 	.colpickRmx_rgbhex .colpickRmx_hsb_h, .colpickRmx_rgbhex .colpickRmx_hsb_s, .colpickRmx_rgbhex .colpickRmx_hsb_b {
 		display: none;
 	}
 	.colpickRmx_rgbhex .colpickRmx_hex_field {
-		top: 285px;
-		left: 76px;
-		width: 60px;
+		top: 317px;
+		left: 77px;
+		width: 64px;
 	}
 	.colpickRmx_rgbhex .colpickRmx_new_color {
-		width: 63px;
+		width: 66px;
 	}
 	.colpickRmx_rgbhex .colpickRmx_current_color {
-		width: 63px;
+		width: 66px;
+	}
+	.colpickRmx_rgbhex .colpickRmx_nc_color_checkerboard {
+		left: 5px;
+		top: 277px;
+		height: 72px;
+		width: 66px;
 	}
 	.colpickRmx_rgbhex .colpickRmx_submit {
-		top: 285px;
-		left: 246px;
+		top: 317px;
+		left: 240px;
 	}
 	/*rgbhex layout, no submit button*/
 	.colpickRmx_rgbhex_ns .colpickRmx_current_color, .colpickRmx_rgbhex_ns .colpickRmx_submit {
@@ -698,7 +852,7 @@ Last Edit: 2017/11/08 00:32 PV3
 
 	/*hex layout*/
 	.colpickRmx_hex {
-		height: 282px;
+		height: 314px;
 	}
 	.colpickRmx_hex .colpickRmx_hsb_h, .colpickRmx_hex .colpickRmx_hsb_s, .colpickRmx_hex .colpickRmx_hsb_b, .colpickRmx_hex .colpickRmx_rgb_r, .colpickRmx_hex .colpickRmx_rgb_g, .colpickRmx_hex .colpickRmx_rgb_b {
 		display: none;
@@ -709,18 +863,23 @@ Last Edit: 2017/11/08 00:32 PV3
 	}
 	.colpickRmx_hex .colpickRmx_current_color {
 		left: 50px;
-		top: 245px;
+		top: 277px;
 		height: 32px;
 		width: 45px;
 	}
+	.colpickRmx_hex .colpickRmx_nc_color_checkerboard {
+		top: 277px;
+		width: 90px;
+		height: 32px;
+	}
 	.colpickRmx_hex .colpickRmx_hex_field {
-		top: 245px;
-		left: 103px;
-		width: 61px;
+		top: 277px;
+		left: 101px;
+		width: 64px;
 	}
 	.colpickRmx_hex .colpickRmx_submit {
-		top: 245px;
-		left: 246px;
+		top: 277px;
+		left: 240px;
 	}
 	/*hex layout, no submit button*/
 	.colpickRmx_hex_ns .colpickRmx_current_color, .colpickRmx_hex_ns .colpickRmx_submit {
@@ -728,5 +887,90 @@ Last Edit: 2017/11/08 00:32 PV3
 	}
 	.colpickRmx_hex_ns .colpickRmx_new_color {
 		width: 90px;
+	}
+
+
+
+	/*
+	////////// DISABLE ALPHA, IF REQUESTED //////////
+	*/
+
+
+	/*///////// FULL LAYOUT /////////*/
+
+	.colpickRmx_full_noalpha {
+		height: 359px;
+	}
+	.colpickRmx_full_noalpha .colpickRmx_new_color {
+		top: 244px;
+	}
+	.colpickRmx_full_noalpha .colpickRmx_current_color {
+		top: 280px;
+	}
+	.colpickRmx_full_noalpha .colpickRmx_nc_color_checkerboard {
+		top: 244px;
+	}
+	.colpickRmx_full_noalpha .colpickRmx_rgb_r {
+		top: 244px;
+		width: 60px;
+	}
+	.colpickRmx_full_noalpha .colpickRmx_rgb_g {
+		top: 244px;
+		left: 144px;
+		width: 60px;
+	}
+	.colpickRmx_full_noalpha .colpickRmx_rgb_b {
+		top: 244px;
+		left: 211px;
+		width: 59px;
+	}
+	.colpickRmx_full_noalpha .colpickRmx_hsb_h {
+		top: 284px;
+		width: 60px;
+	}
+	.colpickRmx_full_noalpha .colpickRmx_hsb_s {
+		top: 284px;
+		left: 144px;
+		width: 60px;
+	}
+	.colpickRmx_full_noalpha .colpickRmx_hsb_b {
+		top: 284px;
+		left: 211px;
+		width: 59px;
+	}
+	.colpickRmx_full_noalpha .colpickRmx_hex_field {
+		top: 322px;
+	}
+	.colpickRmx_full_noalpha .colpickRmx_submit {
+		top: 322px;
+	}
+
+	/*///////// ALTERNATIVE LAYOUTS /////////*/
+
+	/*rgbhex layout*/
+	.colpickRmx_rgbhex_noalpha {
+		height: 321px;
+	}
+	.colpickRmx_rgbhex_noalpha .colpickRmx_hex_field {
+		top: 284px;
+		width: 60px;
+	}
+	.colpickRmx_rgbhex_noalpha .colpickRmx_submit {
+		top: 284px;
+	}
+
+	/*hex layout*/
+	.colpickRmx_hex_noalpha {
+		height: 281px;
+	}
+	.colpickRmx_hex_noalpha .colpickRmx_current_color {
+		top: 244px;
+	}
+	.colpickRmx_hex_noalpha .colpickRmx_hex_field {
+		top: 244px;
+		width: 60px;
+	}
+	.colpickRmx_hex_noalpha .colpickRmx_submit {
+		top: 244px;
 	}
 }
