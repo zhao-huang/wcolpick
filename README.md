@@ -3,19 +3,16 @@ Photoshop-like jQuery Color Picker plugin with various skins and layouts, touch,
 
 # IMPORTANT
 <b> This is only a prototype of the plugin with the support of alpha channel! <br>
-I've added the bar of alpha channel and the inputbox of alpha value, but they currently do nothing... apart from changing the value of alpha in the inputbox! <br>
-And... I've completed only the standard layout! </b>
+I've added the bar of alpha channel and the inputbox of alpha value, but they currently do nothing... apart from changing the value of alpha in the inputbox! </b>
 
-### Changes from PV2 to PV3
-1. Updated Color Schemes with the new elements.
-2. Updated the Standard Layout (70% completed).
-3. Added 4 options to show or hide the outlines.
-4. Added compatibility with older browser to the alpha bar.
-5. Fixed a bug that allowed to set a hue value, and saturation and brightness values, beyond the limits!
+### Changes from PV4 to PV5
+1. Completed Small and Extra-Large layouts!
+2. Now, if alpha is disabled, the max-lenght of the hex field will be reduced to 6.
+3. Optimizations and bugfix.
 
 
-### Screenshot of "Prototype Version 4"
-![pv4](https://user-images.githubusercontent.com/32025549/32614140-e2279676-c56c-11e7-8ac9-88ae855440f8.png) <br><br>
+### Screenshot of "Prototype Version 5"
+![pv5](https://user-images.githubusercontent.com/32025549/32737919-abc7fbc0-c89b-11e7-89c5-cb4fec5d0fc9.png) <br><br>
 
 
 ### Latest stable release

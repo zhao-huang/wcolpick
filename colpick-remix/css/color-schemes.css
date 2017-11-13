@@ -8,7 +8,7 @@ Based on Jose Vargas' Color Picker (https://github.com/josedvq/colpick-jQuery-Co
 
 Description, how to use, and examples: fire-space.weebly.com/colpick-remix
 
-Last Edit: 2017/11/07 14:50
+Last Edit: 2017/11/13 17:40 RC
 */
 
 
@@ -26,7 +26,7 @@ Last Edit: 2017/11/07 14:50
 .colpickRmx_light .colpickRmx_color {
   outline-color: rgba(170, 170, 170, 0.5);
 }
-.colpickRmx_light .colpickRmx_hue {
+.colpickRmx_light .colpickRmx_hue_outline {
   outline-color: rgba(170, 170, 170, 0.5);
 }
 .colpickRmx_light .colpickRmx_hue_larr {
@@ -35,13 +35,15 @@ Last Edit: 2017/11/07 14:50
 .colpickRmx_light .colpickRmx_hue_rarr {
 	border-right-color: black;
 }
-.colpickRmx_light .colpickRmx_alpha_checkerboard {
+.colpickRmx_light .colpickRmx_alpha {
   background-color: white;
-  background-image: -webkit-linear-gradient(45deg, #ccc 25%, transparent 25%), -webkit-linear-gradient(-45deg, #ccc 25%, transparent 25%), -webkit-linear-gradient(45deg, transparent 75%, #ccc 75%), -webkit-linear-gradient(-45deg, transparent 75%, #ccc 75%); /* Chrome10+,Safari5.1+ */
-  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, #ccc), color-stop(.25, transparent)), -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.25, #ccc), color-stop(.25, transparent)), -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.75, transparent), color-stop(.75, #ccc)), -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.75, transparent), color-stop(.75, #ccc)); /* Chrome,Safari4+ */
   background-image: -moz-linear-gradient(45deg, #ccc 25%, transparent 25%), -moz-linear-gradient(-45deg, #ccc 25%, transparent 25%), -moz-linear-gradient(45deg, transparent 75%, #ccc 75%), -moz-linear-gradient(-45deg, transparent 75%, #ccc 75%); /* FF3.6+ */
+  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, #ccc), color-stop(.25, transparent)), -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.25, #ccc), color-stop(.25, transparent)), -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.75, transparent), color-stop(.75, #ccc)), -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.75, transparent), color-stop(.75, #ccc)); /* Chrome,Safari4+ */
+  background-image: -webkit-linear-gradient(45deg, #ccc 25%, transparent 25%), -webkit-linear-gradient(-45deg, #ccc 25%, transparent 25%), -webkit-linear-gradient(45deg, transparent 75%, #ccc 75%), -webkit-linear-gradient(-45deg, transparent 75%, #ccc 75%); /* Chrome10+,Safari5.1+ */
   background-image: -o-linear-gradient(45deg, #ccc 25%, transparent 25%), -o-linear-gradient(-45deg, #ccc 25%, transparent 25%), -o-linear-gradient(45deg, transparent 75%, #ccc 75%), -o-linear-gradient(-45deg, transparent 75%, #ccc 75%); /* Opera 11.10+ */
   background-image: linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(135deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(135deg, transparent 75%, #ccc 75%);
+}
+.colpickRmx_light .colpickRmx_alpha_outline {
   outline-color: rgba(170, 170, 170, 0.5);
 }
 .colpickRmx_light .colpickRmx_alpha_uarr {
@@ -52,9 +54,9 @@ Last Edit: 2017/11/07 14:50
 }
 .colpickRmx_light .colpickRmx_nc_color_checkerboard {
   background-color: white;
-  background-image: -webkit-linear-gradient(45deg, #ccc 25%, transparent 25%), -webkit-linear-gradient(-45deg, #ccc 25%, transparent 25%), -webkit-linear-gradient(45deg, transparent 75%, #ccc 75%), -webkit-linear-gradient(-45deg, transparent 75%, #ccc 75%); /* Chrome10+,Safari5.1+ */
-  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, #ccc), color-stop(.25, transparent)), -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.25, #ccc), color-stop(.25, transparent)), -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.75, transparent), color-stop(.75, #ccc)), -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.75, transparent), color-stop(.75, #ccc)); /* Chrome,Safari4+ */
   background-image: -moz-linear-gradient(45deg, #ccc 25%, transparent 25%), -moz-linear-gradient(-45deg, #ccc 25%, transparent 25%), -moz-linear-gradient(45deg, transparent 75%, #ccc 75%), -moz-linear-gradient(-45deg, transparent 75%, #ccc 75%); /* FF3.6+ */
+  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, #ccc), color-stop(.25, transparent)), -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.25, #ccc), color-stop(.25, transparent)), -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.75, transparent), color-stop(.75, #ccc)), -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.75, transparent), color-stop(.75, #ccc)); /* Chrome,Safari4+ */
+  background-image: -webkit-linear-gradient(45deg, #ccc 25%, transparent 25%), -webkit-linear-gradient(-45deg, #ccc 25%, transparent 25%), -webkit-linear-gradient(45deg, transparent 75%, #ccc 75%), -webkit-linear-gradient(-45deg, transparent 75%, #ccc 75%); /* Chrome10+,Safari5.1+ */
   background-image: -o-linear-gradient(45deg, #ccc 25%, transparent 25%), -o-linear-gradient(-45deg, #ccc 25%, transparent 25%), -o-linear-gradient(45deg, transparent 75%, #ccc 75%), -o-linear-gradient(-45deg, transparent 75%, #ccc 75%); /* Opera 11.10+ */
   background-image: linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(135deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(135deg, transparent 75%, #ccc 75%);
   outline-color: rgba(170, 170, 170, 0.5);
@@ -98,7 +100,7 @@ Last Edit: 2017/11/07 14:50
 .colpickRmx_dark .colpickRmx_color {
 	outline-color: rgba(213, 213, 213, 0.5);
 }
-.colpickRmx_dark .colpickRmx_hue {
+.colpickRmx_dark .colpickRmx_hue_outline {
   outline-color: rgba(213, 213, 213, 0.5);
 }
 .colpickRmx_dark .colpickRmx_hue_larr {
@@ -107,14 +109,16 @@ Last Edit: 2017/11/07 14:50
 .colpickRmx_dark .colpickRmx_hue_rarr {
 	border-right-color: white;
 }
-.colpickRmx_dark .colpickRmx_alpha_checkerboard {
+.colpickRmx_dark .colpickRmx_alpha {
   background-color: #666;
-  background-image: -webkit-linear-gradient(45deg, #333 25%, transparent 25%), -webkit-linear-gradient(-45deg, #333 25%, transparent 25%), -webkit-linear-gradient(45deg, transparent 75%, #333 75%), -webkit-linear-gradient(-45deg, transparent 75%, #333 75%); /* Chrome10+,Safari5.1+ */
-  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, #333), color-stop(.25, transparent)), -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.25, #333), color-stop(.25, transparent)), -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.75, transparent), color-stop(.75, #333)), -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.75, transparent), color-stop(.75, #333)); /* Chrome,Safari4+ */
   background-image: -moz-linear-gradient(45deg, #333 25%, transparent 25%), -moz-linear-gradient(-45deg, #333 25%, transparent 25%), -moz-linear-gradient(45deg, transparent 75%, #333 75%), -moz-linear-gradient(-45deg, transparent 75%, #333 75%); /* FF3.6+ */
+  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, #333), color-stop(.25, transparent)), -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.25, #333), color-stop(.25, transparent)), -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.75, transparent), color-stop(.75, #333)), -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.75, transparent), color-stop(.75, #333)); /* Chrome,Safari4+ */
+  background-image: -webkit-linear-gradient(45deg, #333 25%, transparent 25%), -webkit-linear-gradient(-45deg, #333 25%, transparent 25%), -webkit-linear-gradient(45deg, transparent 75%, #333 75%), -webkit-linear-gradient(-45deg, transparent 75%, #333 75%); /* Chrome10+,Safari5.1+ */
   background-image: -o-linear-gradient(45deg, #333 25%, transparent 25%), -o-linear-gradient(-45deg, #333 25%, transparent 25%), -o-linear-gradient(45deg, transparent 75%, #333 75%), -o-linear-gradient(-45deg, transparent 75%, #333 75%); /* Opera 11.10+ */
   background-image: linear-gradient(45deg, #333 25%, transparent 25%), linear-gradient(135deg, #333 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #333 75%), linear-gradient(135deg, transparent 75%, #333 75%);
-  outline-color: rgba(170, 170, 170, 0.5);
+}
+.colpickRmx_dark .colpickRmx_alpha_outline {
+  outline-color: rgba(213, 213, 213, 0.5);
 }
 .colpickRmx_dark .colpickRmx_alpha_uarr {
   border-bottom-color: white;
@@ -124,12 +128,12 @@ Last Edit: 2017/11/07 14:50
 }
 .colpickRmx_dark .colpickRmx_nc_color_checkerboard {
   background-color: #666;
-  background-image: -webkit-linear-gradient(45deg, #333 25%, transparent 25%), -webkit-linear-gradient(-45deg, #333 25%, transparent 25%), -webkit-linear-gradient(45deg, transparent 75%, #333 75%), -webkit-linear-gradient(-45deg, transparent 75%, #333 75%); /* Chrome10+,Safari5.1+ */
-  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, #333), color-stop(.25, transparent)), -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.25, #333), color-stop(.25, transparent)), -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.75, transparent), color-stop(.75, #333)), -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.75, transparent), color-stop(.75, #333)); /* Chrome,Safari4+ */
   background-image: -moz-linear-gradient(45deg, #333 25%, transparent 25%), -moz-linear-gradient(-45deg, #333 25%, transparent 25%), -moz-linear-gradient(45deg, transparent 75%, #333 75%), -moz-linear-gradient(-45deg, transparent 75%, #333 75%); /* FF3.6+ */
+  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, #333), color-stop(.25, transparent)), -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.25, #333), color-stop(.25, transparent)), -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.75, transparent), color-stop(.75, #333)), -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.75, transparent), color-stop(.75, #333)); /* Chrome,Safari4+ */
+  background-image: -webkit-linear-gradient(45deg, #333 25%, transparent 25%), -webkit-linear-gradient(-45deg, #333 25%, transparent 25%), -webkit-linear-gradient(45deg, transparent 75%, #333 75%), -webkit-linear-gradient(-45deg, transparent 75%, #333 75%); /* Chrome10+,Safari5.1+ */
   background-image: -o-linear-gradient(45deg, #333 25%, transparent 25%), -o-linear-gradient(-45deg, #333 25%, transparent 25%), -o-linear-gradient(45deg, transparent 75%, #333 75%), -o-linear-gradient(-45deg, transparent 75%, #333 75%); /* Opera 11.10+ */
   background-image: linear-gradient(45deg, #333 25%, transparent 25%), linear-gradient(135deg, #333 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #333 75%), linear-gradient(135deg, transparent 75%, #333 75%);
-  outline-color: rgba(170, 170, 170, 0.5);
+  outline-color: rgba(213, 213, 213, 0.5);
 }
 .colpickRmx_dark .colpickRmx_field, .colpickRmx_dark .colpickRmx_hex_field {
 	background: transparent;
@@ -211,10 +215,10 @@ Last Edit: 2017/11/07 14:50
 .colpickRmx_noCSOutline .colpickRmx_color {
   outline-style: none;
 }
-.colpickRmx_noHOutline .colpickRmx_hue {
+.colpickRmx_noHOutline .colpickRmx_hue_outline {
   outline-style: none;
 }
-.colpickRmx_noAOutline .colpickRmx_alpha_checkerboard {
+.colpickRmx_noAOutline .colpickRmx_alpha_outline {
   outline-style: none;
 }
 .colpickRmx_noNCOutline .colpickRmx_nc_color_checkerboard {

@@ -8,7 +8,7 @@ Based on Jose Vargas' Color Picker (https://github.com/josedvq/colpick-jQuery-Co
 
 Description, how to use, and examples: fire-space.weebly.com/colpick-remix
 
-Last Edit: 2017/11/09 16:27 PV4 TOPPO
+Last Edit: 2017/11/11 19:41 PV5 TOPPO
 */
 
 
@@ -16,7 +16,7 @@ Last Edit: 2017/11/09 16:27 PV4 TOPPO
 (function ($) {
 	var colpickRmx = function () {
 		var
-			tpl = '<div class="colpickRmx"><div class="colpickRmx_color"><div class="colpickRmx_color_overlay1"><div class="colpickRmx_color_overlay2"><div class="colpickRmx_selector_outer"><div class="colpickRmx_selector_inner"></div></div></div></div></div><div class="colpickRmx_hue"><div class="colpickRmx_hue_arrs"><div class="colpickRmx_hue_larr"></div><div class="colpickRmx_hue_rarr"></div></div></div><div class="colpickRmx_alpha_checkerboard"><div class="colpickRmx_alpha_color_overlay"></div><div class="colpickRmx_alpha_arrs"><div class="colpickRmx_alpha_darr"></div><div class="colpickRmx_alpha_uarr"></div></div></div><div class="colpickRmx_nc_color_checkerboard"></div><div class="colpickRmx_new_color"></div><div class="colpickRmx_current_color"></div><div class="colpickRmx_hex_field"><div class="colpickRmx_field_letter">#</div><input type="text" maxlength="8" size="6" /></div><div class="colpickRmx_rgb_r colpickRmx_field"><div class="colpickRmx_field_letter">R</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_rgb_g colpickRmx_field"><div class="colpickRmx_field_letter">G</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_rgb_b colpickRmx_field"><div class="colpickRmx_field_letter">B</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_hsb_h colpickRmx_field"><div class="colpickRmx_field_letter">H</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_hsb_s colpickRmx_field"><div class="colpickRmx_field_letter">S</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_hsb_b colpickRmx_field"><div class="colpickRmx_field_letter">B</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_alpha colpickRmx_field"><div class="colpickRmx_field_letter">A</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_submit"><div class="colpickRmx_tear"></div></div></div>',
+			tpl = '<div class="colpickRmx"><div class="colpickRmx_color"><div class="colpickRmx_color_overlay1"><div class="colpickRmx_color_overlay2"><div class="colpickRmx_selector_outer"><div class="colpickRmx_selector_inner"></div></div></div></div></div><div class="colpickRmx_hue"><div class="colpickRmx_hue_outline"></div><div class="colpickRmx_hue_arrs"><div class="colpickRmx_hue_larr"></div><div class="colpickRmx_hue_rarr"></div></div></div><div class="colpickRmx_alpha"><div class="colpickRmx_alpha_outline"></div><div class="colpickRmx_alpha_overlay"></div><div class="colpickRmx_alpha_arrs"><div class="colpickRmx_alpha_darr"></div><div class="colpickRmx_alpha_uarr"></div></div></div><div class="colpickRmx_nc_color_checkerboard"></div><div class="colpickRmx_new_color"></div><div class="colpickRmx_current_color"></div><div class="colpickRmx_hex_field"><div class="colpickRmx_field_letter">#</div><input type="text" maxlength="8" size="6" /></div><div class="colpickRmx_rgb_r colpickRmx_field"><div class="colpickRmx_field_letter">R</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_rgb_g colpickRmx_field"><div class="colpickRmx_field_letter">G</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_rgb_b colpickRmx_field"><div class="colpickRmx_field_letter">B</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_hsb_h colpickRmx_field"><div class="colpickRmx_field_letter">H</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_hsb_s colpickRmx_field"><div class="colpickRmx_field_letter">S</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_hsb_b colpickRmx_field"><div class="colpickRmx_field_letter">B</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_alpha_field colpickRmx_field"><div class="colpickRmx_field_letter">A</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_submit"><div class="colpickRmx_tear"></div></div></div>',
 			defaults = {
 				flat: true, //If is "true", the color picker is displayed regardless.
 				showEvent: 'click', //The event that shows the color picker (if flat is set to "true", this property is useless).
@@ -24,7 +24,7 @@ Last Edit: 2017/11/09 16:27 PV4 TOPPO
 				variant: 'standard', //There are 3 variants: standard, small, extra-large.
 				layout: 'full', //There are 3 types of layouts: full, rgbhex, hex.
 				colorScheme: 'light--full', //There are 4 types of color schemes: light, dark, light--full, dark--full.
-				compactStyle: false, //Switch between normal and compact style.
+				compactLayout: false, //Switch between Normal and Compact layout.
 				submit: true, //The 3 layouts have 2 sub-layouts for each: with submit button or without.
 				readonlyFields: false, //Setup the readonly attribute to all fields.
 				readonlyHexField: false, //Setup the readonly attribute only to hex field (only if it is "true").
@@ -475,48 +475,43 @@ Last Edit: 2017/11/09 16:27 PV4 TOPPO
 							options.size = 225; //Standard Version!
 						}
 
-						//Switching between the 3 layout variants
-						switch (options.variant) {
+						//Loading the choosen layout
+						switch (options.variant) { //Switching between the 3 variants
 							case 'small': //Add class according to layout (small)
-								cal.addClass('colpickRmxS');
-								cal.addClass('colpickRmxS_'+options.layout+(options.submit?'':' colpickRmxS_'+options.layout+'_ns'));
+								cal.addClass('colpickRmxS colpickRmxS_'+options.layout+(options.submit?'':' colpickRmxS_'+options.layout+'_ns'));
+								//Enable or disable alpha channel
+								if(!options.enableAlpha){cal.addClass('colpickRmxS_noalpha colpickRmxS_'+options.layout+'_noalpha'+(options.submit?'':' colpickRmxS_'+options.layout+'_noalpha_ns'));}
 								break;
 							case 'extra-large': //Add class according to layout (extra-large)
-								cal.addClass('colpickRmxXL');
-								cal.addClass('colpickRmxXL_'+options.layout+(options.submit?'':' colpickRmxXL_'+options.layout+'_ns'));
+								cal.addClass('colpickRmxXL colpickRmxXL_'+options.layout+(options.submit?'':' colpickRmxXL_'+options.layout+'_ns'));
+								//Enable or disable alpha channel
+								if(!options.enableAlpha){cal.addClass('colpickRmxXL_noalpha colpickRmxXL_'+options.layout+'_noalpha'+(options.submit?'':' colpickRmxXL_'+options.layout+'_noalpha_ns'));}
 								break;
 							default: //Add class according to layout (default -> standard)
 								cal.addClass('colpickRmx_'+options.layout+(options.submit?'':' colpickRmx_'+options.layout+'_ns'));
+								//Enable or disable alpha channel
+								if(!options.enableAlpha){cal.addClass('colpickRmx_noalpha colpickRmx_'+options.layout+'_noalpha'+(options.submit?'':' colpickRmx_'+options.layout+'_noalpha_ns'));}
 								break;
 						}
 
-						//Enable or disable alpha channel
-						if(!options.enableAlpha) {
-							cal.addClass('colpickRmx_full_noalpha');
-							cal.addClass('colpickRmx_'+options.layout+'_noalpha');
-						}
-
-						//Compact Style
-						if(options.compactStyle) {
-							//Switching between the 3 variants
-							switch (options.variant) {
+						//Loading Compact layout, if requested
+						if(options.compactLayout) {
+							switch (options.variant) { //Switching between the 3 variants
 								case 'small': //Add class according to layout (small)
-									cal.addClass('colpickRmxS_compact_full');
-									cal.addClass('colpickRmxS_compact_'+options.layout+(options.submit?'':' colpickRmxS_compact_'+options.layout+'_ns'));
+									cal.addClass('colpickRmxS_compact colpickRmxS_compact_'+options.layout+(options.submit?'':' colpickRmxS_compact_'+options.layout+'_ns'));
+									//Enable or disable alpha channel
+									if(!options.enableAlpha){cal.addClass('colpickRmxS_compact_noalpha colpickRmxS_compact_'+options.layout+'_noalpha'+(options.submit?'':' colpickRmxS_compact_'+options.layout+'_noalpha_ns'));}
 									break;
 								case 'extra-large': //Add class according to layout (extra-large)
-									cal.addClass('colpickRmxXL_compact_full');
-									cal.addClass('colpickRmxXL_compact_'+options.layout+(options.submit?'':' colpickRmxXL_compact_'+options.layout+'_ns'));
+									cal.addClass('colpickRmxXL_compact colpickRmxXL_compact_'+options.layout+(options.submit?'':' colpickRmxXL_compact_'+options.layout+'_ns'));
+									//Enable or disable alpha channel
+									if(!options.enableAlpha){cal.addClass('colpickRmxXL_compact_noalpha colpickRmxXL_compact_'+options.layout+'_noalpha'+(options.submit?'':' colpickRmxXL_compact_'+options.layout+'_noalpha_ns'));}
 									break;
 								default: //Add class according to layout (default -> standard)
-									cal.addClass('colpickRmx_compact_full');
-									cal.addClass('colpickRmx_compact_'+options.layout+(options.submit?'':' colpickRmx_compact_'+options.layout+'_ns'));
+									cal.addClass('colpickRmx_compact colpickRmx_compact_'+options.layout+(options.submit?'':' colpickRmx_compact_'+options.layout+'_ns'));
+									//Enable or disable alpha channel
+									if(!options.enableAlpha){cal.addClass('colpickRmx_compact_noalpha colpickRmx_compact_'+options.layout+'_noalpha'+(options.submit?'':' colpickRmx_compact_'+options.layout+'_noalpha_ns'));}
 									break;
-							}
-							//Enable or disable alpha channel
-							if(!options.enableAlpha) {
-								cal.addClass('colpickRmx_compact_full_noalpha');
-								cal.addClass('colpickRmx_compact_'+options.layout+'_noalpha');
 							}
 						}
 
@@ -546,22 +541,13 @@ Last Edit: 2017/11/09 16:27 PV4 TOPPO
 							cal.addClass('colpickRmx_'+options.colorScheme); //Loading the strange color scheme
 						}
 						//Set the hue's arrows color to a light color, if requested
-						if(options.lightArrows) {
-							cal.addClass('colpickRmx_lightHueArrs');
-						}
+						if(options.lightArrows){cal.addClass('colpickRmx_lightHueArrs');}
 						//Hide outlines, if requested
-						if(!options.colorSelOutline){
-							cal.addClass('colpickRmx_noCSOutline');
-						}
-						if(!options.hueOutline){
-							cal.addClass('colpickRmx_noHOutline');
-						}
-						if(!options.alphaOutline){
-							cal.addClass('colpickRmx_noAOutline');
-						}
-						if(!options.colorOutline){
-							cal.addClass('colpickRmx_noNCOutline');
-						}
+						if(!options.colorSelOutline){cal.addClass('colpickRmx_noCSOutline');}
+						if(!options.hueOutline){cal.addClass('colpickRmx_noHOutline');}
+						if(!options.alphaOutline){cal.addClass('colpickRmx_noAOutline');}
+						if(!options.colorOutline){cal.addClass('colpickRmx_noNCOutline');}
+
 						//Set border width
 						cal.css('border-width', options.border +'px');
 
@@ -569,6 +555,8 @@ Last Edit: 2017/11/09 16:27 PV4 TOPPO
 						cal.find('div.colpickRmx_submit').click(clickSubmit);
 						//Setup input fields
 						options.fields = cal.find('input').change(change).blur(blur).focus(focus);
+						//If alpha channel is disabled, set hex field maxlength to 6
+						if(!options.enableAlpha){options.fields.eq(0).prop('maxlength', 6);}
 						//Setup readonly attribute to fields
 						options.fields.eq(0).prop('readonly', options.readonlyFields);
 						options.fields.eq(1).prop('readonly', options.readonlyFields);
@@ -588,7 +576,7 @@ Last Edit: 2017/11/09 16:27 PV4 TOPPO
 						options.el = this;
 						options.hue = cal.find('div.colpickRmx_hue_arrs');
 						options.alpha = cal.find('div.colpickRmx_alpha_arrs');
-						options.alphaBar = cal.find('div.colpickRmx_alpha_color_overlay');
+						options.alphaBar = cal.find('div.colpickRmx_alpha_overlay');
 						var huebar = options.hue.parent();
 						//Paint the hue bar
 						var UA = navigator.userAgent.toLowerCase();
@@ -607,7 +595,7 @@ Last Edit: 2017/11/09 16:27 PV4 TOPPO
 							huebar.attr('style','background:-webkit-linear-gradient(top,'+stopList+'); background: -o-linear-gradient(top,'+stopList+'); background: -ms-linear-gradient(top,'+stopList+'); background:-moz-linear-gradient(top,'+stopList+'); -webkit-linear-gradient(top,'+stopList+'); background:linear-gradient(to bottom,'+stopList+');');
 						}
 						cal.find('div.colpickRmx_hue').on('mousedown touchstart',downHue);
-						cal.find('div.colpickRmx_alpha_checkerboard').on('mousedown touchstart',downAlpha);
+						cal.find('div.colpickRmx_alpha').on('mousedown touchstart',downAlpha);
 						options.newColor = cal.find('div.colpickRmx_new_color');
 						options.currentColor = cal.find('div.colpickRmx_current_color');
 						//Store options
