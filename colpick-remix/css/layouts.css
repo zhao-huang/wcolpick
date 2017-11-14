@@ -8,7 +8,7 @@ Based on Jose Vargas' Color Picker (https://github.com/josedvq/colpick-jQuery-Co
 
 Description, how to use, and examples: fire-space.weebly.com/colpick-remix
 
-Last Edit: 2017/11/13 17:20 RC
+Last Edit: 2017/11/14 23:10 RC
 */
 
 
@@ -166,7 +166,6 @@ Last Edit: 2017/11/13 17:20 RC
   -moz-background-size: 10px 10px; /* FF3.6+ */
   -o-background-size: 10px 10px; /* Opera 11.10+ */
   background-size: 10px 10px;
-  background-position: 0 0, 5px 0, 5px -5px, 0px 5px;
 	cursor: ew-resize;
 }
 .colpickRmx_alpha_outline {
@@ -240,7 +239,6 @@ Last Edit: 2017/11/13 17:20 RC
   -moz-background-size: 10px 10px; /* FF3.6+ */
   -o-background-size: 10px 10px; /* Opera 11.10+ */
   background-size: 10px 10px;
-  background-position: 0 0, 5px 0, 5px -5px, 0px 5px;
 	outline-style: solid;
 	outline-width: 1px;
 }

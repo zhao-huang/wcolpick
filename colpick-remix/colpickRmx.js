@@ -8,7 +8,7 @@ Based on Jose Vargas' Color Picker (https://github.com/josedvq/colpick-jQuery-Co
 
 Description, how to use, and examples: fire-space.weebly.com/colpick-remix
 
-Last Edit: 2017/11/11 19:41 PV5 TOPPO
+Last Edit: 2017/11/14 01:18 PV6 TOPPO
 */
 
 
@@ -89,8 +89,9 @@ Last Edit: 2017/11/11 19:41 PV5 TOPPO
 			//Update the color of alpha bar with the choosen color
 			setAlphaBarColor = function (col, cal) {
 				if($(cal).data('colpickRmx').enableAlpha) {
-					var hex = hsbToHex(col);
-					$(cal).data('colpickRmx').alphaBar.attr('style','background: -webkit-linear-gradient(left,#'+hex+'00,#'+hex+'ff); background: -moz-linear-gradient(left,#'+hex+'00,#'+hex+'ff); background: -o-linear-gradient(left,#'+hex+'00,#'+hex+'ff); background: linear-gradient(to right,#'+hex+'00,#'+hex+'ff);');
+					var rgb = hsbToRgb(col);
+					var begin = 'rgba('+rgb.r+','+rgb.g+','+rgb.b+',0)', end = 'rgba('+rgb.r+','+rgb.g+','+rgb.b+',1)';
+					$(cal).data('colpickRmx').alphaBar.attr('style','background: -webkit-linear-gradient(left,'+begin+','+end+'); background: -moz-linear-gradient(left,'+begin+','+end+'); background: -o-linear-gradient(left,'+begin+','+end+'); background: linear-gradient(to right,'+begin+','+end+');');
 				}
 			},
 			//Set current and new colors

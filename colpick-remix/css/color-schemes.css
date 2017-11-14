@@ -8,7 +8,7 @@ Based on Jose Vargas' Color Picker (https://github.com/josedvq/colpick-jQuery-Co
 
 Description, how to use, and examples: fire-space.weebly.com/colpick-remix
 
-Last Edit: 2017/11/13 17:40 RC
+Last Edit: 2017/11/14 23:14 RC
 */
 
 
@@ -37,11 +37,7 @@ Last Edit: 2017/11/13 17:40 RC
 }
 .colpickRmx_light .colpickRmx_alpha {
   background-color: white;
-  background-image: -moz-linear-gradient(45deg, #ccc 25%, transparent 25%), -moz-linear-gradient(-45deg, #ccc 25%, transparent 25%), -moz-linear-gradient(45deg, transparent 75%, #ccc 75%), -moz-linear-gradient(-45deg, transparent 75%, #ccc 75%); /* FF3.6+ */
-  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, #ccc), color-stop(.25, transparent)), -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.25, #ccc), color-stop(.25, transparent)), -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.75, transparent), color-stop(.75, #ccc)), -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.75, transparent), color-stop(.75, #ccc)); /* Chrome,Safari4+ */
-  background-image: -webkit-linear-gradient(45deg, #ccc 25%, transparent 25%), -webkit-linear-gradient(-45deg, #ccc 25%, transparent 25%), -webkit-linear-gradient(45deg, transparent 75%, #ccc 75%), -webkit-linear-gradient(-45deg, transparent 75%, #ccc 75%); /* Chrome10+,Safari5.1+ */
-  background-image: -o-linear-gradient(45deg, #ccc 25%, transparent 25%), -o-linear-gradient(-45deg, #ccc 25%, transparent 25%), -o-linear-gradient(45deg, transparent 75%, #ccc 75%), -o-linear-gradient(-45deg, transparent 75%, #ccc 75%); /* Opera 11.10+ */
-  background-image: linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(135deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(135deg, transparent 75%, #ccc 75%);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2 2'%3E%3Cpath fill='%23cccccc' fill-rule='evenodd' d='M0 0h1v1H0V0zm1 1h1v1H1V1z'/%3E%3C/svg%3E");
 }
 .colpickRmx_light .colpickRmx_alpha_outline {
   outline-color: rgba(170, 170, 170, 0.5);
@@ -54,11 +50,7 @@ Last Edit: 2017/11/13 17:40 RC
 }
 .colpickRmx_light .colpickRmx_nc_color_checkerboard {
   background-color: white;
-  background-image: -moz-linear-gradient(45deg, #ccc 25%, transparent 25%), -moz-linear-gradient(-45deg, #ccc 25%, transparent 25%), -moz-linear-gradient(45deg, transparent 75%, #ccc 75%), -moz-linear-gradient(-45deg, transparent 75%, #ccc 75%); /* FF3.6+ */
-  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, #ccc), color-stop(.25, transparent)), -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.25, #ccc), color-stop(.25, transparent)), -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.75, transparent), color-stop(.75, #ccc)), -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.75, transparent), color-stop(.75, #ccc)); /* Chrome,Safari4+ */
-  background-image: -webkit-linear-gradient(45deg, #ccc 25%, transparent 25%), -webkit-linear-gradient(-45deg, #ccc 25%, transparent 25%), -webkit-linear-gradient(45deg, transparent 75%, #ccc 75%), -webkit-linear-gradient(-45deg, transparent 75%, #ccc 75%); /* Chrome10+,Safari5.1+ */
-  background-image: -o-linear-gradient(45deg, #ccc 25%, transparent 25%), -o-linear-gradient(-45deg, #ccc 25%, transparent 25%), -o-linear-gradient(45deg, transparent 75%, #ccc 75%), -o-linear-gradient(-45deg, transparent 75%, #ccc 75%); /* Opera 11.10+ */
-  background-image: linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(135deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(135deg, transparent 75%, #ccc 75%);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2 2'%3E%3Cpath fill='%23cccccc' fill-rule='evenodd' d='M0 0h1v1H0V0zm1 1h1v1H1V1z'/%3E%3C/svg%3E");
   outline-color: rgba(170, 170, 170, 0.5);
 }
 .colpickRmx_light .colpickRmx_field, .colpickRmx_light .colpickRmx_hex_field {
@@ -110,12 +102,8 @@ Last Edit: 2017/11/13 17:40 RC
 	border-right-color: white;
 }
 .colpickRmx_dark .colpickRmx_alpha {
-  background-color: #666;
-  background-image: -moz-linear-gradient(45deg, #333 25%, transparent 25%), -moz-linear-gradient(-45deg, #333 25%, transparent 25%), -moz-linear-gradient(45deg, transparent 75%, #333 75%), -moz-linear-gradient(-45deg, transparent 75%, #333 75%); /* FF3.6+ */
-  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, #333), color-stop(.25, transparent)), -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.25, #333), color-stop(.25, transparent)), -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.75, transparent), color-stop(.75, #333)), -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.75, transparent), color-stop(.75, #333)); /* Chrome,Safari4+ */
-  background-image: -webkit-linear-gradient(45deg, #333 25%, transparent 25%), -webkit-linear-gradient(-45deg, #333 25%, transparent 25%), -webkit-linear-gradient(45deg, transparent 75%, #333 75%), -webkit-linear-gradient(-45deg, transparent 75%, #333 75%); /* Chrome10+,Safari5.1+ */
-  background-image: -o-linear-gradient(45deg, #333 25%, transparent 25%), -o-linear-gradient(-45deg, #333 25%, transparent 25%), -o-linear-gradient(45deg, transparent 75%, #333 75%), -o-linear-gradient(-45deg, transparent 75%, #333 75%); /* Opera 11.10+ */
-  background-image: linear-gradient(45deg, #333 25%, transparent 25%), linear-gradient(135deg, #333 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #333 75%), linear-gradient(135deg, transparent 75%, #333 75%);
+  background-color: #666666;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2 2'%3E%3Cpath fill='%23333333' fill-rule='evenodd' d='M0 0h1v1H0V0zm1 1h1v1H1V1z'/%3E%3C/svg%3E");
 }
 .colpickRmx_dark .colpickRmx_alpha_outline {
   outline-color: rgba(213, 213, 213, 0.5);
@@ -127,12 +115,8 @@ Last Edit: 2017/11/13 17:40 RC
   border-top-color: white;
 }
 .colpickRmx_dark .colpickRmx_nc_color_checkerboard {
-  background-color: #666;
-  background-image: -moz-linear-gradient(45deg, #333 25%, transparent 25%), -moz-linear-gradient(-45deg, #333 25%, transparent 25%), -moz-linear-gradient(45deg, transparent 75%, #333 75%), -moz-linear-gradient(-45deg, transparent 75%, #333 75%); /* FF3.6+ */
-  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.25, #333), color-stop(.25, transparent)), -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.25, #333), color-stop(.25, transparent)), -webkit-gradient(linear, 0 100%, 100% 0, color-stop(.75, transparent), color-stop(.75, #333)), -webkit-gradient(linear, 0 0, 100% 100%, color-stop(.75, transparent), color-stop(.75, #333)); /* Chrome,Safari4+ */
-  background-image: -webkit-linear-gradient(45deg, #333 25%, transparent 25%), -webkit-linear-gradient(-45deg, #333 25%, transparent 25%), -webkit-linear-gradient(45deg, transparent 75%, #333 75%), -webkit-linear-gradient(-45deg, transparent 75%, #333 75%); /* Chrome10+,Safari5.1+ */
-  background-image: -o-linear-gradient(45deg, #333 25%, transparent 25%), -o-linear-gradient(-45deg, #333 25%, transparent 25%), -o-linear-gradient(45deg, transparent 75%, #333 75%), -o-linear-gradient(-45deg, transparent 75%, #333 75%); /* Opera 11.10+ */
-  background-image: linear-gradient(45deg, #333 25%, transparent 25%), linear-gradient(135deg, #333 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #333 75%), linear-gradient(135deg, transparent 75%, #333 75%);
+  background-color: #666666;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2 2'%3E%3Cpath fill='%23333333' fill-rule='evenodd' d='M0 0h1v1H0V0zm1 1h1v1H1V1z'/%3E%3C/svg%3E");
   outline-color: rgba(213, 213, 213, 0.5);
 }
 .colpickRmx_dark .colpickRmx_field, .colpickRmx_dark .colpickRmx_hex_field {
