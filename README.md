@@ -23,6 +23,9 @@ Description, how to use, and examples: <a href="http://fire-space.weebly.com/col
 ### Latest release
 Download link: <a href="https://github.com/firestormxyz/colpick-remix/releases/latest">https://github.com/firestormxyz/colpick-remix/releases/latest</a> <br><br>
 
+### Alpha support
+If you want to try the new version, with alpha channel support, <a href="https://github.com/firestormxyz/colpick-remix/tree/alpha-support">go here</a>! <br><br>
+
 ### Requirements
 This plugin requires jQuery 1.7.0 or later. <br>
 Last version of jQuery (if you need it): <a href="https://code.jquery.com/jquery-3.2.1.min.js">https://code.jquery.com/jquery-3.2.1.min.js</a> <br><br><br>
