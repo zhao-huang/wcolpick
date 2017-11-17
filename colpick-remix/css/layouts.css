@@ -8,7 +8,7 @@ Based on Jose Vargas' Color Picker (https://github.com/josedvq/colpick-jQuery-Co
 
 Description, how to use, and examples: fire-space.weebly.com/colpick-remix
 
-Last Edit: 2017/11/14 23:10 RC
+Last Edit: 2017/11/16 22:51 RC
 */
 
 
@@ -26,12 +26,12 @@ Last Edit: 2017/11/14 23:10 RC
 	-webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
-	text-align: left;
-	width: 549px;
 	height: 276px;
+	width: 549px;
+	text-align: left;
 	overflow: hidden;
 	display: none;
-	font-family: "aktiv-grotesk-std", sans-serif;
+	font-family: Arial;
 	direction: ltr;
 	border-style: solid;
 	border-width: 1px;
@@ -50,10 +50,10 @@ Last Edit: 2017/11/14 23:10 RC
 /*Color selection box with gradients*/
 .colpickRmx_color {
 	position: absolute;
-	left: 5px;
 	top: 5px;
-	width: 225px;
+	left: 5px;
 	height: 225px;
+	width: 225px;
 	overflow: hidden;
 	outline-style: solid;
 	outline-width: 1px;
@@ -61,39 +61,37 @@ Last Edit: 2017/11/14 23:10 RC
 }
 .colpickRmx_color_overlay1 {
 	position: absolute;
-	left: 0px;
 	top: 0px;
-	width: 225px;
+	left: 0px;
 	height: 225px;
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#ffffff', endColorstr='#00ffffff')"; /* IE8 */
+	width: 225px;
 	background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
 	background: -webkit-linear-gradient(left, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
 	background: -o-linear-gradient(left, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
 	background: -ms-linear-gradient(left, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* IE10+ */
 	background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#ffffff', endColorstr='#00ffffff'); /* IE6 & IE7 */
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1, startColorstr='#ffffff', endColorstr='#00ffffff'); /* IE6-9 */
 }
 .colpickRmx_color_overlay2 {
 	position: absolute;
-	left: 0px;
 	top: 0px;
-	width: 225px;
+	left: 0px;
 	height: 225px;
-	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#00000000', endColorstr='#000000')"; /* IE8 */
+	width: 225px;
 	background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,1))); /* Chrome,Safari4+ */
 	background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
 	background: -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* Opera 11.10+ */
 	background: -ms-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* IE10+ */
-	background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+	background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#00000000', endColorstr='#000000'); /* IE6-9 */
 }
 /*Circular color selector*/
 .colpickRmx_selector_outer {
 	position: absolute;
-	width: 14px;
 	height: 14px;
+	width: 14px;
 	margin-top: -8px;
 	margin-left: -8px;
 	border: 1px solid black;
@@ -104,8 +102,8 @@ Last Edit: 2017/11/14 23:10 RC
 }
 .colpickRmx_selector_inner {
 	position: absolute;
-	width: 12px;
 	height: 12px;
+	width: 12px;
 	border: 1px solid white;
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;
@@ -117,16 +115,16 @@ Last Edit: 2017/11/14 23:10 RC
 	position: absolute;
 	top: 5px;
 	left: 244px;
-	width: 20px;
 	height: 225px;
+	width: 20px;
 	cursor: ns-resize;
 }
 .colpickRmx_hue_outline {
 	position: absolute;
 	top: 0px;
 	left: 0px;
-	width: 20px;
 	height: 225px;
+	width: 20px;
 	outline-style: solid;
 	outline-width: 1px;
 }
@@ -134,14 +132,14 @@ Last Edit: 2017/11/14 23:10 RC
 .colpickRmx_hue_arrs {
 	position: absolute;
 	left: -7px;
-	width: 34px;
 	height: 6px;
+	width: 34px;
 	margin-top: -5px;
 }
 .colpickRmx_hue_larr {
 	position: absolute;
-	width: 0;
 	height: 0;
+	width: 0;
 	border-top: 5px solid transparent;
 	border-bottom: 5px solid transparent;
 	border-left: 6px solid black;
@@ -149,8 +147,8 @@ Last Edit: 2017/11/14 23:10 RC
 .colpickRmx_hue_rarr {
 	position: absolute;
 	right: 0;
-	width: 0;
 	height: 0;
+	width: 0;
 	border-top: 5px solid transparent;
 	border-bottom: 5px solid transparent;
 	border-right: 6px solid black;
@@ -187,17 +185,17 @@ Last Edit: 2017/11/14 23:10 RC
 /*Alpha bar sliding indicator*/
 .colpickRmx_alpha_arrs {
 	position: absolute;
-	left: 225px;
 	top: -7px;
-	width: 6px;
+	left: 225px;
 	height: 34px;
+	width: 6px;
 	margin-left: -5px;
 }
 .colpickRmx_alpha_uarr {
 	position: absolute;
 	bottom: 0;
-	width: 0;
 	height: 0;
+	width: 0;
 	border-left: 5px solid transparent;
 	border-right: 5px solid transparent;
 	border-bottom: 6px solid black;
@@ -205,8 +203,8 @@ Last Edit: 2017/11/14 23:10 RC
 .colpickRmx_alpha_darr {
 	position: absolute;
 	top: 0;
-	width: 0;
 	height: 0;
+	width: 0;
 	border-left: 5px solid transparent;
 	border-right: 5px solid transparent;
 	border-top: 6px solid black;
@@ -214,27 +212,27 @@ Last Edit: 2017/11/14 23:10 RC
 /*New color and current color boxes*/
 .colpickRmx_new_color {
 	position: absolute;
-	left: 291px;
 	top: 5px;
-	width: 253px;
+	left: 291px;
 	height: 51px;
+	width: 253px;
 	background: #f00;
 }
 .colpickRmx_current_color {
 	position: absolute;
-	left: 291px;
 	top: 56px;
-	width: 253px;
+	left: 291px;
 	height: 51px;
+	width: 253px;
 	background: #f00;
 }
 /*New color and current color checkerboard*/
 .colpickRmx_nc_color_checkerboard {
   position: absolute;
-	left: 291px;
 	top: 5px;
+	left: 291px;
+	height: 102px;
 	width: 253px;
-  height: 102px;
   -webkit-background-size: 10px 10px; /* Chrome10+,Safari5.1+ */
   -moz-background-size: 10px 10px; /* FF3.6+ */
   -o-background-size: 10px 10px; /* Opera 11.10+ */
@@ -248,7 +246,7 @@ Last Edit: 2017/11/14 23:10 RC
 	height: 30px;
 	width: 75px;
 	overflow: hidden;
-	font-size: 9px;
+	font-size: 11px;
 	border-style: solid;
 	border-width: 1px;
 	-webkit-border-radius: 3px;
@@ -294,17 +292,24 @@ Last Edit: 2017/11/14 23:10 RC
 /*Field label container*/
 .colpickRmx_field_letter {
 	position: absolute;
-	min-width: 9px;
-	max-width: 9px;
+	-webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+	left: -1px;
+	min-width: 10px;
+	max-width: 10px;
 	height: 30px;
 	line-height: 30px;
-	padding-left: 2px;
+	text-align: center;
 	font-weight: bold;
 	z-index: 1;
 }
 /*Text inputs*/
 .colpickRmx_field input, .colpickRmx_hex_field input {
 	position: absolute;
+	-webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 	right: 15px;
 	margin: 0;
 	padding: 0;
@@ -312,7 +317,7 @@ Last Edit: 2017/11/14 23:10 RC
 	line-height: 30px;
 	border: none;
 	font-size: 11px;
-	font-family: "aktiv-grotesk-std", sans-serif;
+	font-family: Arial;
 	text-align: right;
 	outline: none;
 }
@@ -324,15 +329,15 @@ Last Edit: 2017/11/14 23:10 RC
 	position: absolute;
 	top: 0;
 	right: 0;
-	width: 7px;
 	height: 30px;
+	width: 7px;
 	cursor: ns-resize;
 }
 .colpickRmx_field_uarr {
 	position: absolute;
 	top: 4px;
-	width: 0;
 	height: 0;
+	width: 0;
 	border-left: 3px solid transparent;
 	border-right: 3px solid transparent;
 	border-bottom: 3px solid black;
@@ -340,8 +345,8 @@ Last Edit: 2017/11/14 23:10 RC
 .colpickRmx_field_darr {
 	position: absolute;
 	bottom: 4px;
-	width: 0;
 	height: 0;
+	width: 0;
 	border-left: 3px solid transparent;
 	border-right: 3px solid transparent;
 	border-top: 3px solid black;
@@ -370,8 +375,8 @@ Last Edit: 2017/11/14 23:10 RC
 	cursor: pointer;
 }
 .colpickRmx_tear {
-	width: 15px;
 	height: 15px;
+	width: 15px;
 	margin-top: 2px;
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
@@ -512,40 +517,36 @@ Last Edit: 2017/11/14 23:10 RC
 	width: 66px;
 }
 /*Input field containers*/
+.colpickRmx_compact .colpickRmx_field {
+	width: 43px;
+}
 .colpickRmx_compact .colpickRmx_rgb_r {
 	top: 277px;
 	left: 77px;
-	width: 43px;
 }
 .colpickRmx_compact .colpickRmx_rgb_g {
 	top: 277px;
 	left: 127px;
-	width: 43px;
 }
 .colpickRmx_compact .colpickRmx_rgb_b {
 	top: 277px;
 	left: 177px;
-	width: 43px;
 }
 .colpickRmx_compact .colpickRmx_hsb_h {
 	top: 317px;
 	left: 77px;
-	width: 43px;
 }
 .colpickRmx_compact .colpickRmx_hsb_s {
 	top: 317px;
 	left: 127px;
-	width: 43px;
 }
 .colpickRmx_compact .colpickRmx_hsb_b {
 	top: 317px;
 	left: 177px;
-	width: 43px;
 }
 .colpickRmx_compact .colpickRmx_alpha_field {
 	top: 277px;
 	left: 227px;
-	width: 43px;
 }
 .colpickRmx_compact .colpickRmx_hex_field {
 	top: 355px;
@@ -585,17 +586,9 @@ Last Edit: 2017/11/14 23:10 RC
 .colpickRmx_compact_rgbhex .colpickRmx_hex_field {
 	top: 317px;
 	left: 77px;
-	width: 64px;
-}
-.colpickRmx_compact_rgbhex .colpickRmx_new_color {
-	width: 66px;
-}
-.colpickRmx_compact_rgbhex .colpickRmx_current_color {
-	width: 66px;
 }
 .colpickRmx_compact_rgbhex .colpickRmx_submit {
 	top: 316px;
-	left: 239px;
 }
 /*rgbhex layout, no submit button*/
 .colpickRmx_compact_rgbhex_ns .colpickRmx_current_color, .colpickRmx_compact_rgbhex_ns .colpickRmx_submit {
@@ -617,24 +610,21 @@ Last Edit: 2017/11/14 23:10 RC
 	width: 45px;
 }
 .colpickRmx_compact_hex .colpickRmx_current_color {
-	left: 50px;
 	top: 277px;
+	left: 50px;
 	height: 32px;
 	width: 45px;
 }
 .colpickRmx_compact_hex .colpickRmx_nc_color_checkerboard {
-	top: 277px;
-	width: 90px;
 	height: 32px;
+	width: 90px;
 }
 .colpickRmx_compact_hex .colpickRmx_hex_field {
 	top: 277px;
 	left: 101px;
-	width: 64px;
 }
 .colpickRmx_compact_hex .colpickRmx_submit {
 	top: 276px;
-	left: 239px;
 }
 /*hex layout, no submit button*/
 .colpickRmx_compact_hex_ns .colpickRmx_current_color, .colpickRmx_compact_hex_ns .colpickRmx_submit {
@@ -660,14 +650,15 @@ Last Edit: 2017/11/14 23:10 RC
 .colpickRmx_compact_noalpha .colpickRmx_nc_color_checkerboard {
 	top: 244px;
 }
+.colpickRmx_compact_noalpha .colpickRmx_field {
+	width: 60px;
+}
 .colpickRmx_compact_noalpha .colpickRmx_rgb_r {
 	top: 244px;
-	width: 60px;
 }
 .colpickRmx_compact_noalpha .colpickRmx_rgb_g {
 	top: 244px;
 	left: 144px;
-	width: 60px;
 }
 .colpickRmx_compact_noalpha .colpickRmx_rgb_b {
 	top: 244px;
@@ -676,12 +667,10 @@ Last Edit: 2017/11/14 23:10 RC
 }
 .colpickRmx_compact_noalpha .colpickRmx_hsb_h {
 	top: 284px;
-	width: 60px;
 }
 .colpickRmx_compact_noalpha .colpickRmx_hsb_s {
 	top: 284px;
 	left: 144px;
-	width: 60px;
 }
 .colpickRmx_compact_noalpha .colpickRmx_hsb_b {
 	top: 284px;
@@ -740,65 +729,61 @@ Last Edit: 2017/11/14 23:10 RC
 
 	/*Main container*/
 	.colpickRmx {
-		width: 277px;
 		height: 392px;
+		width: 277px;
 	}
 	/*New color box*/
 	.colpickRmx_new_color {
-		left: 5px;
 		top: 277px;
+		left: 5px;
 		height: 36px;
 		width: 66px;
 	}
 	/*Current color box*/
 	.colpickRmx_current_color {
-		left: 5px;
 		top: 313px;
+		left: 5px;
 		height: 36px;
 		width: 66px;
 	}
 	/*New color and current color checkerboard*/
 	.colpickRmx_nc_color_checkerboard {
-		left: 5px;
 		top: 277px;
+		left: 5px;
 		height: 72px;
 		width: 66px;
 	}
 	/*Input field containers*/
+	.colpickRmx_field {
+		width: 43px;
+	}
 	.colpickRmx_rgb_r {
 		top: 277px;
 		left: 77px;
-		width: 43px;
 	}
 	.colpickRmx_rgb_g {
 		top: 277px;
 		left: 127px;
-		width: 43px;
 	}
 	.colpickRmx_rgb_b {
 		top: 277px;
 		left: 177px;
-		width: 43px;
 	}
 	.colpickRmx_hsb_h {
 		top: 317px;
 		left: 77px;
-		width: 43px;
 	}
 	.colpickRmx_hsb_s {
 		top: 317px;
 		left: 127px;
-		width: 43px;
 	}
 	.colpickRmx_hsb_b {
 		top: 317px;
 		left: 177px;
-		width: 43px;
 	}
 	.colpickRmx_alpha_field {
 		top: 277px;
 		left: 227px;
-		width: 43px;
 	}
 	.colpickRmx_hex_field {
 		top: 355px;
@@ -838,7 +823,6 @@ Last Edit: 2017/11/14 23:10 RC
 	.colpickRmx_rgbhex .colpickRmx_hex_field {
 		top: 317px;
 		left: 77px;
-		width: 64px;
 	}
 	.colpickRmx_rgbhex .colpickRmx_new_color {
 		width: 66px;
@@ -847,9 +831,6 @@ Last Edit: 2017/11/14 23:10 RC
 		width: 66px;
 	}
 	.colpickRmx_rgbhex .colpickRmx_nc_color_checkerboard {
-		left: 5px;
-		top: 277px;
-		height: 72px;
 		width: 66px;
 	}
 	.colpickRmx_rgbhex .colpickRmx_submit {
@@ -876,20 +857,18 @@ Last Edit: 2017/11/14 23:10 RC
 		width: 45px;
 	}
 	.colpickRmx_hex .colpickRmx_current_color {
-		left: 50px;
 		top: 277px;
+		left: 50px;
 		height: 32px;
 		width: 45px;
 	}
 	.colpickRmx_hex .colpickRmx_nc_color_checkerboard {
-		top: 277px;
-		width: 90px;
 		height: 32px;
+		width: 90px;
 	}
 	.colpickRmx_hex .colpickRmx_hex_field {
 		top: 277px;
 		left: 101px;
-		width: 64px;
 	}
 	.colpickRmx_hex .colpickRmx_submit {
 		top: 276px;
@@ -919,14 +898,15 @@ Last Edit: 2017/11/14 23:10 RC
 	.colpickRmx_noalpha .colpickRmx_nc_color_checkerboard {
 		top: 244px;
 	}
+	.colpickRmx_noalpha .colpickRmx_field {
+		width: 60px;
+	}
 	.colpickRmx_noalpha .colpickRmx_rgb_r {
 		top: 244px;
-		width: 60px;
 	}
 	.colpickRmx_noalpha .colpickRmx_rgb_g {
 		top: 244px;
 		left: 144px;
-		width: 60px;
 	}
 	.colpickRmx_noalpha .colpickRmx_rgb_b {
 		top: 244px;
@@ -935,12 +915,10 @@ Last Edit: 2017/11/14 23:10 RC
 	}
 	.colpickRmx_noalpha .colpickRmx_hsb_h {
 		top: 284px;
-		width: 60px;
 	}
 	.colpickRmx_noalpha .colpickRmx_hsb_s {
 		top: 284px;
 		left: 144px;
-		width: 60px;
 	}
 	.colpickRmx_noalpha .colpickRmx_hsb_b {
 		top: 284px;

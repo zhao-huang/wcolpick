@@ -8,7 +8,7 @@ Based on Jose Vargas' Color Picker (https://github.com/josedvq/colpick-jQuery-Co
 
 Description, how to use, and examples: fire-space.weebly.com/colpick-remix
 
-Last Edit: 2017/11/14 01:18 PV6 TOPPO
+Last Edit: 2017/11/16 23:44 PV7 TOPPO
 */
 
 
@@ -469,7 +469,7 @@ Last Edit: 2017/11/14 01:18 PV6 TOPPO
 
 						//Setup size of the selected variant (Add other "else-if" for other future variants)
 						if (options.variant == 'small') {
-							options.size = 150; //Small Version!
+							options.size = 160; //Small Version!
 						} else if (options.variant == 'extra-large') {
 							options.size = 300; //Extra Large Version!
 						} else {
