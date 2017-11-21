@@ -3,12 +3,11 @@ Colpick RemiX - Color Picker
 
 Copyright (C) 2017 Salvatore Peluso (Firestorm): fire-space.weebly.com
 Dual licensed under GPL v3.0 and MIT licenses.
-
-Based on Jose Vargas' Color Picker (https://github.com/josedvq/colpick-jQuery-Color-Picker) licensed under GPL and MIT license.
+(Based on Jose Vargas' Color Picker)
 
 Description, how to use, and examples: fire-space.weebly.com/colpick-remix
 
-Last Edit: 2017/11/21 19:21 Beta 2 TOPPO
+Last Edit: 2017/11/21 21:04 Beta 2 TOPPO
 */
 
 
@@ -693,9 +692,9 @@ Last Edit: 2017/11/21 19:21 Beta 2 TOPPO
 						fillHSBFields(options.color, cal.get(0));
 						fillHexField(options.color, cal.get(0));
 						setHue(options.color, cal.get(0));
-						setAlpha(options.color, cal.get(0)); //ALPHAAA
-						setAlphaBarColor(options.color, cal.get(0)); //Colora la barra alpha col colore scelto
-						fillAlphaField(options.color, cal.get(0)); //Riempie il campo input alpha
+						setAlpha(options.color, cal.get(0));
+						setAlphaBarColor(options.color, cal.get(0));
+						fillAlphaField(options.color, cal.get(0));
 						setSelector(options.color, cal.get(0));
 						setCurrentColor(options.color, cal.get(0));
 						setNewColor(options.color, cal.get(0));

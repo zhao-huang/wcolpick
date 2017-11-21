@@ -25,4 +25,4 @@ Last version of jQuery (if you need it): <a href="https://code.jquery.com/jquery
 ### License
 Copyright (C) 2017 Salvatore Peluso <br>
 Dual licensed under GPL v3.0 and MIT licenses. <br>
-Based on Jose Vargas' Color Picker: <a href="https://github.com/josedvq/colpick-jQuery-Color-Picker">https://github.com/josedvq/colpick-jQuery-Color-Picker</a>
+(Based on Jose Vargas' Color Picker)
