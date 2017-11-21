@@ -8,7 +8,7 @@ Based on Jose Vargas' Color Picker (https://github.com/josedvq/colpick-jQuery-Co
 
 Description, how to use, and examples: fire-space.weebly.com/colpick-remix
 
-Last Edit: 2017/11/21 00:45 Beta 1 TOPPO
+Last Edit: 2017/11/21 19:21 Beta 2 TOPPO
 */
 
 
@@ -20,7 +20,7 @@ Last Edit: 2017/11/21 00:45 Beta 1 TOPPO
 			defaults = {
 				flat: true, //If is "true", the color picker is displayed regardless.
 				showEvent: 'click', //The event that shows the color picker (if flat is set to "true", this property is useless).
-				enableAlpha: true, //Enable or disable alpha channel
+				enableAlpha: true, //Enable or disable alpha channel.
 				variant: 'standard', //There are 3 variants: standard, small, extra-large.
 				layout: 'full', //There are 3 types of layouts: full, rgbhex, hex.
 				colorScheme: 'light--full', //There are 4 types of color schemes: light, dark, light--full, dark--full.
@@ -61,7 +61,7 @@ Last Edit: 2017/11/21 00:45 Beta 1 TOPPO
 					.eq(6).val(Math.round(hsba.b)).end();
 			},
 			fillAlphaField = function (hsba, cal) { //OKK
-				$(cal).data('colpickRmx').fields.eq(7).val(parseInt(hsba.a/255*100)).end();
+				$(cal).data('colpickRmx').fields.eq(7).val(Math.round(hsba.a/255*100)).end();
 			},
 			fillHexField = function (hsba, cal) { //OKK
 				if($(cal).data('colpickRmx').enableAlpha) $(cal).data('colpickRmx').fields.eq(0).val(hsbaToHex(hsba));
@@ -83,15 +83,24 @@ Last Edit: 2017/11/21 00:45 Beta 1 TOPPO
 			//Set the alpha selector position
 			setAlpha = function (hsba, cal) { //OKK
 				if($(cal).data('colpickRmx').enableAlpha) {
-					$(cal).data('colpickRmx').alpha.css('left', parseInt($(cal).data('colpickRmx').size / 100 * parseInt(hsba.a/255*100), 10));
+					$(cal).data('colpickRmx').alpha.css('left', parseInt($(cal).data('colpickRmx').size / 100 * (hsba.a / 255 * 100), 10));
 				}
 			},
 			//Update the color of alpha bar with the choosen color
-			setAlphaBarColor = function (col, cal) { //Controllare supporto ai vecchi browser (SEMI OKK)
+			setAlphaBarColor = function (col, cal) { //OKK
 				if($(cal).data('colpickRmx').enableAlpha) {
 					var rgba = hsbaToRgba(col);
 					var begin = 'rgba('+rgba.r+','+rgba.g+','+rgba.b+',0)', end = 'rgba('+rgba.r+','+rgba.g+','+rgba.b+',1)';
-					$(cal).data('colpickRmx').alphaBar.attr('style','background: -webkit-linear-gradient(left,'+begin+','+end+'); background: -moz-linear-gradient(left,'+begin+','+end+'); background: -ms-linear-gradient(left,'+begin+','+end+'); background: -o-linear-gradient(left,'+begin+','+end+'); background: linear-gradient(to right,'+begin+','+end+');');
+					//Compatibility with IE 6-9
+					var UA = navigator.userAgent.toLowerCase();
+					var isIE = navigator.appName === 'Microsoft Internet Explorer';
+					var IEver = isIE ? parseFloat( UA.match( /msie ([0-9]{1,}[\.0-9]{0,})/ )[1] ) : 0;
+					var ngIE = ( isIE && IEver < 10 );
+					if(ngIE) {
+						$(cal).data('colpickRmx').alphaBar.attr('style','filter:progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr=0,endColorstr=#'+rgbaToHex(rgba).substring(0,6)+'); -ms-filter:"progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr=0,endColorstr=#'+rgbaToHex(rgba).substring(0,6)+')";');
+					} else {
+						$(cal).data('colpickRmx').alphaBar.attr('style','background:-webkit-linear-gradient(left,'+begin+' 0%,'+end+' 100%); background:-moz-linear-gradient(left,'+begin+' 0%,'+end+' 100%); background:-ms-linear-gradient(left,'+begin+' 0%,'+end+' 100%); background:-o-linear-gradient(left,'+begin+' 0%,'+end+' 100%); background:linear-gradient(to right,'+begin+' 0%,'+end+' 100%);');
+					}
 				}
 			},
 			//Set current and new colors
@@ -104,20 +113,23 @@ Last Edit: 2017/11/21 00:45 Beta 1 TOPPO
 				$(cal).data('colpickRmx').newColor.css('backgroundColor', 'rgba('+rgba.r+','+rgba.g+','+rgba.b+','+rgba.a/255+')');
 			},
 			//Called when the new color is changed
-			change = function (ev) { //Da testare (Semi OKK)
+			change = function (ev) { //OKK
 				var cal = $(this).parent().parent(), col;
 				if (this.parentNode.className.indexOf('_alpha') > 0) {
-					col = cal.data('colpickRmx').color;
-					cal.data('colpickRmx').color.a = col.a = fixAlpha(parseInt(cal.data('colpickRmx').fields.eq(7).val()/100*255, 10));
-					console.log(col);
+					cal.data('colpickRmx').color = col = {
+						h: cal.data('colpickRmx').color.h,
+						s: cal.data('colpickRmx').color.s,
+						b: cal.data('colpickRmx').color.b,
+						a: fixAlpha(parseInt(cal.data('colpickRmx').fields.eq(7).val()/100*255, 10))
+					};
+					fillAlphaField(col, cal.get(0));
 					fillHexField(col, cal.get(0));
 					setAlpha(col, cal.get(0));
 					setNewColor(col, cal.get(0));
 				} else {
 					if (this.parentNode.className.indexOf('_hex') > 0) {
 						cal.data('colpickRmx').color = col = hexToHsba(fixHex(this.value, cal));
-						console.log("HEX");
-						console.log(cal.data('colpickRmx').color);
+						fillHexField(col, cal.get(0));
 						fillRGBFields(col, cal.get(0));
 						fillHSBFields(col, cal.get(0));
 						fillAlphaField(col, cal.get(0));
@@ -129,6 +141,7 @@ Last Edit: 2017/11/21 00:45 Beta 1 TOPPO
 							b: parseInt(cal.data('colpickRmx').fields.eq(6).val(), 10),
 							a: cal.data('colpickRmx').color.a
 						});
+						fillHSBFields(col, cal.get(0));
 						fillRGBFields(col, cal.get(0));
 						fillHexField(col, cal.get(0));
 					} else {
@@ -138,12 +151,13 @@ Last Edit: 2017/11/21 00:45 Beta 1 TOPPO
 							b: parseInt(cal.data('colpickRmx').fields.eq(3).val(), 10),
 							a: cal.data('colpickRmx').color.a
 						}));
-						fillHexField(col, cal.get(0));
+						fillRGBFields(col, cal.get(0));
 						fillHSBFields(col, cal.get(0));
+						fillHexField(col, cal.get(0));
 					}
-					setAlphaBarColor(col, cal.get(0));
 					setSelector(col, cal.get(0));
 					setHue(col, cal.get(0));
+					setAlphaBarColor(col, cal.get(0));
 					setNewColor(col, cal.get(0));
 				}
 
@@ -344,13 +358,75 @@ Last Edit: 2017/11/21 00:45 Beta 1 TOPPO
 				return false;
 			},
 			//Submit button
-			clickSubmit = function (ev) {
+			clickSubmit = function (ev) { //OKK
 				var cal = $(this).parent();
 				var col = cal.data('colpickRmx').color;
-				cal.data('colpickRmx').origColor = col;
+				cal.data('colpickRmx').origColor = cloneColor(col);
 				setCurrentColor(col, cal.get(0));
-				cal.data('colpickRmx').onSubmit(col, hsbaToHex(col), hsbaToRgba(col), cal.data('colpickRmx').el);
+
+				if (cal.data('colpickRmx').enableAlpha) cal.data('colpickRmx').onSubmit(col, hsbaToHex(col), hsbaToRgba(col), cal.data('colpickRmx').el);
+				else {
+					var rgba = hsbaToRgba(col);
+					var hsb = {h:col.h, s:col.s, b:col.b}, rgb = {r:rgba.r, g:rgba.g, b:rgba.b}, hex = hsbaToHex(col).substring(0,6);
+					cal.data('colpickRmx').onSubmit(hsb, hex, rgb, cal.data('colpickRmx').el);
+				}
 			},
+			//Restore original color by clicking on current color
+			restoreOriginal = function () { //OKK
+				var cal = $(this).parent();
+				var col = cloneColor(cal.data('colpickRmx').origColor);
+				cal.data('colpickRmx').color = col;
+				//Reapplies current color to all elements
+				fillHexField(col, cal.get(0));
+				fillRGBFields(col, cal.get(0));
+				fillHSBFields(col, cal.get(0));
+				fillAlphaField(col, cal.get(0));
+				setSelector(col, cal.get(0));
+				setHue(col, cal.get(0));
+				setAlpha(col, cal.get(0));
+				setAlphaBarColor(col, cal.get(0));
+				setNewColor(col, cal.get(0));
+
+				if (cal.data('colpickRmx').enableAlpha) cal.data('colpickRmx').onChange.apply(cal.parent(), [col, hsbaToHex(col), hsbaToRgba(col), cal.data('colpickRmx').el, 0]);
+				else {
+					var rgba = hsbaToRgba(col);
+					var hsb = {h:col.h, s:col.s, b:col.b}, rgb = {r:rgba.r, g:rgba.g, b:rgba.b}, hex = hsbaToHex(col).substring(0,6);
+					cal.data('colpickRmx').onChange.apply(cal.parent(), [hsb, hex, rgb, cal.data('colpickRmx').el, 0]);
+				}
+			},
+			//Fix the values if the user enters a negative or high value
+			fixHSBA = function (hsba) { //OKK
+				if (hsba.a === undefined) hsba.a = 255;
+				return {
+					h: Math.min(360, Math.max(0, hsba.h)),
+					s: Math.min(100, Math.max(0, hsba.s)),
+					b: Math.min(100, Math.max(0, hsba.b)),
+					a: Math.min(255, Math.max(0, hsba.a))
+				};
+			},
+			fixRGBA = function (rgba) { //OKK
+				if (rgba.a === undefined) rgba.a = 255;
+				return {
+					r: Math.min(255, Math.max(0, rgba.r)),
+					g: Math.min(255, Math.max(0, rgba.g)),
+					b: Math.min(255, Math.max(0, rgba.b)),
+					a: Math.min(255, Math.max(0, rgba.a))
+				};
+			},
+			fixAlpha = function (alpha) { //OKK
+				return Math.min(255, Math.max(0, alpha));
+			},
+			fixHex = function (hex, cal) { //OKK
+				if (!cal.data('colpickRmx').enableAlpha) {
+					if (hex.length == 4) hex = hex.substring(0,3);
+					if (hex.lenght == 8) hex = hex.substring(0,6);
+				}
+				return hex;
+			},
+			//Clone hsba object
+			cloneColor = function (col) { //OKK
+				return {h:col.h, s:col.s, b:col.b, a:col.a};
+			}
 			//Show/hide the color picker
 			show = function (ev) { //OKK AP
 				if(ev) {
@@ -430,55 +506,14 @@ Last Edit: 2017/11/21 00:45 Beta 1 TOPPO
 				var viewWidth = $(window).width(); //Viewport width
 				return (calViewLeft + calWidth > viewWidth);
 			},
-			//Fix the values if the user enters a negative or high value //ALPHAAA
-			fixHSBA = function (hsba) { //OKK
-				if (hsba.a === undefined) hsba.a = 255;
-				return {
-					h: Math.min(360, Math.max(0, hsba.h)),
-					s: Math.min(100, Math.max(0, hsba.s)),
-					b: Math.min(100, Math.max(0, hsba.b)),
-					a: Math.min(255, Math.max(0, hsba.a))
-				};
-			},
-			fixRGBA = function (rgba) { //OKK
-				if (rgba.a === undefined) rgba.a = 255;
-				return {
-					r: Math.min(255, Math.max(0, rgba.r)),
-					g: Math.min(255, Math.max(0, rgba.g)),
-					b: Math.min(255, Math.max(0, rgba.b)),
-					a: Math.min(255, Math.max(0, rgba.a))
-				};
-			},
-			fixAlpha = function (alpha) { //OKK
-				return Math.min(255, Math.max(0, alpha));
-			},
-			fixHex = function (hex, cal) { //OKK
-				if (!cal.data('colpickRmx').enableAlpha) {
-					if (hex.length == 4) hex = hex.substring(0,3);
-					if (hex.lenght == 8) hex = hex.substring(0,6);
-				}
-				return hex;
-			},
+			//Generate a random unique id
 			getUniqueID = (function () { //OKK AP
 				var cnt = parseInt(Math.random() * 10000);
 				return function () {
 					cnt += 1;
 					return cnt;
 				};
-			})(),
-			restoreOriginal = function () {
-				var cal = $(this).parent();
-				var col = cal.data('colpickRmx').origColor;
-				cal.data('colpickRmx').color = col;
-				fillRGBFields(col, cal.get(0));
-				fillHexField(col, cal.get(0));
-				fillHSBFields(col, cal.get(0));
-				setAlphaBarColor(col, cal.get(0));
-				setSelector(col, cal.get(0));
-				setHue(col, cal.get(0));
-				setNewColor(col, cal.get(0));
-				cal.data('colpickRmx').onChange.apply(cal.parent(), [col, hsbaToHex(col), hsbaToRgba(col), cal.data('colpickRmx').el, 0]);
-			};
+			})();
 		return {
 			init: function (opt) {
 				opt = $.extend({}, defaults, opt||{});
@@ -498,7 +533,7 @@ Last Edit: 2017/11/21 00:45 Beta 1 TOPPO
 					//If the element does not have an ID
 					if (!$(this).data('colpickRmxId')) {
 						var options = $.extend({}, opt);
-						options.origColor = opt.color;
+						options.origColor = cloneColor(opt.color);
 
 						// Set polyfill
 						if (typeof opt.polyfill == 'function') {
@@ -630,21 +665,23 @@ Last Edit: 2017/11/21 00:45 Beta 1 TOPPO
 						options.alphaBar = cal.find('div.colpickRmx_alpha_overlay');
 						var huebar = options.hue.parent();
 						//Paint the hue bar
+						var stops = ['#ff0000','#ff0080','#ff00ff','#8000ff','#0000ff','#0080ff','#00ffff','#00ff80','#00ff00','#80ff00','#ffff00','#ff8000','#ff0000'];
+						//Compatibility with IE 6-9
 						var UA = navigator.userAgent.toLowerCase();
 						var isIE = navigator.appName === 'Microsoft Internet Explorer';
 						var IEver = isIE ? parseFloat( UA.match( /msie ([0-9]{1,}[\.0-9]{0,})/ )[1] ) : 0;
 						var ngIE = ( isIE && IEver < 10 );
-						var stops = ['#ff0000','#ff0080','#ff00ff','#8000ff','#0000ff','#0080ff','#00ffff','#00ff80','#00ff00','#80ff00','#ffff00','#ff8000','#ff0000'];
 						if(ngIE) {
 							var i, div;
 							for(i=0; i<=11; i++) {
-								div = $('<div></div>').attr('style','height:8.333333%; filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='+stops[i]+', endColorstr='+stops[i+1]+'); -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='+stops[i]+', endColorstr='+stops[i+1]+')";');
+								div = $('<div></div>').attr('style','height:8.333333%; filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='+stops[i]+',endColorstr='+stops[i+1]+'); -ms-filter:"progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='+stops[i]+',endColorstr='+stops[i+1]+')";');
 								huebar.append(div);
 							}
 						} else {
 							var stopList = stops.join(',');
-							huebar.attr('style','background:-webkit-linear-gradient(top,'+stopList+'); background: -o-linear-gradient(top,'+stopList+'); background: -ms-linear-gradient(top,'+stopList+'); background:-moz-linear-gradient(top,'+stopList+'); -webkit-linear-gradient(top,'+stopList+'); background:linear-gradient(to bottom,'+stopList+');');
+							huebar.attr('style','background:-webkit-linear-gradient(top,'+stopList+'); background:-moz-linear-gradient(top,'+stopList+'); background:-ms-linear-gradient(top,'+stopList+'); background:-o-linear-gradient(top,'+stopList+'); background:linear-gradient(to bottom,'+stopList+');');
 						}
+						//Set remaining events, new, and current color
 						cal.find('div.colpickRmx_hue').on('mousedown touchstart',downHue);
 						cal.find('div.colpickRmx_alpha').on('mousedown touchstart',downAlpha);
 						options.newColor = cal.find('div.colpickRmx_new_color');
@@ -715,7 +752,7 @@ Last Edit: 2017/11/21 00:45 Beta 1 TOPPO
 						if ($(this).data('colpickRmxId')) {
 							var cal = $('#' + $(this).data('colpickRmxId'));
 							cal.data('colpickRmx').color = col;
-							cal.data('colpickRmx').origColor = col;
+							cal.data('colpickRmx').origColor = cloneColor(col);
 							fillRGBFields(col, cal.get(0));
 							fillHSBFields(col, cal.get(0));
 							fillHexField(col, cal.get(0));
@@ -737,9 +774,9 @@ Last Edit: 2017/11/21 00:45 Beta 1 TOPPO
 				//Destroying picker
 				cal.remove();
 			},
-			getCurrentColor: function() { //OKK (ma da migliorare)
+			getCurrentColor: function() { //OKK
 				var cal = $('#' + $(this).data('colpickRmxId'));
-				return cal.data('colpickRmx').origColor;
+				return cloneColor(cal.data('colpickRmx').origColor);
 			}
 		};
 	}();
@@ -806,9 +843,9 @@ Last Edit: 2017/11/21 00:45 Beta 1 TOPPO
 			rgba.r.toString(16),
 			rgba.g.toString(16),
 			rgba.b.toString(16),
-			rgba.a.toString(16)
+			parseInt(rgba.a).toString(16)
 		];
-		$.each(hex, function (nr, val) { //OKK
+		$.each(hex, function (nr, val) {
 			if (val.length == 1) {
 				hex[nr] = '0' + val;
 			}
@@ -842,7 +879,8 @@ Last Edit: 2017/11/21 00:45 Beta 1 TOPPO
 			hsbaToHex: hsbaToHex,
 			hsbaToRgba: hsbaToRgba,
 			hexToHsba: hexToHsba,
-			hexToRgba: hexToRgba
+			hexToRgba: hexToRgba,
+			isValidHex: isValidHex
 		}
 	});
 })(jQuery);

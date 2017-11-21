@@ -8,7 +8,7 @@ Based on Jose Vargas' Color Picker (https://github.com/josedvq/colpick-jQuery-Co
 
 Description, how to use, and examples: fire-space.weebly.com/colpick-remix
 
-Last Edit: 2017/11/20 17:20 RC
+Last Edit: 2017/11/21 19:24 RC
 */
 
 
@@ -65,13 +65,13 @@ Last Edit: 2017/11/20 17:20 RC
 	left: 0px;
 	height: 225px;
 	width: 225px;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#ffffff',endColorstr='#00ffffff'); /* IE6-9 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr='#ffffff',endColorstr='#00ffffff')"; /* IE8 */
+	background: -webkit-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
 	background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(left, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(left, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(left, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* IE10+ */
+	background: -ms-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* IE10+ */
+	background: -o-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* Opera 11.10+ */
 	background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1, startColorstr='#ffffff', endColorstr='#00ffffff'); /* IE6-9 */
 }
 .colpickRmx_color_overlay2 {
 	position: absolute;
@@ -79,13 +79,13 @@ Last Edit: 2017/11/20 17:20 RC
 	left: 0px;
 	height: 225px;
 	width: 225px;
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#00000000',endColorstr='#000000'); /* IE6-9 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#00000000',endColorstr='#000000')"; /* IE8 */
+	background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
 	background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,1))); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%); /* IE10+ */
-	background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#00000000', endColorstr='#000000'); /* IE6-9 */
+	background: -ms-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%); /* IE10+ */
+	background: -o-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%); /* Opera 11.10+ */
+	background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
 }
 /*Circular color selector*/
 .colpickRmx_selector_outer {

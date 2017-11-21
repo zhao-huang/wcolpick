@@ -8,7 +8,7 @@ Based on Jose Vargas' Color Picker (https://github.com/josedvq/colpick-jQuery-Co
 
 Description, how to use, and examples: fire-space.weebly.com/colpick-remix
 
-Last Edit: 2017/11/20 17:20 RC
+Last Edit: 2017/11/21 17:28 RC
 */
 
 
@@ -76,10 +76,10 @@ Last Edit: 2017/11/20 17:20 RC
 	border-top-color: #999;
 }
 .colpickRmx_light .colpickRmx_changing .colpickRmx_field_uarr {
-	border-bottom-color: green;
+	border-bottom-color: #0caf1a;
 }
 .colpickRmx_light .colpickRmx_changing .colpickRmx_field_darr {
-	border-top-color: green;
+	border-top-color: #0caf1a;
 }
 .colpickRmx_light .colpickRmx_submit {
 	background: white;
@@ -148,10 +148,10 @@ Last Edit: 2017/11/20 17:20 RC
 	border-top-color: #d5d5d5;
 }
 .colpickRmx_dark .colpickRmx_changing .colpickRmx_field_uarr {
-	border-bottom-color: red;
+	border-bottom-color: #0caf1a;
 }
 .colpickRmx_dark .colpickRmx_changing .colpickRmx_field_darr {
-	border-top-color: red;
+	border-top-color: #0caf1a;
 }
 .colpickRmx_dark .colpickRmx_submit {
 	background: transparent;
