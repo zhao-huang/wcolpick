@@ -5,11 +5,12 @@ Photoshop-like jQuery Color Picker plugin with various skins and layouts, touch,
 <b> This is only a prototype of the plugin with the support of alpha channel! <br>
 I've added the bar of alpha channel and the inputbox of alpha value, but they currently do nothing... apart from changing the value of alpha in the inputbox! </b>
 
-### Changes from PV6 to PV7
-1. Redesigned Small variant to improve legibility.
-2. Changed font to "Arial" to improve compatibility (there are no notable visual changes between "Arial" and "Aktiv Grotesk").
-3. Generally improved all layouts, and reduced size of css files.
-4. Bugfix.
+### Changes from PV7 to Beta 1
+1. Alpha channel support: 70% completed!
+2. Changed range of alpha to 0-100 (is a percentage) to respect standards.
+3. Added support to hex shortcuts!
+4. Now, if livePreview is 'false', the color will be updated only on click and release, for all elements of the plugin.
+5. Now, if you change the value of a field by using arrows, the field's arrows will change color.
 
 
 ### Screenshot of "Prototype Version 7"

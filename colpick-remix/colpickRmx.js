@@ -8,7 +8,7 @@ Based on Jose Vargas' Color Picker (https://github.com/josedvq/colpick-jQuery-Co
 
 Description, how to use, and examples: fire-space.weebly.com/colpick-remix
 
-Last Edit: 2017/11/16 23:44 PV7 TOPPO
+Last Edit: 2017/11/21 00:45 Beta 1 TOPPO
 */
 
 
@@ -44,113 +44,131 @@ Last Edit: 2017/11/16 23:44 PV7 TOPPO
 				onHide: function () {},
 				onDestroy: function () {},
 				onChange: function () {},
-				onSubmit: function () {},
-
-				alphaVal: 255 //Default alpha value (Verrà eliminato nella versione finale!)
+				onSubmit: function () {}
 			},
 			//Fill the inputs of the plugin
-			fillRGBFields = function  (hsb, cal) {
-				var rgb = hsbToRgb(hsb);
+			fillRGBFields = function  (hsba, cal) { //OKK
+				var rgba = hsbaToRgba(hsba);
 				$(cal).data('colpickRmx').fields
-					.eq(1).val(rgb.r).end()
-					.eq(2).val(rgb.g).end()
-					.eq(3).val(rgb.b).end();
+					.eq(1).val(rgba.r).end()
+					.eq(2).val(rgba.g).end()
+					.eq(3).val(rgba.b).end();
 			},
-			fillHSBFields = function  (hsb, cal) {
+			fillHSBFields = function  (hsba, cal) { //OKK
 				$(cal).data('colpickRmx').fields
-					.eq(4).val(Math.round(hsb.h)).end()
-					.eq(5).val(Math.round(hsb.s)).end()
-					.eq(6).val(Math.round(hsb.b)).end();
+					.eq(4).val(Math.round(hsba.h)).end()
+					.eq(5).val(Math.round(hsba.s)).end()
+					.eq(6).val(Math.round(hsba.b)).end();
 			},
-			fillAlphaFields = function (alpha, cal){
-				$(cal).data('colpickRmx').fields.eq(7).val(alpha).end();
+			fillAlphaField = function (hsba, cal) { //OKK
+				$(cal).data('colpickRmx').fields.eq(7).val(parseInt(hsba.a/255*100)).end();
 			},
-			fillHexFields = function (hsb, cal) {
-				$(cal).data('colpickRmx').fields.eq(0).val(hsbToHex(hsb));
+			fillHexField = function (hsba, cal) { //OKK
+				if($(cal).data('colpickRmx').enableAlpha) $(cal).data('colpickRmx').fields.eq(0).val(hsbaToHex(hsba));
+				else $(cal).data('colpickRmx').fields.eq(0).val(hsbaToHex(hsba).substring(0,6));
 			},
 			//Set the round selector position
-			setSelector = function (hsb, cal) {
-				$(cal).data('colpickRmx').selector.css('backgroundColor', '#' + hsbToHex({h: hsb.h, s: 100, b: 100}));
+			setSelector = function (hsba, cal) { //OKK
+				var rgba = hsbaToRgba({h: hsba.h, s: 100, b: 100, a: 255});
+				$(cal).data('colpickRmx').selector.css('backgroundColor', 'rgb('+rgba.r+','+rgba.g+','+rgba.b+')');
 				$(cal).data('colpickRmx').selectorIndic.css({
-					left: parseInt($(cal).data('colpickRmx').size * hsb.s/100, 10),
-					top: parseInt($(cal).data('colpickRmx').size * (100-hsb.b)/100, 10)
+					left: parseInt($(cal).data('colpickRmx').size * hsba.s/100, 10),
+					top: parseInt($(cal).data('colpickRmx').size * (100-hsba.b)/100, 10)
 				});
 			},
 			//Set the hue selector position
-			setHue = function (hsb, cal) {
-				$(cal).data('colpickRmx').hue.css('top', parseInt($(cal).data('colpickRmx').size - $(cal).data('colpickRmx').size * hsb.h/360, 10));
+			setHue = function (hsba, cal) { //OKK
+				$(cal).data('colpickRmx').hue.css('top', parseInt($(cal).data('colpickRmx').size - $(cal).data('colpickRmx').size * hsba.h/360, 10));
 			},
 			//Set the alpha selector position
-			setAlpha = function (alpha, cal) {
+			setAlpha = function (hsba, cal) { //OKK
 				if($(cal).data('colpickRmx').enableAlpha) {
-					$(cal).data('colpickRmx').alpha.css('left', parseInt($(cal).data('colpickRmx').size / 255 * alpha, 10));
+					$(cal).data('colpickRmx').alpha.css('left', parseInt($(cal).data('colpickRmx').size / 100 * parseInt(hsba.a/255*100), 10));
 				}
 			},
 			//Update the color of alpha bar with the choosen color
-			setAlphaBarColor = function (col, cal) {
+			setAlphaBarColor = function (col, cal) { //Controllare supporto ai vecchi browser (SEMI OKK)
 				if($(cal).data('colpickRmx').enableAlpha) {
-					var rgb = hsbToRgb(col);
-					var begin = 'rgba('+rgb.r+','+rgb.g+','+rgb.b+',0)', end = 'rgba('+rgb.r+','+rgb.g+','+rgb.b+',1)';
-					$(cal).data('colpickRmx').alphaBar.attr('style','background: -webkit-linear-gradient(left,'+begin+','+end+'); background: -moz-linear-gradient(left,'+begin+','+end+'); background: -o-linear-gradient(left,'+begin+','+end+'); background: linear-gradient(to right,'+begin+','+end+');');
+					var rgba = hsbaToRgba(col);
+					var begin = 'rgba('+rgba.r+','+rgba.g+','+rgba.b+',0)', end = 'rgba('+rgba.r+','+rgba.g+','+rgba.b+',1)';
+					$(cal).data('colpickRmx').alphaBar.attr('style','background: -webkit-linear-gradient(left,'+begin+','+end+'); background: -moz-linear-gradient(left,'+begin+','+end+'); background: -ms-linear-gradient(left,'+begin+','+end+'); background: -o-linear-gradient(left,'+begin+','+end+'); background: linear-gradient(to right,'+begin+','+end+');');
 				}
 			},
 			//Set current and new colors
-			setCurrentColor = function (hsb, cal) {
-				$(cal).data('colpickRmx').currentColor.css('backgroundColor', '#' + hsbToHex(hsb));
+			setCurrentColor = function (hsba, cal) { //OKK
+				var rgba = hsbaToRgba(hsba);
+				$(cal).data('colpickRmx').currentColor.css('backgroundColor', 'rgba('+rgba.r+','+rgba.g+','+rgba.b+','+rgba.a/255+')');
 			},
-			setNewColor = function (hsb, cal) {
-				$(cal).data('colpickRmx').newColor.css('backgroundColor', '#' + hsbToHex(hsb));
+			setNewColor = function (hsba, cal) { //OKK
+				var rgba = hsbaToRgba(hsba);
+				$(cal).data('colpickRmx').newColor.css('backgroundColor', 'rgba('+rgba.r+','+rgba.g+','+rgba.b+','+rgba.a/255+')');
 			},
 			//Called when the new color is changed
-			change = function (ev) {
-				var cal = $(this).parent().parent(), col, alpha;
-				if (this.parentNode.className.indexOf('_alpha') > 0){
-					cal.data('colpickRmx').alphaVal = alpha = cal.data('colpickRmx').fields.eq(7).val();
-					setAlpha(alpha, cal.get(0));
+			change = function (ev) { //Da testare (Semi OKK)
+				var cal = $(this).parent().parent(), col;
+				if (this.parentNode.className.indexOf('_alpha') > 0) {
+					col = cal.data('colpickRmx').color;
+					cal.data('colpickRmx').color.a = col.a = fixAlpha(parseInt(cal.data('colpickRmx').fields.eq(7).val()/100*255, 10));
+					console.log(col);
+					fillHexField(col, cal.get(0));
+					setAlpha(col, cal.get(0));
+					setNewColor(col, cal.get(0));
 				} else {
 					if (this.parentNode.className.indexOf('_hex') > 0) {
-						cal.data('colpickRmx').color = col = hexToHsb(fixHex(this.value));
+						cal.data('colpickRmx').color = col = hexToHsba(fixHex(this.value, cal));
+						console.log("HEX");
+						console.log(cal.data('colpickRmx').color);
 						fillRGBFields(col, cal.get(0));
 						fillHSBFields(col, cal.get(0));
+						fillAlphaField(col, cal.get(0));
+						setAlpha(col, cal.get(0));
 					} else if (this.parentNode.className.indexOf('_hsb') > 0) {
-						cal.data('colpickRmx').color = col = fixHSB({
+						cal.data('colpickRmx').color = col = fixHSBA({
 							h: parseInt(cal.data('colpickRmx').fields.eq(4).val(), 10),
 							s: parseInt(cal.data('colpickRmx').fields.eq(5).val(), 10),
-							b: parseInt(cal.data('colpickRmx').fields.eq(6).val(), 10)
+							b: parseInt(cal.data('colpickRmx').fields.eq(6).val(), 10),
+							a: cal.data('colpickRmx').color.a
 						});
 						fillRGBFields(col, cal.get(0));
-						fillHexFields(col, cal.get(0));
+						fillHexField(col, cal.get(0));
 					} else {
-						cal.data('colpickRmx').color = col = rgbToHsb(fixRGB({
+						cal.data('colpickRmx').color = col = rgbaToHsba(fixRGBA({
 							r: parseInt(cal.data('colpickRmx').fields.eq(1).val(), 10),
 							g: parseInt(cal.data('colpickRmx').fields.eq(2).val(), 10),
-							b: parseInt(cal.data('colpickRmx').fields.eq(3).val(), 10)
+							b: parseInt(cal.data('colpickRmx').fields.eq(3).val(), 10),
+							a: cal.data('colpickRmx').color.a
 						}));
-						fillHexFields(col, cal.get(0));
+						fillHexField(col, cal.get(0));
 						fillHSBFields(col, cal.get(0));
 					}
 					setAlphaBarColor(col, cal.get(0));
 					setSelector(col, cal.get(0));
 					setHue(col, cal.get(0));
 					setNewColor(col, cal.get(0));
-					cal.data('colpickRmx').onChange.apply(cal.parent(), [col, hsbToHex(col), hsbToRgb(col), cal.data('colpickRmx').el, 0]);
+				}
+
+				if (cal.data('colpickRmx').enableAlpha) cal.data('colpickRmx').onChange.apply(cal.parent(), [col, hsbaToHex(col), hsbaToRgba(col), cal.data('colpickRmx').el, 0]);
+				else {
+					var rgba = hsbaToRgba(col);
+					var hsb = {h:col.h, s:col.s, b:col.b}, rgb = {r:rgba.r, g:rgba.g, b:rgba.b}, hex = hsbaToHex(col).substring(0,6);
+					cal.data('colpickRmx').onChange.apply(cal.parent(), [hsb, hex, rgb, cal.data('colpickRmx').el, 0]);
 				}
 			},
 			//Change style on blur and on focus of inputs
-			blur = function (ev) {
+			blur = function (ev) { //OKK AP
 				$(this).parent().removeClass('colpickRmx_focus');
 			},
-			focus = function () {
+			focus = function () { //OKK AP
 				$(this).parent().parent().data('colpickRmx').fields.parent().removeClass('colpickRmx_focus');
 				$(this).parent().addClass('colpickRmx_focus');
 			},
 			//Increment/decrement arrows functions
-			downIncrement = function (ev) {
+			downIncrement = function (ev) { //OKK
 				ev.preventDefault ? ev.preventDefault() : ev.returnValue = false;
 				var field = $(this).parent().find('input').focus();
 				var current = {
-					el: $(this).parent().addClass('colpickRmx_slider'),
-					max: this.parentNode.className.indexOf('_hsb_h') > 0 ? 360 : (this.parentNode.className.indexOf('_hsb') > 0 ? 100 : 255),
+					el: $(this).parent().addClass('colpickRmx_changing'),
+					max: this.parentNode.className.indexOf('_hsb_h') > 0 ? 360 : (this.parentNode.className.indexOf('_hsb') > 0 ? 100 : (this.parentNode.className.indexOf('_alpha') > 0 ? 100 : 255)),
 					y: ev.pageY,
 					field: field,
 					val: parseInt(field.val(), 10),
@@ -159,60 +177,74 @@ Last Edit: 2017/11/16 23:44 PV7 TOPPO
 				$(document).mouseup(current, upIncrement);
 				$(document).mousemove(current, moveIncrement);
 			},
-			moveIncrement = function (ev) {
+			moveIncrement = function (ev) { //OKK AP
 				ev.data.field.val(Math.max(0, Math.min(ev.data.max, parseInt(ev.data.val - ev.pageY + ev.data.y, 10))));
 				if (ev.data.preview) {
 					change.apply(ev.data.field.get(0), [true]);
 				}
 				return false;
 			},
-			upIncrement = function (ev) {
+			upIncrement = function (ev) { //OKK AP
 				change.apply(ev.data.field.get(0), [true]);
-				ev.data.el.removeClass('colpickRmx_slider').find('input').focus();
+				ev.data.el.removeClass('colpickRmx_changing').find('input').focus();
 				$(document).off('mouseup', upIncrement);
 				$(document).off('mousemove', moveIncrement);
 				return false;
 			},
 			//Alpha slider functions
-			downAlpha = function (ev) {
+			downAlpha = function (ev) { //OKK
 				ev.preventDefault ? ev.preventDefault() : ev.returnValue = false;
 				var current = {
 					cal: $(this).parent(),
-					x: $(this).offset().left
+					x: $(this).offset().left,
+					preview: $(this).parent().data('colpickRmx').livePreview
 				};
 				$(document).on('mouseup touchend',current,upAlpha);
 				$(document).on('mousemove touchmove',current,moveAlpha);
 				var pageX = ((ev.type == 'touchstart') ? ev.originalEvent.changedTouches[0].pageX : ev.pageX );
 				change.apply(
 					current.cal.data('colpickRmx')
-					.fields.eq(7).val(parseInt(255*Math.max(0,Math.min(current.cal.data('colpickRmx').size,(pageX - current.x)))/current.cal.data('colpickRmx').size, 10))
+					.fields.eq(7).val(parseInt(100*Math.max(0,Math.min(current.cal.data('colpickRmx').size,(pageX - current.x)))/current.cal.data('colpickRmx').size, 10))
 						.get(0),
-					[current.cal.data('colpickRmx').livePreview]
+					[true]
 				);
 				return false;
 			},
-			moveAlpha = function (ev) {
-				var pageX = ((ev.type == 'touchmove') ? ev.originalEvent.changedTouches[0].pageX : ev.pageX );
-				change.apply(
-					ev.data.cal.data('colpickRmx')
-					.fields.eq(7).val(parseInt(255*Math.max(0,Math.min(ev.data.cal.data('colpickRmx').size,(pageX - ev.data.x)))/ev.data.cal.data('colpickRmx').size, 10))
-						.get(0),
-					[ev.data.preview]
-				);
+			moveAlpha = function (ev) { //OKK
+				if (ev.data.preview) { //If livePreview is false, update alpha only at down and up events.
+					var pageX = ((ev.type == 'touchmove') ? ev.originalEvent.changedTouches[0].pageX : ev.pageX );
+					change.apply(
+						ev.data.cal.data('colpickRmx')
+						.fields.eq(7).val(parseInt(100*Math.max(0,Math.min(ev.data.cal.data('colpickRmx').size,(pageX - ev.data.x)))/ev.data.cal.data('colpickRmx').size, 10))
+							.get(0),
+						[true]
+					);
+				}
 				return false;
 			},
-			upAlpha = function (ev) {
-				fillAlphaFields(ev.data.cal.data('colpickRmx').alphaVal, ev.data.cal.get(0));
+			upAlpha = function (ev) { //OKK
+				if (!ev.data.preview) { //If livePreview is false, update alpha only at down and up events.
+					var pageX = ((ev.type == 'touchend') ? ev.originalEvent.changedTouches[0].pageX : ev.pageX );
+					change.apply(
+						ev.data.cal.data('colpickRmx')
+						.fields.eq(7).val(parseInt(100*Math.max(0,Math.min(ev.data.cal.data('colpickRmx').size,(pageX - ev.data.x)))/ev.data.cal.data('colpickRmx').size, 10))
+							.get(0),
+						[true]
+					);
+				} else {
+					fillAlphaField(ev.data.cal.data('colpickRmx').color, ev.data.cal.get(0));
+				}
 				$(document).off('mouseup touchend',upAlpha);
 				$(document).off('mousemove touchmove',moveAlpha);
 				return false;
 			},
 			//Hue slider functions
-			downHue = function (ev) {
+			downHue = function (ev) { //OKK AP
 				ev.preventDefault ? ev.preventDefault() : ev.returnValue = false;
 				var current = {
 					cal: $(this).parent(),
-					y: $(this).offset().top
+					y: $(this).offset().top,
+					preview: $(this).parent().data('colpickRmx').livePreview
 				};
 				$(document).on('mouseup touchend',current,upHue);
 				$(document).on('mousemove touchmove',current,moveHue);
@@ -221,76 +253,92 @@ Last Edit: 2017/11/16 23:44 PV7 TOPPO
 					current.cal.data('colpickRmx')
 					.fields.eq(4).val(parseInt(360*(current.cal.data('colpickRmx').size - Math.max(0,Math.min(current.cal.data('colpickRmx').size,(pageY - current.y))))/current.cal.data('colpickRmx').size, 10))
 						.get(0),
-					[current.cal.data('colpickRmx').livePreview]
+					[true]
 				);
 				return false;
 			},
-			moveHue = function (ev) {
-				var pageY = ((ev.type == 'touchmove') ? ev.originalEvent.changedTouches[0].pageY : ev.pageY );
-
-				change.apply(
-					ev.data.cal.data('colpickRmx')
-					.fields.eq(4).val(parseInt(360*(ev.data.cal.data('colpickRmx').size - Math.max(0,Math.min(ev.data.cal.data('colpickRmx').size,(pageY - ev.data.y))))/ev.data.cal.data('colpickRmx').size, 10))
-						.get(0),
-					[ev.data.preview]
-				);
+			moveHue = function (ev) { //OKK AP
+				if (ev.data.preview) { //If livePreview is false, update hue only at down and up events.
+					var pageY = ((ev.type == 'touchmove') ? ev.originalEvent.changedTouches[0].pageY : ev.pageY );
+					change.apply(
+						ev.data.cal.data('colpickRmx')
+						.fields.eq(4).val(parseInt(360*(ev.data.cal.data('colpickRmx').size - Math.max(0,Math.min(ev.data.cal.data('colpickRmx').size,(pageY - ev.data.y))))/ev.data.cal.data('colpickRmx').size, 10))
+							.get(0),
+						[true]
+					);
+				}
 				return false;
 			},
-			upHue = function (ev) {
-				fillRGBFields(ev.data.cal.data('colpickRmx').color, ev.data.cal.get(0));
-				fillHexFields(ev.data.cal.data('colpickRmx').color, ev.data.cal.get(0));
+			upHue = function (ev) { //OKK AP
+				if (!ev.data.preview) { //If livePreview is false, update hue only at down and up events.
+					var pageY = ((ev.type == 'touchend') ? ev.originalEvent.changedTouches[0].pageY : ev.pageY );
+					change.apply(
+						ev.data.cal.data('colpickRmx')
+						.fields.eq(4).val(parseInt(360*(ev.data.cal.data('colpickRmx').size - Math.max(0,Math.min(ev.data.cal.data('colpickRmx').size,(pageY - ev.data.y))))/ev.data.cal.data('colpickRmx').size, 10))
+							.get(0),
+						[true]
+					);
+				} else {
+					fillRGBFields(ev.data.cal.data('colpickRmx').color, ev.data.cal.get(0));
+					fillHexField(ev.data.cal.data('colpickRmx').color, ev.data.cal.get(0));
+				}
 				$(document).off('mouseup touchend',upHue);
 				$(document).off('mousemove touchmove',moveHue);
 				return false;
 			},
 			//Color selector functions
-			downSelector = function (ev) {
+			downSelector = function (ev) { //OKK AP
 				ev.preventDefault ? ev.preventDefault() : ev.returnValue = false;
 				var current = {
 					cal: $(this).parent(),
-					pos: $(this).offset()
+					pos: $(this).offset(),
+					preview: $(this).parent().data('colpickRmx').livePreview
 				};
-				current.preview = current.cal.data('colpickRmx').livePreview;
 				$(document).on('mouseup touchend',current,upSelector);
 				$(document).on('mousemove touchmove',current,moveSelector);
-				var pageX,pageY;
-				if(ev.type == 'touchstart') {
-					pageX = ev.originalEvent.changedTouches[0].pageX;
-					pageY = ev.originalEvent.changedTouches[0].pageY;
-				} else {
-					pageX = ev.pageX;
-					pageY = ev.pageY;
-				}
+				var pageX, pageY;
+				if(ev.type == 'touchstart') { pageX = ev.originalEvent.changedTouches[0].pageX; pageY = ev.originalEvent.changedTouches[0].pageY; }
+				else { pageX = ev.pageX; pageY = ev.pageY; }
 				change.apply(
 					current.cal.data('colpickRmx').fields
 					.eq(6).val(parseInt(100*(current.cal.data('colpickRmx').size - Math.max(0,Math.min(current.cal.data('colpickRmx').size,(pageY - current.pos.top))))/current.cal.data('colpickRmx').size, 10)).end()
 					.eq(5).val(parseInt(100*(Math.max(0,Math.min(current.cal.data('colpickRmx').size,(pageX - current.pos.left))))/current.cal.data('colpickRmx').size, 10))
 					.get(0),
-					[current.preview]
+					[true]
 				);
 				return false;
 			},
-			moveSelector = function (ev) {
-				var pageX,pageY;
-				if(ev.type == 'touchmove') {
-					pageX = ev.originalEvent.changedTouches[0].pageX;
-					pageY = ev.originalEvent.changedTouches[0].pageY;
-				} else {
-					pageX = ev.pageX;
-					pageY = ev.pageY;
+			moveSelector = function (ev) { //OKK AP
+				if (ev.data.preview) { //If livePreview is false, update values only at down and up events.
+					var pageX, pageY;
+					if(ev.type == 'touchmove') { pageX = ev.originalEvent.changedTouches[0].pageX; pageY = ev.originalEvent.changedTouches[0].pageY; }
+					else { pageX = ev.pageX; pageY = ev.pageY; }
+					change.apply(
+						ev.data.cal.data('colpickRmx').fields
+						.eq(6).val(parseInt(100*(ev.data.cal.data('colpickRmx').size - Math.max(0,Math.min(ev.data.cal.data('colpickRmx').size,(pageY - ev.data.pos.top))))/ev.data.cal.data('colpickRmx').size, 10)).end()
+						.eq(5).val(parseInt(100*(Math.max(0,Math.min(ev.data.cal.data('colpickRmx').size,(pageX - ev.data.pos.left))))/ev.data.cal.data('colpickRmx').size, 10))
+						.get(0),
+						[true]
+					);
 				}
-				change.apply(
-					ev.data.cal.data('colpickRmx').fields
-					.eq(6).val(parseInt(100*(ev.data.cal.data('colpickRmx').size - Math.max(0,Math.min(ev.data.cal.data('colpickRmx').size,(pageY - ev.data.pos.top))))/ev.data.cal.data('colpickRmx').size, 10)).end()
-					.eq(5).val(parseInt(100*(Math.max(0,Math.min(ev.data.cal.data('colpickRmx').size,(pageX - ev.data.pos.left))))/ev.data.cal.data('colpickRmx').size, 10))
-					.get(0),
-					[ev.data.preview]
-				);
 				return false;
 			},
-			upSelector = function (ev) {
-				fillRGBFields(ev.data.cal.data('colpickRmx').color, ev.data.cal.get(0));
-				fillHexFields(ev.data.cal.data('colpickRmx').color, ev.data.cal.get(0));
+			upSelector = function (ev) { //OKK AP
+				if (!ev.data.preview) { //If livePreview is false, update values only at down and up events.
+					var pageX, pageY;
+					if(ev.type == 'touchend') { pageX = ev.originalEvent.changedTouches[0].pageX; pageY = ev.originalEvent.changedTouches[0].pageY; }
+					else { pageX = ev.pageX; pageY = ev.pageY; }
+					change.apply(
+						ev.data.cal.data('colpickRmx').fields
+						.eq(6).val(parseInt(100*(ev.data.cal.data('colpickRmx').size - Math.max(0,Math.min(ev.data.cal.data('colpickRmx').size,(pageY - ev.data.pos.top))))/ev.data.cal.data('colpickRmx').size, 10)).end()
+						.eq(5).val(parseInt(100*(Math.max(0,Math.min(ev.data.cal.data('colpickRmx').size,(pageX - ev.data.pos.left))))/ev.data.cal.data('colpickRmx').size, 10))
+						.get(0),
+						[true]
+					);
+				} else {
+					fillRGBFields(ev.data.cal.data('colpickRmx').color, ev.data.cal.get(0));
+					fillHexField(ev.data.cal.data('colpickRmx').color, ev.data.cal.get(0));
+				}
 				$(document).off('mouseup touchend',upSelector);
 				$(document).off('mousemove touchmove',moveSelector);
 				return false;
@@ -301,10 +349,10 @@ Last Edit: 2017/11/16 23:44 PV7 TOPPO
 				var col = cal.data('colpickRmx').color;
 				cal.data('colpickRmx').origColor = col;
 				setCurrentColor(col, cal.get(0));
-				cal.data('colpickRmx').onSubmit(col, hsbToHex(col), hsbToRgb(col), cal.data('colpickRmx').el);
+				cal.data('colpickRmx').onSubmit(col, hsbaToHex(col), hsbaToRgba(col), cal.data('colpickRmx').el);
 			},
 			//Show/hide the color picker
-			show = function (ev) {
+			show = function (ev) { //OKK AP
 				if(ev) {
 					// Prevent the trigger of any direct parent
 					ev.stopPropagation();
@@ -359,7 +407,7 @@ Last Edit: 2017/11/16 23:44 PV7 TOPPO
 				$('html').mousedown({cal:cal}, hide);
 				cal.mousedown(function(ev){ev.stopPropagation();})
 			},
-			hide = function (ev) {
+			hide = function (ev) { //OKK AP
 				var cal = $('#' + $(this).data('colpickRmxId'));
 				if (ev) {
 						cal = ev.data.cal;
@@ -370,46 +418,48 @@ Last Edit: 2017/11/16 23:44 PV7 TOPPO
 				$('html').off('mousedown', hide);
 			},
 			//Detect if the color picker is out of viewport
-			outOfViewportHeight = function (cal, wrapEl, domEl) {
+			outOfViewportHeight = function (cal, wrapEl, domEl) { //OKK AP
 				var calViewTop = wrapEl.offset().top - $(window).scrollTop() + domEl.offsetHeight; //Top of the color picker in viewport
 				var calHeight = cal.outerHeight(); //Height of the color picker
 				var viewHeight = $(window).height(); //Viewport height
 				return (calViewTop + calHeight > viewHeight);
 			},
-			outOfViewportWidth = function (cal, wrapEl, domEl){
+			outOfViewportWidth = function (cal, wrapEl, domEl) { //OKK AP
 				var calViewLeft = wrapEl.offset().left - $(window).scrollLeft(); //Left of the color picker in viewport
 				var calWidth = cal.outerWidth(); //Width of the color picker
 				var viewWidth = $(window).width(); //Viewport width
 				return (calViewLeft + calWidth > viewWidth);
 			},
-			//Fix the values if the user enters a negative or high value
-			fixHSB = function (hsb) {
+			//Fix the values if the user enters a negative or high value //ALPHAAA
+			fixHSBA = function (hsba) { //OKK
+				if (hsba.a === undefined) hsba.a = 255;
 				return {
-					h: Math.min(360, Math.max(0, hsb.h)),
-					s: Math.min(100, Math.max(0, hsb.s)),
-					b: Math.min(100, Math.max(0, hsb.b))
+					h: Math.min(360, Math.max(0, hsba.h)),
+					s: Math.min(100, Math.max(0, hsba.s)),
+					b: Math.min(100, Math.max(0, hsba.b)),
+					a: Math.min(255, Math.max(0, hsba.a))
 				};
 			},
-			fixRGB = function (rgb) {
+			fixRGBA = function (rgba) { //OKK
+				if (rgba.a === undefined) rgba.a = 255;
 				return {
-					r: Math.min(255, Math.max(0, rgb.r)),
-					g: Math.min(255, Math.max(0, rgb.g)),
-					b: Math.min(255, Math.max(0, rgb.b))
+					r: Math.min(255, Math.max(0, rgba.r)),
+					g: Math.min(255, Math.max(0, rgba.g)),
+					b: Math.min(255, Math.max(0, rgba.b)),
+					a: Math.min(255, Math.max(0, rgba.a))
 				};
 			},
-			fixHex = function (hex) {
-				var len = 6 - hex.length;
-				if (len > 0) {
-					var o = [];
-					for (var i=0; i<len; i++) {
-						o.push('0');
-					}
-					o.push(hex);
-					hex = o.join('');
+			fixAlpha = function (alpha) { //OKK
+				return Math.min(255, Math.max(0, alpha));
+			},
+			fixHex = function (hex, cal) { //OKK
+				if (!cal.data('colpickRmx').enableAlpha) {
+					if (hex.length == 4) hex = hex.substring(0,3);
+					if (hex.lenght == 8) hex = hex.substring(0,6);
 				}
 				return hex;
 			},
-			getUniqueID = (function () {
+			getUniqueID = (function () { //OKK AP
 				var cnt = parseInt(Math.random() * 10000);
 				return function () {
 					cnt += 1;
@@ -421,24 +471,24 @@ Last Edit: 2017/11/16 23:44 PV7 TOPPO
 				var col = cal.data('colpickRmx').origColor;
 				cal.data('colpickRmx').color = col;
 				fillRGBFields(col, cal.get(0));
-				fillHexFields(col, cal.get(0));
+				fillHexField(col, cal.get(0));
 				fillHSBFields(col, cal.get(0));
 				setAlphaBarColor(col, cal.get(0));
 				setSelector(col, cal.get(0));
 				setHue(col, cal.get(0));
 				setNewColor(col, cal.get(0));
-				cal.data('colpickRmx').onChange.apply(cal.parent(), [col, hsbToHex(col), hsbToRgb(col), cal.data('colpickRmx').el, 0]);
+				cal.data('colpickRmx').onChange.apply(cal.parent(), [col, hsbaToHex(col), hsbaToRgba(col), cal.data('colpickRmx').el, 0]);
 			};
 		return {
 			init: function (opt) {
 				opt = $.extend({}, defaults, opt||{});
 				//Set color
 				if (typeof opt.color == 'string') {
-					opt.color = hexToHsb(opt.color);
+					opt.color = hexToHsba(opt.color);
 				} else if (opt.color.r != undefined && opt.color.g != undefined && opt.color.b != undefined) {
-					opt.color = rgbToHsb(opt.color);
+					opt.color = rgbaToHsba(opt.color);
 				} else if (opt.color.h != undefined && opt.color.s != undefined && opt.color.b != undefined) {
-					opt.color = fixHSB(opt.color);
+					opt.color = fixHSBA(opt.color);
 				} else {
 					return this;
 				}
@@ -604,11 +654,11 @@ Last Edit: 2017/11/16 23:44 PV7 TOPPO
 						//Fill with default color
 						fillRGBFields(options.color, cal.get(0));
 						fillHSBFields(options.color, cal.get(0));
-						fillHexFields(options.color, cal.get(0));
+						fillHexField(options.color, cal.get(0));
 						setHue(options.color, cal.get(0));
-						setAlpha(options.alphaVal, cal.get(0)); //ALPHAAA
+						setAlpha(options.color, cal.get(0)); //ALPHAAA
 						setAlphaBarColor(options.color, cal.get(0)); //Colora la barra alpha col colore scelto
-						fillAlphaFields(options.alphaVal, cal.get(0)); //Riempie il campo input alpha
+						fillAlphaField(options.color, cal.get(0)); //Riempie il campo input alpha
 						setSelector(options.color, cal.get(0));
 						setCurrentColor(options.color, cal.get(0));
 						setNewColor(options.color, cal.get(0));
@@ -633,7 +683,7 @@ Last Edit: 2017/11/16 23:44 PV7 TOPPO
 				});
 			},
 			//Shows the picker
-			showPicker: function() {
+			showPicker: function() { //OKK AP
 				return this.each( function () {
 					if ($(this).data('colpickRmxId')) {
 						show.apply(this);
@@ -641,7 +691,7 @@ Last Edit: 2017/11/16 23:44 PV7 TOPPO
 				});
 			},
 			//Hides the picker
-			hidePicker: function() {
+			hidePicker: function() { //OKK AP
 				return this.each( function () {
 					if ($(this).data('colpickRmxId')) {
 						hide.apply(this);
@@ -653,11 +703,11 @@ Last Edit: 2017/11/16 23:44 PV7 TOPPO
 				if (col != undefined) {
 					setCurrent = (typeof setCurrent === "undefined") ? 1 : setCurrent;
 					if (typeof col == 'string') {
-						col = hexToHsb(col);
+						col = hexToHsba(col);
 					} else if (col.r != undefined && col.g != undefined && col.b != undefined) {
-						col = rgbToHsb(col);
+						col = rgbaToHsba(col);
 					} else if (col.h != undefined && col.s != undefined && col.b != undefined) {
-						col = fixHSB(col);
+						col = fixHSBA(col);
 					} else {
 						return this;
 					}
@@ -668,11 +718,11 @@ Last Edit: 2017/11/16 23:44 PV7 TOPPO
 							cal.data('colpickRmx').origColor = col;
 							fillRGBFields(col, cal.get(0));
 							fillHSBFields(col, cal.get(0));
-							fillHexFields(col, cal.get(0));
+							fillHexField(col, cal.get(0));
 							setHue(col, cal.get(0));
 							setSelector(col, cal.get(0));
 							setNewColor(col, cal.get(0));
-							cal.data('colpickRmx').onChange.apply(cal.parent(), [col, hsbToHex(col), hsbToRgb(col), cal.data('colpickRmx').el, 1]);
+							cal.data('colpickRmx').onChange.apply(cal.parent(), [col, hsbaToHex(col), hsbaToRgba(col), cal.data('colpickRmx').el, 1]);
 							if(setCurrent) {
 								setCurrentColor(col, cal.get(0));
 							}
@@ -680,83 +730,103 @@ Last Edit: 2017/11/16 23:44 PV7 TOPPO
 					});
 				}
 			},
-			destroy: function() {
+			destroy: function() { //OKK AP
 				var cal = $('#' + $(this).data('colpickRmxId'));
 				cal.data('colpickRmx').onDestroy(cal.get(0), cal.data('colpickRmx').el);
 				$('html').off('mousedown', hide);
 				//Destroying picker
 				cal.remove();
 			},
-			getCurrentColor: function() {
+			getCurrentColor: function() { //OKK (ma da migliorare)
 				var cal = $('#' + $(this).data('colpickRmxId'));
 				return cal.data('colpickRmx').origColor;
 			}
 		};
 	}();
 	//Color space convertions
-	var hexToRgb = function (hex) {
-		hex = parseInt(((hex.indexOf('#') > -1) ? hex.substring(1) : hex), 16);
-		return {r: hex >> 16, g: (hex & 0x00FF00) >> 8, b: (hex & 0x0000FF)};
+	var hexToRgba = function (hex) { //OKK
+		if (hex.indexOf('#') == 0) hex = hex.substring(1);
+		if (hex.length == 3) hex = hex.substring(0,1) + hex.substring(0,1) + hex.substring(1,2) + hex.substring(1,2) + hex.substring(2,3) + hex.substring(2,3) + "ff";
+		else if (hex.length == 4) hex = hex.substring(0,1) + hex.substring(0,1) + hex.substring(1,2) + hex.substring(1,2) + hex.substring(2,3) + hex.substring(2,3) + hex.substring(3,4) + hex.substring(3,4);
+		else if (hex.length == 6) hex = hex + "ff";
+		else if (hex.length != 8) hex = "000000ff";
+		if (!isValidHex(hex)) hex = "000000ff";
+		var hexI = parseInt(hex , 16);
+		var rgba = {r: hexI >>> 24, g: (hexI & 0x00FF0000) >>> 16, b: (hexI & 0x0000FF00) >>> 8, a: (hexI & 0x000000FF)};
+		return rgba;
 	};
-	var hexToHsb = function (hex) {
-		return rgbToHsb(hexToRgb(hex));
+	var hexToHsba = function (hex) { //OKK
+		return rgbaToHsba(hexToRgba(hex));
 	};
-	var rgbToHsb = function (rgb) {
-		var hsb = {h: 0, s: 0, b: 0};
-		var min = Math.min(rgb.r, rgb.g, rgb.b);
-		var max = Math.max(rgb.r, rgb.g, rgb.b);
+	var rgbaToHsba = function (rgba) { //OKK
+		if (rgba.a === undefined) rgba.a = 255;
+		var hsba = {h: 0, s: 0, b: 0, a: rgba.a};
+		var min = Math.min(rgba.r, rgba.g, rgba.b);
+		var max = Math.max(rgba.r, rgba.g, rgba.b);
 		var delta = max - min;
-		hsb.b = max;
-		hsb.s = max != 0 ? 255 * delta / max : 0;
-		if (hsb.s != 0) {
-			if (rgb.r == max) hsb.h = (rgb.g - rgb.b) / delta;
-			else if (rgb.g == max) hsb.h = 2 + (rgb.b - rgb.r) / delta;
-			else hsb.h = 4 + (rgb.r - rgb.g) / delta;
-		} else hsb.h = -1;
-		hsb.h *= 60;
-		if (hsb.h < 0) hsb.h += 360;
-		hsb.s *= 100/255;
-		hsb.b *= 100/255;
-		return hsb;
+		hsba.b = max;
+		hsba.s = max != 0 ? 255 * delta / max : 0;
+		if (hsba.s != 0) {
+			if (rgba.r == max) hsba.h = (rgba.g - rgba.b) / delta;
+			else if (rgba.g == max) hsba.h = 2 + (rgba.b - rgba.r) / delta;
+			else hsba.h = 4 + (rgba.r - rgba.g) / delta;
+		} else hsba.h = -1;
+		hsba.h *= 60;
+		if (hsba.h < 0) hsba.h += 360;
+		hsba.s *= 100/255;
+		hsba.b *= 100/255;
+		return hsba;
 	};
-	var hsbToRgb = function (hsb) {
-		var rgb = {};
-		var h = hsb.h;
-		var s = hsb.s*255/100;
-		var v = hsb.b*255/100;
+	var hsbaToRgba = function (hsba) { //OKK
+		if (hsba.a === undefined) hsba.a = 255;
+		var rgba = {};
+		var h = hsba.h;
+		var s = hsba.s*255/100;
+		var v = hsba.b*255/100;
 		if(s == 0) {
-			rgb.r = rgb.g = rgb.b = v;
+			rgba.r = rgba.g = rgba.b = v;
 		} else {
 			var t1 = v;
 			var t2 = (255-s)*v/255;
 			var t3 = (t1-t2)*(h%60)/60;
 			if(h==360) h = 0;
-			if(h<60) {rgb.r=t1;	rgb.b=t2; rgb.g=t2+t3}
-			else if(h<120) {rgb.g=t1; rgb.b=t2;	rgb.r=t1-t3}
-			else if(h<180) {rgb.g=t1; rgb.r=t2;	rgb.b=t2+t3}
-			else if(h<240) {rgb.b=t1; rgb.r=t2;	rgb.g=t1-t3}
-			else if(h<300) {rgb.b=t1; rgb.g=t2;	rgb.r=t2+t3}
-			else if(h<360) {rgb.r=t1; rgb.g=t2;	rgb.b=t1-t3}
-			else {rgb.r=0; rgb.g=0;	rgb.b=0}
+			if(h<60) {rgba.r=t1;	rgba.b=t2; rgba.g=t2+t3}
+			else if(h<120) {rgba.g=t1; rgba.b=t2;	rgba.r=t1-t3}
+			else if(h<180) {rgba.g=t1; rgba.r=t2;	rgba.b=t2+t3}
+			else if(h<240) {rgba.b=t1; rgba.r=t2;	rgba.g=t1-t3}
+			else if(h<300) {rgba.b=t1; rgba.g=t2;	rgba.r=t2+t3}
+			else if(h<360) {rgba.r=t1; rgba.g=t2;	rgba.b=t1-t3}
+			else {rgba.r=0; rgba.g=0;	rgba.b=0}
 		}
-		return {r:Math.round(rgb.r), g:Math.round(rgb.g), b:Math.round(rgb.b)};
+		return {r:Math.round(rgba.r), g:Math.round(rgba.g), b:Math.round(rgba.b), a:hsba.a};
 	};
-	var rgbToHex = function (rgb) {
+	var rgbaToHex = function (rgba) { //OKK
+		if (rgba.a === undefined) rgba.a = 255;
 		var hex = [
-			rgb.r.toString(16),
-			rgb.g.toString(16),
-			rgb.b.toString(16)
+			rgba.r.toString(16),
+			rgba.g.toString(16),
+			rgba.b.toString(16),
+			rgba.a.toString(16)
 		];
-		$.each(hex, function (nr, val) {
+		$.each(hex, function (nr, val) { //OKK
 			if (val.length == 1) {
 				hex[nr] = '0' + val;
 			}
 		});
 		return hex.join('');
 	};
-	var hsbToHex = function (hsb) {
-		return rgbToHex(hsbToRgb(hsb));
+	var hsbaToHex = function (hsba) { //OKK
+		return rgbaToHex(hsbaToRgba(hsba));
 	};
+	//Check if a string is a valid hexadecimal string
+	var isValidHex = function (hex) { //OKK
+		while (hex.indexOf('0') == 0) {
+			hex = hex.substring(1);
+		}
+		if(hex == "") hex = "0";
+		return (parseInt(hex,16).toString(16) === hex.toLowerCase());
+	};
+	//External accessible functions
 	$.fn.extend({
 		newColpick: colpickRmx.init,
 		hideColpick: colpickRmx.hidePicker,
@@ -767,12 +837,12 @@ Last Edit: 2017/11/16 23:44 PV7 TOPPO
 	});
 	$.extend({
 		colpickRmx:{
-			rgbToHex: rgbToHex,
-			rgbToHsb: rgbToHsb,
-			hsbToHex: hsbToHex,
-			hsbToRgb: hsbToRgb,
-			hexToHsb: hexToHsb,
-			hexToRgb: hexToRgb
+			rgbaToHex: rgbaToHex,
+			rgbaToHsba: rgbaToHsba,
+			hsbaToHex: hsbaToHex,
+			hsbaToRgba: hsbaToRgba,
+			hexToHsba: hexToHsba,
+			hexToRgba: hexToRgba
 		}
 	});
 })(jQuery);
