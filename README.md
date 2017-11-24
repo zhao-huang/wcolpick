@@ -11,7 +11,9 @@ Photoshop-like jQuery Color Picker plugin with various skins and layouts, touch,
 
 
 ### Screenshot of "Beta version"
-![beta2](https://user-images.githubusercontent.com/32025549/33090850-a8b8208a-cef5-11e7-8e8c-c1b7565d049b.png) <br><br>
+![beta2](https://user-images.githubusercontent.com/32025549/33090850-a8b8208a-cef5-11e7-8e8c-c1b7565d049b.png)
+
+You can try the beta version here: <a href="https://colpick-remix-beta.herokuapp.com/">https://colpick-remix-beta.herokuapp.com</a> <br><br>
 
 
 ### Latest stable release
