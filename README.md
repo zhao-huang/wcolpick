@@ -4,10 +4,14 @@ Photoshop-like jQuery Color Picker plugin with various skins and layouts, touch,
 # IMPORTANT
 <b> This is still a beta version, and may contain bugs! </b>
 
-### Changes from Beta 1 to Beta 2
-1. Alpha channel support: 95% completed!
-2. Improved compatibility with older browsers.
-3. Improvements and bugfix.
+### Changes from Beta 2 to Beta 3
+1. Alpha channel support: Completed!
+2. Now is possible to cancel destruction of color picker by calling "cancelDestroy" function.
+3. Renamed getCurrentColpickColor in getColpickColor: now it can returns also the new color, and is possible to request also "rgb" and "hex" colors.
+4. Replaced parseInt with Math.round, where it was possible, to improve performance (see this: https://jsperf.com/math-floor-vs-math-round-vs-parseint/55).
+5. [FIX] Now, internally, the code works only with alpha values between 0 and 1.
+6. [FIX] Fixed 2 bugs that allowed to set an alpha value, though alpha was disabled.
+7. Cleanup and other various bugfix.
 
 
 ### Screenshot of "Beta version"
