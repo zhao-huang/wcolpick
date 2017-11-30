@@ -2,18 +2,14 @@
 Photoshop-like jQuery Color Picker plugin with various skins and layouts, touch, and responsive. <br>
 
 # IMPORTANT
-<b> This is still a beta version, and may contain bugs! </b>
+<b> This is still a pre-release, and may contain bugs! </b>
 
-### Changes from Beta 3 to Beta 4
-1. Merged all parameters of all "callback functions" (onLoaded, onBeforeShow, etc...) in a single object. 
-(IMPORTANT: With this change is necessary to change the way to obtain the single parameters from this functions, I will explain later how to do).
-2. Now you can abort onDestroy by simply return false.
-3. Removed cancelDestroy function.
-4. [FIX] Setted default return values for getColor function.
-5. Cleanup and bugfix.
+### Changes from Beta 4 to Pre-Release
+1. Cleanup.
+2. [FIX] Now, in input fields, if you not change the value, the onChange will no longer be fired (except when livePreview is false, where is necessary!).
 
 
-### Screenshot of "Beta version"
+### Screenshot of "Pre-Release"
 ![beta2](https://user-images.githubusercontent.com/32025549/33090850-a8b8208a-cef5-11e7-8e8c-c1b7565d049b.png)
 
 You can try the beta version here: <a href="https://colpick-remix-beta.herokuapp.com/">https://colpick-remix-beta.herokuapp.com</a> <br><br>

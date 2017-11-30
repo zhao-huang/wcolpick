@@ -7,7 +7,7 @@ Dual licensed under GPL v3.0 and MIT licenses.
 
 Description, how to use, and examples: fire-space.weebly.com/colpick-remix
 
-Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
+Last Edit: 2017/11/30 23:40
 */
 
 
@@ -37,37 +37,37 @@ Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 				livePreview: true, //If is "true", the color is updated immediately when changing a parameter.
 				polyfill: false, //If "true", the color picker is only activated when no native browser behavior is available.
 				appendToBody: false, //If "true", force the color picker to append to body (only for "non flat" version).
-				onLoaded: function() {}, //OKK -
-				onBeforeShow: function() {}, //OKK -
-				onShow: function () {}, //OKK AB -
-				onHide: function () {}, //OKK AB -
-				onDestroy: function () {}, //OKK AB -
-				onChange: function () {}, //OKK -
-				onSubmit: function () {} //OKK -
+				onLoaded: function() {},
+				onBeforeShow: function() {},
+				onShow: function () {},
+				onHide: function () {},
+				onDestroy: function () {},
+				onChange: function () {},
+				onSubmit: function () {}
 			},
 			//Fill the inputs of the plugin
-			fillRGBFields = function  (hsba, cal) { //OKK
+			fillRGBFields = function  (hsba, cal) {
 				var rgba = hsbaToRgba(hsba);
 				$(cal).data('colpickRmx').fields
 					.eq(1).val(rgba.r).end()
 					.eq(2).val(rgba.g).end()
 					.eq(3).val(rgba.b).end();
 			},
-			fillHSBFields = function  (hsba, cal) { //OKK
+			fillHSBFields = function  (hsba, cal) {
 				$(cal).data('colpickRmx').fields
 					.eq(4).val(Math.round(hsba.h)).end()
 					.eq(5).val(Math.round(hsba.s)).end()
 					.eq(6).val(Math.round(hsba.b)).end();
 			},
-			fillAlphaField = function (hsba, cal) { //OKK
+			fillAlphaField = function (hsba, cal) {
 				$(cal).data('colpickRmx').fields.eq(7).val(Math.round(hsba.a*100)).end();
 			},
-			fillHexField = function (hsba, cal) { //OKK
+			fillHexField = function (hsba, cal) {
 				if($(cal).data('colpickRmx').enableAlpha) $(cal).data('colpickRmx').fields.eq(0).val(hsbaToHex(hsba));
 				else $(cal).data('colpickRmx').fields.eq(0).val(hsbaToHex(hsba).substring(0,6));
 			},
 			//Set the round selector position
-			setSelector = function (hsba, cal) { //OKK
+			setSelector = function (hsba, cal) {
 				var rgba = hsbaToRgba({h: hsba.h, s: 100, b: 100, a: 255});
 				$(cal).data('colpickRmx').selector.css('backgroundColor', 'rgb('+rgba.r+','+rgba.g+','+rgba.b+')');
 				$(cal).data('colpickRmx').selectorIndic.css({
@@ -76,15 +76,15 @@ Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 				});
 			},
 			//Set the hue selector position
-			setHue = function (hsba, cal) { //OKK
+			setHue = function (hsba, cal) {
 				$(cal).data('colpickRmx').hue.css('top', Math.round($(cal).data('colpickRmx').size - $(cal).data('colpickRmx').size * hsba.h/360));
 			},
 			//Set the alpha selector position
-			setAlpha = function (hsba, cal) { //OKK
+			setAlpha = function (hsba, cal) {
 				if ($(cal).data('colpickRmx').enableAlpha) $(cal).data('colpickRmx').alpha.css('left', Math.round($(cal).data('colpickRmx').size * hsba.a));
 			},
 			//Update the color of alpha bar with the choosen color
-			setAlphaBarColor = function (col, cal) { //OKK
+			setAlphaBarColor = function (col, cal) {
 				if ($(cal).data('colpickRmx').enableAlpha) {
 					var rgba = hsbaToRgba(col);
 					var begin = 'rgba('+rgba.r+','+rgba.g+','+rgba.b+',0)', end = 'rgba('+rgba.r+','+rgba.g+','+rgba.b+',1)';
@@ -98,16 +98,16 @@ Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 				}
 			},
 			//Set current and new colors
-			setCurrentColor = function (hsba, cal) { //OKK
+			setCurrentColor = function (hsba, cal) {
 				var rgba = hsbaToRgba(hsba);
 				$(cal).data('colpickRmx').currentColor.css('backgroundColor', 'rgba('+rgba.r+','+rgba.g+','+rgba.b+','+rgba.a+')');
 			},
-			setNewColor = function (hsba, cal) { //OKK
+			setNewColor = function (hsba, cal) {
 				var rgba = hsbaToRgba(hsba);
 				$(cal).data('colpickRmx').newColor.css('backgroundColor', 'rgba('+rgba.r+','+rgba.g+','+rgba.b+','+rgba.a+')');
 			},
 			//Called when the new color is changed
-			change = function () { //OKK
+			change = function () {
 				var cal = $(this).parent().parent(), col;
 				if (this.parentNode.className.indexOf('_alpha') > 0) {
 					cal.data('colpickRmx').color = col = {
@@ -159,15 +159,15 @@ Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 				cal.data('colpickRmx').onChange.apply(cal.parent(), [{bySetColor:false, colorDiv:cal.get(0), el:cal.data('colpickRmx').el, hex:hsbaToHex(col).substring(0,6), hexa:hsbaToHex(col), hsb:{h:col.h, s:col.s, b:col.b}, hsba:cloneHSBA(col), rgb:{r:rgba.r, g:rgba.g, b:rgba.b}, rgba:cloneRGBA(rgba)}]);
 			},
 			//Change style on blur and on focus of inputs
-			blur = function () { //OKK AP
+			blur = function () {
 				$(this).parent().removeClass('colpickRmx_focus');
 			},
-			focus = function () { //OKK AP
+			focus = function () {
 				$(this).parent().parent().data('colpickRmx').fields.parent().removeClass('colpickRmx_focus');
 				$(this).parent().addClass('colpickRmx_focus');
 			},
 			//Increment/decrement arrows functions
-			downIncrement = function (ev) { //OKK
+			downIncrement = function (ev) {
 				ev.preventDefault ? ev.preventDefault() : ev.returnValue = false;
 				var field = $(this).parent().find('input').focus();
 				var current = {
@@ -181,22 +181,20 @@ Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 				$(document).mouseup(current, upIncrement);
 				$(document).mousemove(current, moveIncrement);
 			},
-			moveIncrement = function (ev) { //OKK AP
+			moveIncrement = function (ev) {
 				ev.data.field.val(Math.max(0, Math.min(ev.data.max, Math.round(ev.data.val - ev.pageY + ev.data.y))));
-				if (ev.data.preview) {
-					change.apply(ev.data.field.get(0), [true]);
-				}
+				if (ev.data.preview) change.apply(ev.data.field.get(0), [true]);
 				return false;
 			},
-			upIncrement = function (ev) { //OKK AP
-				change.apply(ev.data.field.get(0), [true]);
+			upIncrement = function (ev) {
+				if (!ev.data.preview) change.apply(ev.data.field.get(0), [true]);
 				ev.data.el.removeClass('colpickRmx_changing').find('input').focus();
 				$(document).off('mouseup', upIncrement);
 				$(document).off('mousemove', moveIncrement);
 				return false;
 			},
 			//Alpha slider functions
-			downAlpha = function (ev) { //OKK
+			downAlpha = function (ev) {
 				ev.preventDefault ? ev.preventDefault() : ev.returnValue = false;
 				var current = {
 					cal: $(this).parent(),
@@ -214,7 +212,7 @@ Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 				);
 				return false;
 			},
-			moveAlpha = function (ev) { //OKK
+			moveAlpha = function (ev) {
 				if (ev.data.preview) { //If livePreview is false, update alpha only at down and up events.
 					var pageX = ((ev.type == 'touchmove') ? ev.originalEvent.changedTouches[0].pageX : ev.pageX );
 					change.apply(
@@ -226,7 +224,7 @@ Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 				}
 				return false;
 			},
-			upAlpha = function (ev) { //OKK
+			upAlpha = function (ev) {
 				if (!ev.data.preview) { //If livePreview is false, update alpha only at down and up events.
 					var pageX = ((ev.type == 'touchend') ? ev.originalEvent.changedTouches[0].pageX : ev.pageX );
 					change.apply(
@@ -243,7 +241,7 @@ Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 				return false;
 			},
 			//Hue slider functions
-			downHue = function (ev) { //OKK AP
+			downHue = function (ev) {
 				ev.preventDefault ? ev.preventDefault() : ev.returnValue = false;
 				var current = {
 					cal: $(this).parent(),
@@ -261,7 +259,7 @@ Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 				);
 				return false;
 			},
-			moveHue = function (ev) { //OKK AP
+			moveHue = function (ev) {
 				if (ev.data.preview) { //If livePreview is false, update hue only at down and up events.
 					var pageY = ((ev.type == 'touchmove') ? ev.originalEvent.changedTouches[0].pageY : ev.pageY );
 					change.apply(
@@ -273,7 +271,7 @@ Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 				}
 				return false;
 			},
-			upHue = function (ev) { //OKK AP
+			upHue = function (ev) {
 				if (!ev.data.preview) { //If livePreview is false, update hue only at down and up events.
 					var pageY = ((ev.type == 'touchend') ? ev.originalEvent.changedTouches[0].pageY : ev.pageY );
 					change.apply(
@@ -291,7 +289,7 @@ Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 				return false;
 			},
 			//Color selector functions
-			downSelector = function (ev) { //OKK AP
+			downSelector = function (ev) {
 				ev.preventDefault ? ev.preventDefault() : ev.returnValue = false;
 				var current = {
 					cal: $(this).parent(),
@@ -312,7 +310,7 @@ Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 				);
 				return false;
 			},
-			moveSelector = function (ev) { //OKK AP
+			moveSelector = function (ev) {
 				if (ev.data.preview) { //If livePreview is false, update values only at down and up events.
 					var pageX, pageY;
 					if(ev.type == 'touchmove') { pageX = ev.originalEvent.changedTouches[0].pageX; pageY = ev.originalEvent.changedTouches[0].pageY; }
@@ -327,7 +325,7 @@ Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 				}
 				return false;
 			},
-			upSelector = function (ev) { //OKK AP
+			upSelector = function (ev) {
 				if (!ev.data.preview) { //If livePreview is false, update values only at down and up events.
 					var pageX, pageY;
 					if(ev.type == 'touchend') { pageX = ev.originalEvent.changedTouches[0].pageX; pageY = ev.originalEvent.changedTouches[0].pageY; }
@@ -348,7 +346,7 @@ Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 				return false;
 			},
 			//Submit button
-			clickSubmit = function () { //OKK
+			clickSubmit = function () {
 				var cal = $(this).parent();
 				var col = cal.data('colpickRmx').color;
 				cal.data('colpickRmx').origColor = cloneHSBA(col);
@@ -358,7 +356,7 @@ Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 				cal.data('colpickRmx').onSubmit({colorDiv:cal.get(0), el:cal.data('colpickRmx').el, hex:hsbaToHex(col).substring(0,6), hexa:hsbaToHex(col), hsb:{h:col.h, s:col.s, b:col.b}, hsba:cloneHSBA(col), rgb:{r:rgba.r, g:rgba.g, b:rgba.b}, rgba:cloneRGBA(rgba)});
 			},
 			//Restore original color by clicking on current color
-			restoreOriginal = function () { //OKK
+			restoreOriginal = function () {
 				var cal = $(this).parent();
 				var col = cloneHSBA(cal.data('colpickRmx').origColor);
 				cal.data('colpickRmx').color = col;
@@ -377,7 +375,7 @@ Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 				cal.data('colpickRmx').onChange.apply(cal.parent(), [{bySetColor:false, colorDiv:cal.get(0), el:cal.data('colpickRmx').el, hex:hsbaToHex(col).substring(0,6), hexa:hsbaToHex(col), hsb:{h:col.h, s:col.s, b:col.b}, hsba:cloneHSBA(col), rgb:{r:rgba.r, g:rgba.g, b:rgba.b}, rgba:cloneRGBA(rgba)}]);
 			},
 			//Fix the values if the user enters a wrong value
-			fixHSBA = function (hsba) { //OKK
+			fixHSBA = function (hsba) {
 				if (hsba === undefined) return {h:0, s:0, b:0, a:1};
 				return {
 					h: Math.min(360, Math.max(0, isNaN(hsba.h) ? 0 : hsba.h)),
@@ -386,7 +384,7 @@ Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 					a: Math.min(1, Math.max(0, isNaN(hsba.a) ? 1 : hsba.a))
 				};
 			},
-			fixRGBA = function (rgba) { //OKK
+			fixRGBA = function (rgba) {
 				if (rgba === undefined) return {r:0, g:0, b:0, a:1};
 				return {
 					r: Math.min(255, Math.max(0, isNaN(rgba.r) ? 0 : rgba.r)),
@@ -395,17 +393,17 @@ Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 					a: Math.min(1, Math.max(0, isNaN(rgba.a) ? 1 : rgba.a))
 				};
 			},
-			fixHex = function (hex, cal) { //OKK
+			fixHex = function (hex, cal) {
 				if (hex === undefined) hex = "000000ff";
 				if (!cal.data('colpickRmx').enableAlpha) {
 					hex = removeAlpha(hex);
 				}
 				return hex;
 			},
-			fixAlpha = function (alpha) { //OKK
+			fixAlpha = function (alpha) {
 				return Math.min(1, Math.max(0, isNaN(alpha) ? 1 : alpha));
 			},
-			removeAlpha = function (col) { //OKK
+			removeAlpha = function (col) {
 				if (col != undefined) {
 					if (typeof col == 'string') {
 						if (col.indexOf('#') != 0) {
@@ -420,12 +418,12 @@ Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 				return col;
 			},
 			//Clone color objects
-			cloneHSBA = function (hsba) { //OKK
+			cloneHSBA = function (hsba) {
 				if (hsba === undefined) return {h:0, s:0, b:0, a:1};
 				if (hsba.a === undefined) return {h:hsba.h, s:hsba.s, b:hsba.b, a:1};
 				return {h:hsba.h, s:hsba.s, b:hsba.b, a:hsba.a};
 			},
-			cloneRGBA = function (rgba) { //OKK
+			cloneRGBA = function (rgba) {
 				if (rgba === undefined) return {r:0, g:0, b:0, a:1};
 				if (rgba.a === undefined) return {r:rgba.r, g:rgba.g, b:rgba.b, a:1};
 				return {r:rgba.r, g:rgba.g, b:rgba.b, a:rgba.a};
@@ -436,7 +434,7 @@ Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 				return (hsba1.h == hsba2.h && hsba1.s == hsba2.s && hsba1.b == hsba2.b && hsba1.a == hsba2.a);
 			}
 			//Shows/hides the color picker
-			show = function (ev) { //OKK AP
+			show = function (ev) {
 				//Prevent the trigger of any direct parent
 				if (ev) ev.stopPropagation();
 
@@ -485,7 +483,7 @@ Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 				$('html').mousedown({cal:cal}, hide);
 				cal.mousedown(function(ev){ev.stopPropagation();})
 			},
-			hide = function (ev) { //OKK AP
+			hide = function (ev) {
 				var cal = $('#' + $(this).data('colpickRmxId'));
 				if (ev) cal = ev.data.cal;
 				//Trying to access to a field (e.g. color) and, if is generated an error, abort!
@@ -498,20 +496,20 @@ Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 				$('html').off('mousedown', hide);
 			},
 			//Detect if the color picker is out of viewport
-			outOfViewportHeight = function (cal, wrapEl, domEl) { //OKK AP
+			outOfViewportHeight = function (cal, wrapEl, domEl) {
 				var calViewTop = wrapEl.offset().top - $(window).scrollTop() + domEl.offsetHeight; //Top of the color picker in viewport
 				var calHeight = cal.outerHeight(); //Height of the color picker
 				var viewHeight = $(window).height(); //Viewport height
 				return (calViewTop + calHeight > viewHeight);
 			},
-			outOfViewportWidth = function (cal, wrapEl, domEl) { //OKK AP
+			outOfViewportWidth = function (cal, wrapEl, domEl) {
 				var calViewLeft = wrapEl.offset().left - $(window).scrollLeft(); //Left of the color picker in viewport
 				var calWidth = cal.outerWidth(); //Width of the color picker
 				var viewWidth = $(window).width(); //Viewport width
 				return (calViewLeft + calWidth > viewWidth);
 			},
 			//Destroys the color picker
-			destroy = function (ev) { //OKK AP
+			destroy = function (ev) {
 				var cal = $('#' + $(this).data('colpickRmxId'));
 				if (ev) cal = ev.data.cal;
 				//Fires onDestroy
@@ -522,7 +520,7 @@ Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 				$('html').off('mousedown', hide);
 			},
 			//Generate a random unique id
-			getUniqueID = (function () { //OKK AP
+			getUniqueID = (function () {
 				var cnt = Math.round(Math.random() * 10000);
 				return function () {
 					cnt += 1;
@@ -530,7 +528,7 @@ Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 				};
 			})();
 		return {
-			init: function (opt) { //OKK
+			init: function (opt) {
 				opt = $.extend({}, defaults, opt||{});
 				//Set color
 				if (typeof opt.color == 'string') opt.color = hexToHsba(opt.color);
@@ -706,7 +704,7 @@ Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 				});
 			},
 			//Shows the picker
-			showPicker: function() { //OKK AP
+			showPicker: function() {
 				return this.each( function () {
 					if ($(this).data('colpickRmxId')) {
 						show.apply(this);
@@ -714,7 +712,7 @@ Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 				});
 			},
 			//Hides the picker
-			hidePicker: function() { //OKK AP
+			hidePicker: function() {
 				return this.each( function () {
 					if ($(this).data('colpickRmxId')) {
 						hide.apply(this);
@@ -722,7 +720,7 @@ Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 				});
 			},
 			//Destroys the picker
-			destroyPicker: function() { //OKK
+			destroyPicker: function() {
 				return this.each( function () {
 					if ($(this).data('colpickRmxId')) {
 						destroy.apply(this);
@@ -730,7 +728,7 @@ Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 				});
 			},
 			//Sets a color as new and current (Default: Set only as new color)
-			setColor: function(col, setCurrent) { //OKK
+			setColor: function(col, setCurrent) {
 				if (col != undefined) { //If color is undefined, do nothing
 					if (typeof col == 'string') col = hexToHsba(col);
 					else if (col.r != undefined && col.g != undefined && col.b != undefined) col = rgbaToHsba(col);
@@ -770,7 +768,7 @@ Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 				}
 			},
 			//Returns the selected color (Default: Hsb color with alpha value, and get new color (not current))
-			getColor: function(type, getCurrent) { //OKK
+			getColor: function(type, getCurrent) {
 				var cal = $('#' + $(this).data('colpickRmxId'));
 				if (getCurrent === undefined) getCurrent = false; //Default: Get new color (not current)
 				if (type === undefined) type = "hsba"; //Default: Hsb color with alpha value
@@ -786,7 +784,7 @@ Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 		};
 	}();
 	//Color space convertions
-	var hexToRgba = function (hex) { //OKK
+	var hexToRgba = function (hex) {
 		if (hex === undefined) return {r:0, g:0, b:0, a:1};
 		if (hex.indexOf('#') == 0) hex = hex.substring(1);
 		if (isValidHex(hex)) {
@@ -800,10 +798,10 @@ Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 		rgba.a = rgba.a / 255;
 		return rgba;
 	};
-	var hexToHsba = function (hex) { //OKK
+	var hexToHsba = function (hex) {
 		return rgbaToHsba(hexToRgba(hex));
 	};
-	var rgbaToHsba = function (rgba) { //OKK
+	var rgbaToHsba = function (rgba) {
 		if (rgba === undefined) return {h:0, s:0, b:0, a:1};
 		if (rgba.a === undefined) rgba.a = 1;
 		var hsba = {h:0, s:0, b:0, a:rgba.a};
@@ -823,7 +821,7 @@ Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 		hsba.b *= 100/255;
 		return hsba;
 	};
-	var hsbaToRgba = function (hsba) { //OKK
+	var hsbaToRgba = function (hsba) {
 		if (hsba === undefined) return {r:0, g:0, b:0, a:1};
 		if (hsba.a === undefined) hsba.a = 1;
 		var rgba = {};
@@ -847,7 +845,7 @@ Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 		}
 		return {r:Math.round(rgba.r), g:Math.round(rgba.g), b:Math.round(rgba.b), a:hsba.a};
 	};
-	var rgbaToHex = function (rgba) { //OKK
+	var rgbaToHex = function (rgba) {
 		if (rgba === undefined) return "000000ff";
 		if (rgba.a === undefined) rgba.a = 1;
 		var alpha = Math.round(rgba.a * 255);
@@ -864,11 +862,11 @@ Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 		});
 		return hex.join('');
 	};
-	var hsbaToHex = function (hsba) { //OKK
+	var hsbaToHex = function (hsba) {
 		return rgbaToHex(hsbaToRgba(hsba));
 	};
 	//Check if a string is a valid hexadecimal string
-	var isValidHex = function (hex) { //OKK
+	var isValidHex = function (hex) {
 		if (hex === undefined) return false;
 		while (hex.indexOf('0') == 0) {
 			hex = hex.substring(1);
