@@ -7,7 +7,7 @@ Dual licensed under GPL v3.0 and MIT licenses.
 
 Description, how to use, and examples: fire-space.weebly.com/colpick-remix
 
-Last Edit: 2017/11/29 00:44 Beta 3 TOPPO
+Last Edit: 2017/11/30 20:50 Beta 4 TOPPO
 */
 
 
@@ -37,13 +37,13 @@ Last Edit: 2017/11/29 00:44 Beta 3 TOPPO
 				livePreview: true, //If is "true", the color is updated immediately when changing a parameter.
 				polyfill: false, //If "true", the color picker is only activated when no native browser behavior is available.
 				appendToBody: false, //If "true", force the color picker to append to body (only for "non flat" version).
-				onLoaded: function() {}, //OKK AP
-				onBeforeShow: function() {}, //OKK AP
-				onShow: function () {}, //OKK AP
-				onHide: function () {}, //OKK AP
-				onDestroy: function () {}, //OKK AP
-				onChange: function () {}, //OKK
-				onSubmit: function () {} //OKK
+				onLoaded: function() {}, //OKK -
+				onBeforeShow: function() {}, //OKK -
+				onShow: function () {}, //OKK AB -
+				onHide: function () {}, //OKK AB -
+				onDestroy: function () {}, //OKK AB -
+				onChange: function () {}, //OKK -
+				onSubmit: function () {} //OKK -
 			},
 			//Fill the inputs of the plugin
 			fillRGBFields = function  (hsba, cal) { //OKK
@@ -154,13 +154,9 @@ Last Edit: 2017/11/29 00:44 Beta 3 TOPPO
 					setAlphaBarColor(col, cal.get(0));
 					setNewColor(col, cal.get(0));
 				}
-
+				//Fires onChange (bySetColor = false)
 				var rgba = hsbaToRgba(col);
-				if (cal.data('colpickRmx').enableAlpha) {
-					cal.data('colpickRmx').onChange.apply(cal.parent(), [{h:col.h, s:col.s, b:col.b, a:col.a}, hsbaToHex(col), {r:rgba.r, g:rgba.g, b:rgba.b, a:rgba.a}, cal.data('colpickRmx').el, 0]);
-				} else {
-					cal.data('colpickRmx').onChange.apply(cal.parent(), [{h:col.h, s:col.s, b:col.b}, hsbaToHex(col).substring(0,6), {r:rgba.r, g:rgba.g, b:rgba.b}, cal.data('colpickRmx').el, 0]);
-				}
+				cal.data('colpickRmx').onChange.apply(cal.parent(), [{bySetColor:false, colorDiv:cal.get(0), el:cal.data('colpickRmx').el, hex:hsbaToHex(col).substring(0,6), hexa:hsbaToHex(col), hsb:{h:col.h, s:col.s, b:col.b}, hsba:cloneHSBA(col), rgb:{r:rgba.r, g:rgba.g, b:rgba.b}, rgba:cloneRGBA(rgba)}]);
 			},
 			//Change style on blur and on focus of inputs
 			blur = function () { //OKK AP
@@ -355,20 +351,16 @@ Last Edit: 2017/11/29 00:44 Beta 3 TOPPO
 			clickSubmit = function () { //OKK
 				var cal = $(this).parent();
 				var col = cal.data('colpickRmx').color;
-				cal.data('colpickRmx').origColor = cloneColor(col);
+				cal.data('colpickRmx').origColor = cloneHSBA(col);
 				setCurrentColor(col, cal.get(0));
-
+				//Fires onSubmit
 				var rgba = hsbaToRgba(col);
-				if (cal.data('colpickRmx').enableAlpha) {
-					cal.data('colpickRmx').onSubmit({h:col.h, s:col.s, b:col.b, a:col.a}, hsbaToHex(col), {r:rgba.r, g:rgba.g, b:rgba.b, a:rgba.a}, cal.data('colpickRmx').el);
-				} else {
-					cal.data('colpickRmx').onSubmit({h:col.h, s:col.s, b:col.b}, hsbaToHex(col).substring(0,6), {r:rgba.r, g:rgba.g, b:rgba.b}, cal.data('colpickRmx').el);
-				}
+				cal.data('colpickRmx').onSubmit({colorDiv:cal.get(0), el:cal.data('colpickRmx').el, hex:hsbaToHex(col).substring(0,6), hexa:hsbaToHex(col), hsb:{h:col.h, s:col.s, b:col.b}, hsba:cloneHSBA(col), rgb:{r:rgba.r, g:rgba.g, b:rgba.b}, rgba:cloneRGBA(rgba)});
 			},
 			//Restore original color by clicking on current color
 			restoreOriginal = function () { //OKK
 				var cal = $(this).parent();
-				var col = cloneColor(cal.data('colpickRmx').origColor);
+				var col = cloneHSBA(cal.data('colpickRmx').origColor);
 				cal.data('colpickRmx').color = col;
 				//Reapplies current color to all elements
 				fillHexField(col, cal.get(0));
@@ -380,13 +372,9 @@ Last Edit: 2017/11/29 00:44 Beta 3 TOPPO
 				setAlpha(col, cal.get(0));
 				setAlphaBarColor(col, cal.get(0));
 				setNewColor(col, cal.get(0));
-
+				//Fires onChange (bySetColor = false)
 				var rgba = hsbaToRgba(col);
-				if (cal.data('colpickRmx').enableAlpha) {
-					cal.data('colpickRmx').onChange.apply(cal.parent(), [{h:col.h, s:col.s, b:col.b, a:col.a}, hsbaToHex(col), {r:rgba.r, g:rgba.g, b:rgba.b, a:rgba.a}, cal.data('colpickRmx').el, 0]);
-				} else {
-					cal.data('colpickRmx').onChange.apply(cal.parent(), [{h:col.h, s:col.s, b:col.b}, hsbaToHex(col).substring(0,6), {r:rgba.r, g:rgba.g, b:rgba.b}, cal.data('colpickRmx').el, 0]);
-				}
+				cal.data('colpickRmx').onChange.apply(cal.parent(), [{bySetColor:false, colorDiv:cal.get(0), el:cal.data('colpickRmx').el, hex:hsbaToHex(col).substring(0,6), hexa:hsbaToHex(col), hsb:{h:col.h, s:col.s, b:col.b}, hsba:cloneHSBA(col), rgb:{r:rgba.r, g:rgba.g, b:rgba.b}, rgba:cloneRGBA(rgba)}]);
 			},
 			//Fix the values if the user enters a wrong value
 			fixHSBA = function (hsba) { //OKK
@@ -431,43 +419,47 @@ Last Edit: 2017/11/29 00:44 Beta 3 TOPPO
 				}
 				return col;
 			},
-			//Clone hsba object
-			cloneColor = function (col) { //OKK
-				if (col === undefined) return {h:0, s:0, b:0, a:1};
-				if (col.a === undefined) return {h:col.h, s:col.s, b:col.b, a:1};
-				return {h:col.h, s:col.s, b:col.b, a:col.a};
+			//Clone color objects
+			cloneHSBA = function (hsba) { //OKK
+				if (hsba === undefined) return {h:0, s:0, b:0, a:1};
+				if (hsba.a === undefined) return {h:hsba.h, s:hsba.s, b:hsba.b, a:1};
+				return {h:hsba.h, s:hsba.s, b:hsba.b, a:hsba.a};
 			},
-			//Show/hide the color picker
+			cloneRGBA = function (rgba) { //OKK
+				if (rgba === undefined) return {r:0, g:0, b:0, a:1};
+				if (rgba.a === undefined) return {r:rgba.r, g:rgba.g, b:rgba.b, a:1};
+				return {r:rgba.r, g:rgba.g, b:rgba.b, a:rgba.a};
+			},
+			//Compare color objects
+			compareHSBA = function (hsba1, hsba2) {
+				if (hsba1 === undefined || hsba2 === undefined) return false;
+				return (hsba1.h == hsba2.h && hsba1.s == hsba2.s && hsba1.b == hsba2.b && hsba1.a == hsba2.a);
+			}
+			//Shows/hides the color picker
 			show = function (ev) { //OKK AP
-				if(ev) {
-					// Prevent the trigger of any direct parent
-					ev.stopPropagation();
-				}
+				//Prevent the trigger of any direct parent
+				if (ev) ev.stopPropagation();
+
 				var cal = $('#' + $(this).data('colpickRmxId'));
+				//Trying to access to a field (e.g. color) and, if is generated an error, abort!
+				try {var temp = cal.data('colpickRmx').color;}
+				catch (e) {return this;}
 
-				//Trying to access to a variable (e.g. color)
-				try { var temp = cal.data('colpickRmx').color; }
-				catch (e) {
-					//If an error is generated: abort showing!
-					//window.alert("Failed to show color picker! Probably it was destroyed!"); //If you want to show this error message, uncomment this line.
-					return;
-				}
+				if (ev && !cal.data('colpickRmx').polyfill) ev.preventDefault();
+				//Fires onBeforeShow
+				cal.data('colpickRmx').onBeforeShow.apply(this, [{colorDiv:cal.get(0), el:cal.data('colpickRmx').el}]);
 
-				if (ev && !cal.data('colpickRmx').polyfill) {
-					ev.preventDefault();
-				}
-				cal.data('colpickRmx').onBeforeShow.apply(this, [cal.get(0), cal.data('colpickRmx').el]);
-
-				if(cal.data('colpickRmx').flat){ //If flat is true, simply shows the color picker!
-					if (cal.data('colpickRmx').onShow.apply(this, [cal.get(0), cal.data('colpickRmx').el]) != false) {
-						cal.show();
-					}
+				//If flat is true, simply shows the color picker!
+				if (cal.data('colpickRmx').flat) {
+					//Fires onShow
+					if (!(cal.data('colpickRmx').onShow.apply(this, [{colorDiv:cal.get(0), el:cal.data('colpickRmx').el}]) != false)) return this;
+					//Shows the picker
+					cal.show();
 					return;
 				}
 
 				//Position the color picker
-				var pos;
-				if (cal.data('colpickRmx').appendedToBody) { pos = $(this).offset(); } else { pos = $(this).position(); }
+				var pos = cal.data('colpickRmx').appendedToBody ? $(this).offset() : $(this).position();
 				var top = pos.top + this.offsetHeight;
 				var left = pos.left;
 				//Fix if the color picker is showing outside of viewport
@@ -485,22 +477,24 @@ Last Edit: 2017/11/29 00:44 Beta 3 TOPPO
 				}
 				//Apply the result
 				cal.css({left: left + 'px', top: top + 'px'});
-
-				if (cal.data('colpickRmx').onShow.apply(this, [cal.get(0), cal.data('colpickRmx').el]) != false) {
-					cal.show();
-				}
+				//Fires onShow
+				if (!(cal.data('colpickRmx').onShow.apply(this, [{colorDiv:cal.get(0), el:cal.data('colpickRmx').el}]) != false)) return this;
+				//Shows the picker
+				cal.show();
 				//Hide when user clicks outside
 				$('html').mousedown({cal:cal}, hide);
 				cal.mousedown(function(ev){ev.stopPropagation();})
 			},
 			hide = function (ev) { //OKK AP
 				var cal = $('#' + $(this).data('colpickRmxId'));
-				if (ev) {
-						cal = ev.data.cal;
-				}
-				if (cal.data('colpickRmx').onHide.apply(this, [cal.get(0), cal.data('colpickRmx').el]) != false) {
-					cal.hide();
-				}
+				if (ev) cal = ev.data.cal;
+				//Trying to access to a field (e.g. color) and, if is generated an error, abort!
+				try {var temp = cal.data('colpickRmx').color;}
+				catch (e) {return this;}
+				//Fires onHide
+				if (!(cal.data('colpickRmx').onHide.apply(this, [{colorDiv:cal.get(0), el:cal.data('colpickRmx').el}]) != false)) return this;
+				//Hides the picker
+				cal.hide();
 				$('html').off('mousedown', hide);
 			},
 			//Detect if the color picker is out of viewport
@@ -515,6 +509,17 @@ Last Edit: 2017/11/29 00:44 Beta 3 TOPPO
 				var calWidth = cal.outerWidth(); //Width of the color picker
 				var viewWidth = $(window).width(); //Viewport width
 				return (calViewLeft + calWidth > viewWidth);
+			},
+			//Destroys the color picker
+			destroy = function (ev) { //OKK AP
+				var cal = $('#' + $(this).data('colpickRmxId'));
+				if (ev) cal = ev.data.cal;
+				//Fires onDestroy
+				if (!(cal.data('colpickRmx').onDestroy.apply(this, [{colorDiv:cal.get(0), el:cal.data('colpickRmx').el}]) != false)) return this;
+				//Destroys the picker
+				cal.remove();
+				//Prevent firing of hide event on a destroyed object! //bySetColor
+				$('html').off('mousedown', hide);
 			},
 			//Generate a random unique id
 			getUniqueID = (function () { //OKK AP
@@ -547,7 +552,7 @@ Last Edit: 2017/11/29 00:44 Beta 3 TOPPO
 						//Fixes color if alpha is disabled
 						if (!opt.enableAlpha) opt.color = removeAlpha(opt.color);
 						//Setup current color
-						options.origColor = cloneColor(opt.color);
+						options.origColor = cloneHSBA(opt.color);
 
 						// Set polyfill
 						if (typeof opt.polyfill == 'function') options.polyfill = opt.polyfill(this);
@@ -696,7 +701,7 @@ Last Edit: 2017/11/29 00:44 Beta 3 TOPPO
 						}
 
 						//Loading completed
-						cal.data('colpickRmx').onLoaded.apply(cal.parent(), [cal.get(0), cal.data('colpickRmx').el]);
+						cal.data('colpickRmx').onLoaded.apply(cal.parent(), [{colorDiv:cal.get(0), el:cal.data('colpickRmx').el}]);
 					}
 				});
 			},
@@ -718,36 +723,28 @@ Last Edit: 2017/11/29 00:44 Beta 3 TOPPO
 			},
 			//Destroys the picker
 			destroyPicker: function() { //OKK
-				var cal = $('#' + $(this).data('colpickRmxId'));
-				cal.data('colpickRmx').destroy = true;
-				cal.data('colpickRmx').onDestroy(cal.get(0), cal.data('colpickRmx').el);
-
-				if (cal.data('colpickRmx').destroy) {
-					$('html').off('mousedown', hide);
-					//Destroying picker
-					cal.remove();
-				}
+				return this.each( function () {
+					if ($(this).data('colpickRmxId')) {
+						destroy.apply(this);
+					}
+				});
 			},
-			cancelDestroy: function() { //OKK
-				$('#' + $(this).data('colpickRmxId')).data('colpickRmx').destroy = false;
-			},
-			//Sets a color as new and current
+			//Sets a color as new and current (Default: Set only as new color)
 			setColor: function(col, setCurrent) { //OKK
-				if (col != undefined) {
+				if (col != undefined) { //If color is undefined, do nothing
 					if (typeof col == 'string') col = hexToHsba(col);
 					else if (col.r != undefined && col.g != undefined && col.b != undefined) col = rgbaToHsba(col);
 					else if (col.h != undefined && col.s != undefined && col.b != undefined) col = fixHSBA(col);
 					else return this;
 					if (setCurrent === undefined) setCurrent = false; //Default: Set only as new color
-
 					return this.each(function(){
 						if ($(this).data('colpickRmxId')) {
 							var cal = $('#' + $(this).data('colpickRmxId'));
 							//Fixes color if alpha is disabled
 							if (!cal.data('colpickRmx').enableAlpha) col = removeAlpha(col);
-							//Controls if the color is actually changed!
-							var initCol = cal.data('colpickRmx').color;
-							if (col.h == initCol.h && col.s == initCol.s && col.b == initCol.b && col.a == initCol.a) return this;
+							//Check if the color is actually changed and, if is true, do nothing!
+							if (setCurrent) { if (compareHSBA(col, cal.data('colpickRmx').color) && compareHSBA(col, cal.data('colpickRmx').origColor)) return this; }
+							else { if (compareHSBA(col, cal.data('colpickRmx').color)) return this; }
 							//Setup new color
 							cal.data('colpickRmx').color = col;
 							//Applies color to all elements
@@ -760,28 +757,26 @@ Last Edit: 2017/11/29 00:44 Beta 3 TOPPO
 							setAlpha(col, cal.get(0));
 							setAlphaBarColor(col, cal.get(0));
 							setNewColor(col, cal.get(0));
-							if (setCurrent) { //If setCurrent is "true", sets the color as current
-								cal.data('colpickRmx').origColor = cloneColor(col);
+							//If setCurrent is "true", sets the color as current
+							if (setCurrent) {
+								cal.data('colpickRmx').origColor = cloneHSBA(col);
 								setCurrentColor(col, cal.get(0));
 							}
-
+							//Fires onChange (bySetColor = true)
 							var rgba = hsbaToRgba(col);
-							if (cal.data('colpickRmx').enableAlpha) {
-								cal.data('colpickRmx').onChange.apply(cal.parent(), [{h:col.h, s:col.s, b:col.b, a:col.a}, hsbaToHex(col), {r:rgba.r, g:rgba.g, b:rgba.b, a:rgba.a}, cal.data('colpickRmx').el, 1]);
-							} else {
-								cal.data('colpickRmx').onChange.apply(cal.parent(), [{h:col.h, s:col.s, b:col.b}, hsbaToHex(col).substring(0,6), {r:rgba.r, g:rgba.g, b:rgba.b}, cal.data('colpickRmx').el, 1]);
-							}
+							cal.data('colpickRmx').onChange.apply(cal.parent(), [{bySetColor:true, colorDiv:cal.get(0), el:cal.data('colpickRmx').el, hex:hsbaToHex(col).substring(0,6), hexa:hsbaToHex(col), hsb:{h:col.h, s:col.s, b:col.b}, hsba:cloneHSBA(col), rgb:{r:rgba.r, g:rgba.g, b:rgba.b}, rgba:cloneRGBA(rgba)}]);
 						}
 					});
 				}
 			},
-			//Returns the current color
+			//Returns the selected color (Default: Hsb color with alpha value, and get new color (not current))
 			getColor: function(type, getCurrent) { //OKK
 				var cal = $('#' + $(this).data('colpickRmxId'));
-				var withAlpha = (type.indexOf("a") != -1);
-				if (getCurrent === undefined) getCurrent = false;
+				if (getCurrent === undefined) getCurrent = false; //Default: Get new color (not current)
+				if (type === undefined) type = "hsba"; //Default: Hsb color with alpha value
 
-				var col = getCurrent ? cloneColor(cal.data('colpickRmx').origColor) : cloneColor(cal.data('colpickRmx').color);
+				var withAlpha = (type.indexOf("a") != -1);
+				var col = getCurrent ? cloneHSBA(cal.data('colpickRmx').origColor) : cloneHSBA(cal.data('colpickRmx').color);
 				if (type.indexOf("rgb") != -1) {
 					var rgba = hsbaToRgba(col);
 					return withAlpha ? {r:rgba.r, g:rgba.g, b:rgba.b, a:rgba.a} : {r:rgba.r, g:rgba.g, b:rgba.b};
@@ -887,7 +882,6 @@ Last Edit: 2017/11/29 00:44 Beta 3 TOPPO
 		showColpick: colpickRmx.showPicker,
 		hideColpick: colpickRmx.hidePicker,
 		destroyColpick: colpickRmx.destroyPicker,
-		cancelDestroy: colpickRmx.cancelDestroy,
 		setColpickColor: colpickRmx.setColor,
 		getColpickColor: colpickRmx.getColor
 	});
