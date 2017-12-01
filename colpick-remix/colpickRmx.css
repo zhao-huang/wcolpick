@@ -1,11 +1,11 @@
 /*
 Colpick RemiX - Color Picker
 
-Copyright (C) 2017 Salvatore Peluso (Firestorm): fire-space.weebly.com
+Copyright (C) 2017 Salvatore Peluso (Firestorm): https://fire-space.weebly.com / https://github.com/firestormxyz
 Dual licensed under GPL v3.0 and MIT licenses.
 (Based on Jose Vargas' Color Picker)
 
-Description, how to use, and examples: fire-space.weebly.com/colpick-remix
+Description, how to use, and examples: https://fire-space.weebly.com/colpick-remix / https://github.com/firestormxyz/colpick-remix
 
 Last Edit: 2017/12/01 21:30
 */
