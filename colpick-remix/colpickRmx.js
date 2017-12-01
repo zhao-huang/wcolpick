@@ -7,7 +7,7 @@ Dual licensed under GPL v3.0 and MIT licenses.
 
 Description, how to use, and examples: fire-space.weebly.com/colpick-remix
 
-Last Edit: 2017/11/30 23:40
+Last Edit: 2017/12/01 21:30
 */
 
 
@@ -432,7 +432,7 @@ Last Edit: 2017/11/30 23:40
 			compareHSBA = function (hsba1, hsba2) {
 				if (hsba1 === undefined || hsba2 === undefined) return false;
 				return (hsba1.h == hsba2.h && hsba1.s == hsba2.s && hsba1.b == hsba2.b && hsba1.a == hsba2.a);
-			}
+			},
 			//Shows/hides the color picker
 			show = function (ev) {
 				//Prevent the trigger of any direct parent
