@@ -1,0 +1,34 @@
+{
+  "name": "colpick-remix",
+  "version": "2.0.0",
+  "description": "Photoshop-style Full featured Color Picker for jQuery - Colpick RemiX",
+  "main": "colpick-remix/colpickRmx.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/firestormxyz/colpick-remix.git"
+  },
+  "keywords": [
+    "colpick",
+    "remix",
+    "colpick-remix",
+    "color",
+    "picker",
+    "chooser",
+    "jquery",
+    "input",
+    "converter",
+    "plugin"
+  ],
+  "author": "Salvatore Peluso (https://github.com/firestormxyz)",
+  "license": "(GPL-3.0 AND MIT)",
+  "bugs": {
+    "url": "https://github.com/firestormxyz/colpick-remix/issues"
+  },
+  "homepage": "https://github.com/firestormxyz/colpick-remix",
+  "dependencies": {
+    "jquery": ">=1.7.0 || ^3.2.1"
+  }
+}

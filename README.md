@@ -26,9 +26,6 @@ Repository wiki: <a href="https://github.com/firestormxyz/colpick-remix/wiki">ht
 ### Latest release
 Download link: <a href="https://github.com/firestormxyz/colpick-remix/releases/latest">https://github.com/firestormxyz/colpick-remix/releases/latest</a> <br><br>
 
-### Alpha support
-If you want to try the new version, with alpha channel support, <a href="https://github.com/firestormxyz/colpick-remix/tree/alpha-support">go here</a>! <br><br>
-
 ### Requirements
 This plugin requires jQuery 1.7.0 or later. <br>
 Latest version of jQuery (if you need it): <a href="https://code.jquery.com">https://code.jquery.com</a> <br><br><br>
