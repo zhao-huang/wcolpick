@@ -7,7 +7,7 @@ Dual licensed under GPL v3.0 and MIT licenses.
 
 Description, how to use, and examples: https://fire-space.weebly.com/colpick-remix / https://github.com/firestormxyz/colpick-remix
 
-Last Edit: 2017/12/01 21:30
+Last Edit: 2017/12/03 11:35
 */
 
 
@@ -27,7 +27,8 @@ Last Edit: 2017/12/01 21:30
 				submit: true, //The 3 layouts have 2 sub-layouts for each: with submit button or without.
 				readonlyFields: false, //Setup the readonly attribute to all fields.
 				readonlyHexField: false, //Setup the readonly attribute only to hex field (only for "true" value).
-				lightArrows: false, //ONLY FOR LIGHT COLOR SCHEME! Set the hue's and the alpha's arrows color to a light color (e.g. white).
+				arrowsColor: "default", //Change color scheme for arrows.
+				checkersColor: "default", //Change color scheme for checkerboards.
 				colorSelOutline: true, //Show or hide color selector's outline.
 				hueOutline: true, //Show or hide hue's outline.
 				alphaOutline: true, //Show or hide alpha's outline.
@@ -541,6 +542,8 @@ Last Edit: 2017/12/01 21:30
 				opt.variant = opt.variant.toLowerCase();
 				opt.layout = opt.layout.toLowerCase();
 				opt.colorScheme = opt.colorScheme.toLowerCase();
+				opt.arrowsColor = opt.arrowsColor.toLowerCase();
+				opt.checkersColor = opt.checkersColor.toLowerCase();
 
 				//For each selected DOM element
 				return this.each(function () {
@@ -612,8 +615,14 @@ Last Edit: 2017/12/01 21:30
 							cal.addClass('colpickRmx_light'); //Loading default color scheme for all (light)
 							cal.addClass('colpickRmx_'+options.colorScheme); //Loading the "strange" color scheme
 						}
-						//Set the hue's arrows color to a light color, if requested
-						if (options.lightArrows) cal.addClass('colpickRmx_lightHueArrs');
+
+						//Change color scheme for arrows, if requested
+						if (options.arrowsColor == "light") cal.addClass('colpickRmx_lightArrs');
+						else if (options.arrowsColor == "dark") cal.addClass('colpickRmx_darkArrs');
+
+						//Change color scheme for checkerboards, if requested
+						if (options.checkersColor == "light") cal.addClass('colpickRmx_lightCheckerboards');
+						else if (options.checkersColor == "dark") cal.addClass('colpickRmx_darkCheckerboards');
 
 						//Hide outlines, if requested
 						if (!options.colorSelOutline) cal.addClass('colpickRmx_noCSOutline');
