@@ -187,7 +187,7 @@ Last Edit: 2017/12/01 21:30
 }
 /*Text inputs*/
 .colpickRmxS .colpickRmx_field input, .colpickRmxS .colpickRmx_hex_field input {
-	right: 10px;
+	right: 9px;
 	height: 20px;
 	line-height: 20px;
 	font-size: 9px;
@@ -198,18 +198,18 @@ Last Edit: 2017/12/01 21:30
 /*Field up/down arrows*/
 .colpickRmxS .colpickRmx_field_arrs {
 	height: 20px;
-	width: 6px;
+	width: 5px;
 }
 .colpickRmxS .colpickRmx_field_uarr {
-	top: 3px;
-	border-left-width: 2.5px;
-	border-right-width: 2.5px;
+	top: 2px;
+	border-left-width: 2px;
+	border-right-width: 2px;
 	border-bottom-width: 3px;
 }
 .colpickRmxS .colpickRmx_field_darr {
-	bottom: 3px;
-	border-left-width: 2.5px;
-	border-right-width: 2.5px;
+	bottom: 2px;
+	border-left-width: 2px;
+	border-right-width: 2px;
 	border-top-width: 3px;
 }
 /*Submit/Select button*/
@@ -396,7 +396,7 @@ Last Edit: 2017/12/01 21:30
 }
 /*Text inputs*/
 .colpickRmxS_compact .colpickRmx_field input {
-	right: 6.7px;
+	right: 6.3px;
 }
 .colpickRmxS_compact .colpickRmx_hex_field input {
 	right: 1px;
@@ -631,7 +631,7 @@ Last Edit: 2017/12/01 21:30
 	}
 	/*Text inputs*/
 	.colpickRmxS .colpickRmx_field input {
-		right: 6.7px;
+		right: 6.3px;
 	}
 	.colpickRmxS .colpickRmx_hex_field input {
 		right: 1px;
