@@ -3,17 +3,19 @@ Photoshop-like jQuery Color Picker plugin with various skins and layouts, touch,
 
 ### Features
 * Photoshop-like interface.
-* Supports rgb, hsb, and hex colors.
-* Now with alpha channel support! <b>[MILESTONE !!]</b>
-* 3 Variants: Standard (default), Small, Extra Large.
+* Supports RGB, HSB, Hexadecimal, and HSL (partially).
+* Supports alpha channel (opacity).
+* 3 Variants: Standard, Small, and Extra Large.
 * 4 Skins:
   * 2 Main-skins: Light and Dark.
-  * 2 Sub-skins: Light Full and Dark Full.
-* 3 Main Layouts: Full, only RGB + HEX, only HEX, each with or without the "Select color" button.
-* Compact Layout: Makes the layouts more compact, to save space!
+  * 2 Sub-skins: Standard (with transparent background), and Full (with opaque background).
+* ​6 Layouts:
+  * 3 Main-layouts: Full, only RGB + Hexadecimal, only Hexadecimal.
+  * 2 Sub-layouts: With or without the Select button.
+* Compact Layout: Makes the layouts more compact, to save space.
 * Responsive.
-* Fully customizable.
-* Easy to implement.
+* Supports Touch.
+* Easy to implement and customize.
 
 <br>
 <b>Complete description and documentation here:</b> <br>
@@ -21,7 +23,7 @@ Website: <a href="https://fire-space.weebly.com/colpick-remix">https://fire-spac
 Repository wiki: <a href="https://github.com/firestormxyz/colpick-remix/wiki">https://github.com/firestormxyz/colpick-remix/wiki</a> <br><br>
 
 ### Example of a full standard color picker with full light theme
-![final2](https://user-images.githubusercontent.com/32025549/33502351-fba02936-d6df-11e7-86b9-701b4e281060.png) <br><br>
+![full](https://raw.githubusercontent.com/firestormxyz/files/master/images/cr-full.png) <br><br>
 
 ### Latest release
 Download link: <a href="https://github.com/firestormxyz/colpick-remix/releases/latest">https://github.com/firestormxyz/colpick-remix/releases/latest</a> <br><br>
@@ -32,6 +34,6 @@ Latest version of jQuery (if you need it): <a href="https://code.jquery.com">htt
 
 
 ### License
-Copyright (C) 2017 Salvatore Peluso <br>
+Copyright (C) 2017-2018 Salvatore Peluso <br>
 Dual licensed under GPL v3.0 and MIT licenses. <br>
 (Based on Jose Vargas' <a href="https://github.com/josedvq/colpick-jQuery-Color-Picker">Color Picker</a>)
