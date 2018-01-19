@@ -9,7 +9,7 @@ Photoshop-like jQuery Color Picker plugin with various skins and layouts, touch,
 * 4 Skins:
   * 2 Main-skins: Light and Dark.
   * 2 Sub-skins: Standard (without background), and Full (with an opaque background).
-* 3 Layouts: Full, RGB + Hexadecimal, only Hexadecimal (each with or without the submit button).
+* 3 Layouts: Full, RGB + Hexadecimal, only Hexadecimal (each with or without the Select button).
 * Compact Layout: Makes the layouts more compact, to save space.
 * Responsive.
 * Supports Touch.
