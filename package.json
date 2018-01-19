@@ -1,6 +1,6 @@
 {
   "name": "colpick-remix",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "Photoshop-style Full featured Color Picker for jQuery - Colpick RemiX",
   "main": "colpick-remix/colpickRmx.js",
   "scripts": {

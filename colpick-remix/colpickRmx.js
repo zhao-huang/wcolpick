@@ -7,7 +7,7 @@ Dual licensed under GPL v3.0 and MIT licenses.
 
 Description, how to use, and examples: https://github.com/firestormxyz/colpick-remix
 
-Last Edit: 2018/01/01 19:00
+Last Edit: 2018/01/19 18:00
 */
 
 
@@ -17,34 +17,37 @@ Last Edit: 2018/01/01 19:00
 		var
 			tpl = '<div class="colpickRmx"><div class="colpickRmx_color"><div class="colpickRmx_color_overlay1"><div class="colpickRmx_color_overlay2"><div class="colpickRmx_selector_outer"><div class="colpickRmx_selector_inner"></div></div></div></div></div><div class="colpickRmx_hue"><div class="colpickRmx_hue_underlay"></div><div class="colpickRmx_hue_overlay"></div><div class="colpickRmx_hue_arrs"><div class="colpickRmx_hue_larr"></div><div class="colpickRmx_hue_rarr"></div></div></div><div class="colpickRmx_alpha"><div class="colpickRmx_alpha_underlay colpickRmx_checkerboards"></div><div class="colpickRmx_alpha_overlay"></div><div class="colpickRmx_alpha_arrs"><div class="colpickRmx_alpha_darr"></div><div class="colpickRmx_alpha_uarr"></div></div></div><div class="colpickRmx_hex_field"><div class="colpickRmx_field_letter">#</div><input type="text" maxlength="8" size="6" /></div><div class="colpickRmx_rgb_r colpickRmx_field"><div class="colpickRmx_field_letter">R</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_rgb_g colpickRmx_field"><div class="colpickRmx_field_letter">G</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_rgb_b colpickRmx_field"><div class="colpickRmx_field_letter">B</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_hsb_h colpickRmx_field"><div class="colpickRmx_field_letter">H</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_hsb_s colpickRmx_field"><div class="colpickRmx_field_letter">S</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_hsb_b colpickRmx_field"><div class="colpickRmx_field_letter">B</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_alpha_field colpickRmx_field"><div class="colpickRmx_field_letter">A</div><input type="text" maxlength="3" size="3" /><div class="colpickRmx_field_arrs"><div class="colpickRmx_field_uarr"></div><div class="colpickRmx_field_darr"></div></div></div><div class="colpickRmx_colors"><div class="colpickRmx_colors_underlay colpickRmx_checkerboards"></div><div class="colpickRmx_new_color"></div><div class="colpickRmx_current_color"></div></div><div class="colpickRmx_submit"><div class="colpickRmx_tear"></div></div></div>',
 			defaults = {
-				flat: true, //If is "true", the color picker is displayed regardless.
-				showEvent: 'click', //The event that shows the color picker (N.B. If flat is set to "true", this property is useless).
-				enableAlpha: true, //Enable or disable alpha channel.
-				variant: 'standard', //There are 3 variants: standard, small, extra-large.
-				layout: 'full', //There are 3 types of layouts: full, rgbhex, hex.
-				colorScheme: 'light-full', //There are 4 types of color schemes: light, dark, light-full, dark-full.
-				compactLayout: false, //Switch between Normal and Compact layout.
-				submit: true, //The 3 layouts have 2 sub-layouts for each: with submit button or without.
-				readonlyFields: false, //Setup the readonly attribute to all fields.
-				readonlyHexField: false, //Setup the readonly attribute only to hex field (N.B. Only for "true" value).
-				arrowsColor: 'default', //Change color scheme for arrows.
-				checkersColor: 'default', //Change color scheme for checkerboards.
-				colorSelOutline: true, //Show or hide color selector's outline.
-				hueOutline: true, //Show or hide hue's outline.
-				alphaOutline: true, //Show or hide alpha's outline.
-				colorOutline: true, //Show or hide color's outline.
-				border: 1, //Width, in pixel, of the external border.
-				color: {h:0, s:0, b:20, a:1}, //Default selected color.
-				livePreview: true, //If is "true", the color is updated immediately when changing a parameter.
-				polyfill: false, //If "true", the color picker is only activated when no native browser behavior is available.
-				position: 'auto', //Where to place the color picker: automatically or at the center of viewport.
-				appendToBody: false, //If "true", force the color picker to append to body (N.B. Only for "non flat" version).
-				onLoaded: function() {},
-				onBeforeShow: function() {},
-				onShow: function () {},
-				onHide: function () {},
-				onDestroy: function () {},
+				alphaOutline: true,
+				appendToBody: false,
+				arrowsColor: 'default',
+				border: 1,
+				checkersColor: 'default',
+				color: {h:0, s:0, b:20, a:1},
+				colorOutline: true,
+				colorScheme: 'light-full',
+				colorSelOutline: true,
+				compactLayout: false,
+				enableAlpha: true,
+				enableSubmit: true,
+				fieldsBackground: 'default',
+				flat: true,
+				hueOutline: true,
+				layout: 'full',
+				livePreview: true,
+				polyfill: false,
+				position: 'auto',
+				readonlyFields: false,
+				readonlyHexField: false,
+				showEvent: 'click',
+				submitBackground: 'default',
+				submitColor: 'default',
+				variant: 'standard',
+				onBeforeShow: function () {},
 				onChange: function () {},
+				onDestroy: function () {},
+				onHide: function () {},
+				onLoaded: function () {},
+				onShow: function () {},
 				onSubmit: function () {}
 			},
 			//Fill the inputs of the plugin
@@ -183,13 +186,13 @@ Last Edit: 2018/01/01 19:00
 				$(document).mousemove(current, moveIncrement);
 			},
 			moveIncrement = function (ev) {
-				//livePreview = true: execute "change" function and update colors | livePreview = false: update only the single field value
+				//livePreview = true: update colors | livePreview = false: update only field's value
 				ev.data.field.val(Math.max(0, Math.min(ev.data.max, Math.round(ev.data.val - ev.pageY + ev.data.y))));
 				if (ev.data.preview) change.apply(ev.data.field.get(0));
 				return false;
 			},
 			upIncrement = function (ev) {
-				//livePreview = true: do nothing | livePreview = false: execute "change" function and update colors
+				//livePreview = true: do nothing | livePreview = false: update colors
 				if (!ev.data.preview) change.apply(ev.data.field.get(0));
 				ev.data.el.removeClass('colpickRmx_changing').find('input').focus();
 				$(document).off('mouseup', upIncrement);
@@ -218,13 +221,13 @@ Last Edit: 2018/01/01 19:00
 			moveAlpha = function (ev) {
 				var pageX = ((ev.type == 'touchmove') ? ev.originalEvent.changedTouches[0].pageX : ev.pageX);
 				var alpha = Math.round(100*Math.max(0,Math.min(ev.data.cal.data('colpickRmx').size,(pageX - ev.data.x)))/ev.data.cal.data('colpickRmx').size);
-				//livePreview = true: execute "change" function and update colors | livePreview = false: update only alpha's arrows position
+				//livePreview = true: update colors | livePreview = false: update only position
 				if (ev.data.preview) change.apply(ev.data.cal.data('colpickRmx').fields.eq(7).val(alpha).get(0));
 				else setAlphaPos({a:alpha/100}, ev.data.cal.get(0));
 				return false;
 			},
 			upAlpha = function (ev) {
-				//livePreview = true: do nothing | livePreview = false: execute "change" function and update colors
+				//livePreview = true: do nothing | livePreview = false: update colors
 				if (!ev.data.preview) {
 					var pageX = ((ev.type == 'touchend') ? ev.originalEvent.changedTouches[0].pageX : ev.pageX);
 					change.apply(
@@ -259,13 +262,13 @@ Last Edit: 2018/01/01 19:00
 			moveHue = function (ev) {
 				var pageY = ((ev.type == 'touchmove') ? ev.originalEvent.changedTouches[0].pageY : ev.pageY);
 				var hue = Math.round(360*(ev.data.cal.data('colpickRmx').size - Math.max(0,Math.min(ev.data.cal.data('colpickRmx').size,(pageY - ev.data.y))))/ev.data.cal.data('colpickRmx').size);
-				//livePreview = true: execute "change" function and update colors | livePreview = false: update only hue's arrows position
+				//livePreview = true: update colors | livePreview = false: update only position
 				if (ev.data.preview) change.apply(ev.data.cal.data('colpickRmx').fields.eq(4).val(hue).get(0));
 				else setHuePos({h:hue}, ev.data.cal.get(0));
 				return false;
 			},
 			upHue = function (ev) {
-				//livePreview = true: do nothing | livePreview = false: execute "change" function and update colors
+				//livePreview = true: do nothing | livePreview = false: update colors
 				if (!ev.data.preview) {
 					var pageY = ((ev.type == 'touchend') ? ev.originalEvent.changedTouches[0].pageY : ev.pageY);
 					change.apply(
@@ -304,13 +307,13 @@ Last Edit: 2018/01/01 19:00
 				if(ev.type == 'touchmove') {pageX = ev.originalEvent.changedTouches[0].pageX; pageY = ev.originalEvent.changedTouches[0].pageY;} else {pageX = ev.pageX; pageY = ev.pageY;}
 				var saturation = Math.round(100*(Math.max(0,Math.min(ev.data.cal.data('colpickRmx').size,(pageX - ev.data.pos.left))))/ev.data.cal.data('colpickRmx').size);
 				var brightness = Math.round(100*(ev.data.cal.data('colpickRmx').size - Math.max(0,Math.min(ev.data.cal.data('colpickRmx').size,(pageY - ev.data.pos.top))))/ev.data.cal.data('colpickRmx').size);
-				//livePreview = true: execute "change" function and update colors | livePreview = false: update only selector's indicator position
+				//livePreview = true: update colors | livePreview = false: update only position
 				if (ev.data.preview) change.apply(ev.data.cal.data('colpickRmx').fields.eq(6).val(brightness).end().eq(5).val(saturation).get(0));
 				else setSelectorPos({s:saturation, b:brightness}, ev.data.cal.get(0));
 				return false;
 			},
 			upSelector = function (ev) {
-				//livePreview = true: do nothing | livePreview = false: execute "change" function and update colors
+				//livePreview = true: do nothing | livePreview = false: update colors
 				if (!ev.data.preview) {
 					var pageX, pageY;
 					if(ev.type == 'touchend') {pageX = ev.originalEvent.changedTouches[0].pageX; pageY = ev.originalEvent.changedTouches[0].pageY; } else { pageX = ev.pageX; pageY = ev.pageY;}
@@ -365,7 +368,7 @@ Last Edit: 2018/01/01 19:00
 			},
 			//Remove alpha from hexadecimal, if alpha channel is disabled
 			adaptHex = function (hex, cal) {
-				if (hex === undefined) hex = "000000ff";
+				if (hex === undefined) hex = '000000ff';
 				if (!cal.data('colpickRmx').enableAlpha) {
 					hex = removeAlpha(hex);
 				}
@@ -373,8 +376,8 @@ Last Edit: 2018/01/01 19:00
 			},
 			//Remove alpha value from hexadecimals/objects
 			removeAlpha = function (col) {
-				if (col != undefined) {
-					if (typeof col == 'string') {
+				if (col !== undefined) {
+					if (typeof col === 'string') {
 						if (col.indexOf('#') != 0) {
 							if (col.length == 4) col = col.substring(0,3);
 							if (col.length == 8) col = col.substring(0,6);
@@ -382,7 +385,7 @@ Last Edit: 2018/01/01 19:00
 							if (col.length == 5) col = col.substring(0,4);
 							if (col.length == 9) col = col.substring(0,7);
 						}
-					} else if (col.a != undefined) col.a = 1;
+					} else if (col.a !== undefined) col.a = 1;
 				}
 				return col;
 			},
@@ -434,19 +437,19 @@ Last Edit: 2018/01/01 19:00
 					cal.show();
 					return;
 				}
-				//Positions the color picker
+				//Positions the color picker...
 				if (overridePos.left === undefined || isNaN(overridePos.left) || overridePos.top === undefined || isNaN(overridePos.top)) {
 					//Calculates the correctly position
 					var finalPos = {top:0, left:0}, pos = cal.data('colpickRmx').appendedToBody ? $(this).offset() : $(this).position();
-					if (cal.data('colpickRmx').position == "center") { //Positions the color picker on center of viewport
+					if (cal.data('colpickRmx').position == 'center') { //... on center of viewport
 						//Positions the color picker on top-left corner of viewport
 						finalPos.top = pos.top - ($(this).offset().top - $(window).scrollTop());
 						finalPos.left = pos.left - ($(this).offset().left - $(window).scrollLeft());
-						//Positions the color picker on center of viewport, by adding coordinates
+						//Positions the color picker on center of viewport by adding coordinates
 						var centerViewport = {top:$(window).height()/2, left:$(window).width()/2};
 						finalPos.top += centerViewport.top - cal.outerHeight()/2;
 						finalPos.left += centerViewport.left - cal.outerWidth()/2;
-					} else { //Positions the color picker automatically (default)
+					} else { //... automatically (default)
 						//Positions the color picker under his related html object
 						finalPos.top = pos.top + this.offsetHeight;
 						finalPos.left = pos.left;
@@ -535,20 +538,22 @@ Last Edit: 2018/01/01 19:00
 			init: function (opt) {
 				opt = $.extend({}, defaults, opt||{});
 				//Set color
-				if (typeof opt.color == 'string') opt.color = hexToHsba(opt.color);
-				else if (opt.color.r != undefined && opt.color.g != undefined && opt.color.b != undefined) opt.color = rgbaToHsba(fixRGBA(opt.color));
-				else if (opt.color.h != undefined && opt.color.s != undefined && opt.color.b != undefined) opt.color = fixHSBA(opt.color);
-				else if (opt.color.h != undefined && opt.color.s != undefined && opt.color.l != undefined) opt.color = hslaToHsba(fixHSLA(opt.color));
+				if (typeof opt.color === 'string') opt.color = hexToHsba(opt.color);
+				else if (opt.color.r !== undefined && opt.color.g !== undefined && opt.color.b !== undefined) opt.color = rgbaToHsba(fixRGBA(opt.color));
+				else if (opt.color.h !== undefined && opt.color.s !== undefined && opt.color.b !== undefined) opt.color = fixHSBA(opt.color);
+				else if (opt.color.h !== undefined && opt.color.s !== undefined && opt.color.l !== undefined) opt.color = hslaToHsba(fixHSLA(opt.color));
 				else opt.color = {h:0, s:0, b:0, a:1}; //Black = Error color
-
-				//Normalize string options
-				opt.showEvent = opt.showEvent.toLowerCase();
-				opt.variant = opt.variant.toLowerCase();
-				opt.layout = opt.layout.toLowerCase();
-				opt.colorScheme = opt.colorScheme.toLowerCase();
+				//Normalizes string options
 				opt.arrowsColor = opt.arrowsColor.toLowerCase();
 				opt.checkersColor = opt.checkersColor.toLowerCase();
-
+				opt.colorScheme = opt.colorScheme.toLowerCase();
+				opt.layout = opt.layout.toLowerCase();
+				opt.position = opt.position.toLowerCase();
+				opt.showEvent = opt.showEvent.toLowerCase();
+				opt.submitColor = opt.submitColor.toLowerCase();
+				opt.variant = opt.variant.toLowerCase();
+				if (typeof opt.fieldsBackground === 'string') opt.fieldsBackground = opt.fieldsBackground.toLowerCase();
+				if (typeof opt.submitBackground === 'string') opt.submitBackground = opt.submitBackground.toLowerCase();
 				//For each selected DOM element
 				return this.each(function () {
 					//If the element does not have an ID
@@ -558,113 +563,101 @@ Last Edit: 2018/01/01 19:00
 						if (!opt.enableAlpha) opt.color = removeAlpha(opt.color);
 						//Setup current color
 						options.origColor = cloneHSBA(opt.color, true);
-
 						// Set polyfill
 						if (typeof opt.polyfill == 'function') options.polyfill = opt.polyfill(this);
 						//Input field operations
 						options.input = $(this).is('input');
 						//Polyfill fixes
-						if (options.polyfill && options.input && this.type === "color") return;
-
+						if (options.polyfill && options.input && this.type === 'color') return;
 						//Generate and assign a random ID
 						var id = 'colorpicker_' + getUniqueID();
 						$(this).data('colpickRmxId', id);
 						//Set the tpl's ID and get the HTML
 						var cal = $(tpl).attr('id', id);
-
 						//Setup size of the selected variant (Add other "else-if" for other future variants)
 						if (options.variant == 'small') options.size = 160; //Small Version!
 						else if (options.variant == 'extra-large') options.size = 300; //Extra Large Version!
 						else options.size = 225; //Standard Version (default)!
-
 						//Loading the choosen layout
-						if (options.variant == "small") { //Add class according to layout (small)
-							cal.addClass('colpickRmxS colpickRmxS_'+options.layout+(options.submit?'':' colpickRmxS_'+options.layout+'_ns'));
-							if(!options.enableAlpha) cal.addClass('colpickRmxS_noalpha colpickRmxS_'+options.layout+'_noalpha'+(options.submit?'':' colpickRmxS_'+options.layout+'_noalpha_ns')); //Disable alpha channel, if requested
-						} else if (options.variant == "extra-large") { //Add class according to layout (extra-large)
-							cal.addClass('colpickRmxXL colpickRmxXL_'+options.layout+(options.submit?'':' colpickRmxXL_'+options.layout+'_ns'));
-							if(!options.enableAlpha) cal.addClass('colpickRmxXL_noalpha colpickRmxXL_'+options.layout+'_noalpha'+(options.submit?'':' colpickRmxXL_'+options.layout+'_noalpha_ns')); //Disable alpha channel, if requested
+						if (options.variant == 'small') { //Add class according to layout (small)
+							cal.addClass('colpickRmxS colpickRmxS_'+options.layout+(options.enableSubmit?'':' colpickRmxS_'+options.layout+'_ns'));
+							if(!options.enableAlpha) cal.addClass('colpickRmxS_noalpha colpickRmxS_'+options.layout+'_noalpha'+(options.enableSubmit?'':' colpickRmxS_'+options.layout+'_noalpha_ns')); //Disable alpha channel, if requested
+						} else if (options.variant == 'extra-large') { //Add class according to layout (extra-large)
+							cal.addClass('colpickRmxXL colpickRmxXL_'+options.layout+(options.enableSubmit?'':' colpickRmxXL_'+options.layout+'_ns'));
+							if(!options.enableAlpha) cal.addClass('colpickRmxXL_noalpha colpickRmxXL_'+options.layout+'_noalpha'+(options.enableSubmit?'':' colpickRmxXL_'+options.layout+'_noalpha_ns')); //Disable alpha channel, if requested
 						} else { //Add class according to layout (default -> standard)
-							cal.addClass('colpickRmx_'+options.layout+(options.submit?'':' colpickRmx_'+options.layout+'_ns'));
-							if(!options.enableAlpha) cal.addClass('colpickRmx_noalpha colpickRmx_'+options.layout+'_noalpha'+(options.submit?'':' colpickRmx_'+options.layout+'_noalpha_ns')); //Disable alpha channel, if requested
+							cal.addClass('colpickRmx_'+options.layout+(options.enableSubmit?'':' colpickRmx_'+options.layout+'_ns'));
+							if(!options.enableAlpha) cal.addClass('colpickRmx_noalpha colpickRmx_'+options.layout+'_noalpha'+(options.enableSubmit?'':' colpickRmx_'+options.layout+'_noalpha_ns')); //Disable alpha channel, if requested
 						}
 						//Loading Compact layout, if requested
 						if (options.compactLayout) {
-							if (options.variant == "small") { //Add class according to layout (small)
-								cal.addClass('colpickRmxS_compact colpickRmxS_compact_'+options.layout+(options.submit?'':' colpickRmxS_compact_'+options.layout+'_ns'));
-								if(!options.enableAlpha) cal.addClass('colpickRmxS_compact_noalpha colpickRmxS_compact_'+options.layout+'_noalpha'+(options.submit?'':' colpickRmxS_compact_'+options.layout+'_noalpha_ns')); //Disable alpha channel, if requested
-							} else if (options.variant == "extra-large") { //Add class according to layout (extra-large)
-								cal.addClass('colpickRmxXL_compact colpickRmxXL_compact_'+options.layout+(options.submit?'':' colpickRmxXL_compact_'+options.layout+'_ns'));
-								if(!options.enableAlpha) cal.addClass('colpickRmxXL_compact_noalpha colpickRmxXL_compact_'+options.layout+'_noalpha'+(options.submit?'':' colpickRmxXL_compact_'+options.layout+'_noalpha_ns')); //Disable alpha channel, if requested
+							if (options.variant == 'small') { //Add class according to layout (small)
+								cal.addClass('colpickRmxS_compact colpickRmxS_compact_'+options.layout+(options.enableSubmit?'':' colpickRmxS_compact_'+options.layout+'_ns'));
+								if(!options.enableAlpha) cal.addClass('colpickRmxS_compact_noalpha colpickRmxS_compact_'+options.layout+'_noalpha'+(options.enableSubmit?'':' colpickRmxS_compact_'+options.layout+'_noalpha_ns')); //Disable alpha channel, if requested
+							} else if (options.variant == 'extra-large') { //Add class according to layout (extra-large)
+								cal.addClass('colpickRmxXL_compact colpickRmxXL_compact_'+options.layout+(options.enableSubmit?'':' colpickRmxXL_compact_'+options.layout+'_ns'));
+								if(!options.enableAlpha) cal.addClass('colpickRmxXL_compact_noalpha colpickRmxXL_compact_'+options.layout+'_noalpha'+(options.enableSubmit?'':' colpickRmxXL_compact_'+options.layout+'_noalpha_ns')); //Disable alpha channel, if requested
 							} else { //Add class according to layout (default -> standard)
-								cal.addClass('colpickRmx_compact colpickRmx_compact_'+options.layout+(options.submit?'':' colpickRmx_compact_'+options.layout+'_ns'));
-								if(!options.enableAlpha) cal.addClass('colpickRmx_compact_noalpha colpickRmx_compact_'+options.layout+'_noalpha'+(options.submit?'':' colpickRmx_compact_'+options.layout+'_noalpha_ns')); //Disable alpha channel, if requested
+								cal.addClass('colpickRmx_compact colpickRmx_compact_'+options.layout+(options.enableSubmit?'':' colpickRmx_compact_'+options.layout+'_ns'));
+								if(!options.enableAlpha) cal.addClass('colpickRmx_compact_noalpha colpickRmx_compact_'+options.layout+'_noalpha'+(options.enableSubmit?'':' colpickRmx_compact_'+options.layout+'_noalpha_ns')); //Disable alpha channel, if requested
 							}
 						}
-
 						//Loading the choosen color scheme
-						if (options.colorScheme.indexOf("light") == 0) { //All light color schemes start with "light"
+						if (options.colorScheme.indexOf('light') == 0) { //All light color schemes start with "light"
 							cal.addClass('colpickRmx_light'); //Loading default light color scheme
-							if(options.colorScheme != "light") cal.addClass('colpickRmx_'+options.colorScheme); //Loading light-based color scheme
-							/*
-							INFO: You can implements light-based color schemes, in css, naming them: light-[name] (IMPORTANT: Use only lowercase names!)
-							*/
-						} else if (options.colorScheme.indexOf("dark") == 0) { //All dark color schemes start with "dark"
+							if(options.colorScheme != 'light') cal.addClass('colpickRmx_'+options.colorScheme); //Loading light-based color scheme
+							//INFO: You can implement light-based color schemes, in css, naming them: light-[name] (IMPORTANT: Use only lowercase names!)
+						} else if (options.colorScheme.indexOf('dark') == 0) { //All dark color schemes start with "dark"
 							cal.addClass('colpickRmx_dark'); //Loading default dark color scheme
-							if(options.colorScheme != "dark") cal.addClass('colpickRmx_'+options.colorScheme); //Loading dark-based color scheme
-							/*
-							INFO: You can implements dark-based color schemes, in css, naming them: dark-[name] (IMPORTANT: Use only lowercase names!)
-							*/
+							if(options.colorScheme != 'dark') cal.addClass('colpickRmx_'+options.colorScheme); //Loading dark-based color scheme
+							//INFO: You can implement dark-based color schemes, in css, naming them: dark-[name] (IMPORTANT: Use only lowercase names!)
 						} else { //If the scheme does not starts with "light" or "dark"
 							cal.addClass('colpickRmx_light'); //Loading default color scheme for all (light)
 							cal.addClass('colpickRmx_'+options.colorScheme); //Loading the "strange" color scheme
 						}
-
 						//Change color scheme for arrows, if requested
-						if (options.arrowsColor == "light") cal.addClass('colpickRmx_lightArrs');
-						else if (options.arrowsColor == "dark") cal.addClass('colpickRmx_darkArrs');
-
+						if (options.arrowsColor == 'light') cal.addClass('colpickRmx_lightArrs');
+						else if (options.arrowsColor == 'dark') cal.addClass('colpickRmx_darkArrs');
 						//Change color scheme for checkerboards, if requested
-						if (options.checkersColor == "light") cal.addClass('colpickRmx_lightCheckerboards');
-						else if (options.checkersColor == "dark") cal.addClass('colpickRmx_darkCheckerboards');
-
+						if (options.checkersColor == 'light') cal.addClass('colpickRmx_lightCheckerboards');
+						else if (options.checkersColor == 'dark') cal.addClass('colpickRmx_darkCheckerboards');
+						//Change color scheme for submit button, if requested
+						if (options.submitColor == 'light') cal.addClass('colpickRmx_lightSubmit');
+						else if (options.submitColor == 'dark') cal.addClass('colpickRmx_darkSubmit');
 						//Hide outlines, if requested
 						if (!options.colorSelOutline) cal.addClass('colpickRmx_noCSOutline');
 						if (!options.hueOutline) cal.addClass('colpickRmx_noHOutline');
 						if (!options.alphaOutline) cal.addClass('colpickRmx_noAOutline');
 						if (!options.colorOutline) cal.addClass('colpickRmx_noNCOutline');
-
 						//Set border width
 						cal.css('border-width', options.border + 'px');
-
 						//Setup submit button
-						cal.find('div.colpickRmx_submit').click(clickSubmit);
+						options.submit = cal.find('div.colpickRmx_submit').click(clickSubmit);
 						//Setup input fields
 						options.fields = cal.find('input').change(change).blur(blur).focus(focus);
 						//If alpha channel is disabled, set hex field maxlength to 6
 						if (!options.enableAlpha) options.fields.eq(0).prop('maxlength', 6);
 						//Setup readonly attribute to fields
-						options.fields.eq(0).prop('readonly', options.readonlyFields);
-						options.fields.eq(1).prop('readonly', options.readonlyFields);
-						options.fields.eq(2).prop('readonly', options.readonlyFields);
-						options.fields.eq(3).prop('readonly', options.readonlyFields);
-						options.fields.eq(4).prop('readonly', options.readonlyFields);
-						options.fields.eq(5).prop('readonly', options.readonlyFields);
-						options.fields.eq(6).prop('readonly', options.readonlyFields);
-						options.fields.eq(7).prop('readonly', options.readonlyFields);
+						for (var i = 0; i < 8; i++) options.fields.eq(i).prop('readonly', options.readonlyFields);
 						if (options.readonlyHexField) options.fields.eq(0).prop('readonly', options.readonlyHexField);
+						//Setup color of fields and submit button
+						if (options.fieldsBackground != 'default') {
+							var colstr = encodeToCSS(options.fieldsBackground);
+							for (var i = 0; i < 8; i++) options.fields.eq(i).parent().css('background',colstr);
+						}
+						if (options.submitBackground != 'default') options.submit.css('background',encodeToCSS(options.submitBackground));
 						//Setup restoreOriginal to current color's click event
 						cal.find('div.colpickRmx_field_arrs').mousedown(downIncrement).end().find('div.colpickRmx_current_color').click(restoreOriginal);
-						//Setup hue selector
+						//Setup color selector
 						options.selector = cal.find('div.colpickRmx_color').on('mousedown touchstart',downSelector);
 						options.selectorIndic = options.selector.find('div.colpickRmx_selector_outer');
-						//Store parts of the plugin
+						//Setup hue bar and alpha bar
 						options.el = this;
 						options.hue = cal.find('div.colpickRmx_hue_arrs');
 						options.hueBar = cal.find('div.colpickRmx_hue_overlay');
 						options.alpha = cal.find('div.colpickRmx_alpha_arrs');
 						options.alphaBar = cal.find('div.colpickRmx_alpha_overlay');
-						//Paint the hue bar
+						//Painting hue bar
 						var stops = ['#ff0000','#ff0080','#ff00ff','#8000ff','#0000ff','#0080ff','#00ffff','#00ff80','#00ff00','#80ff00','#ffff00','#ff8000','#ff0000'];
 						if (isInternetExplorer()) { //Compatibility with IE 6-9
 							var i, div;
@@ -676,7 +669,7 @@ Last Edit: 2018/01/01 19:00
 							var stopList = stops.join(',');
 							options.hueBar.attr('style','background:-webkit-linear-gradient(top,'+stopList+'); background:-moz-linear-gradient(top,'+stopList+'); background:-ms-linear-gradient(top,'+stopList+'); background:-o-linear-gradient(top,'+stopList+'); background:linear-gradient(to bottom,'+stopList+');');
 						}
-						//Set remaining events, new, and current color
+						//Setup remaining events, new, and current color
 						cal.find('div.colpickRmx_hue').on('mousedown touchstart',downHue);
 						cal.find('div.colpickRmx_alpha').on('mousedown touchstart',downAlpha);
 						options.newColor = cal.find('div.colpickRmx_new_color');
@@ -707,7 +700,6 @@ Last Edit: 2018/01/01 19:00
 							$(this).on(options.showEvent, show);
 							cal.css({position: 'absolute'});
 						}
-
 						//Loading completed
 						cal.data('colpickRmx').onLoaded.apply(cal.parent(), [{colorDiv:cal.get(0), el:cal.data('colpickRmx').el}]);
 					}
@@ -739,11 +731,11 @@ Last Edit: 2018/01/01 19:00
 			},
 			//Sets a color as new and current (Default: Set only as new color)
 			setColor: function(col, setCurrent) {
-				if (col != undefined) { //If color is undefined, do nothing!
-					if (typeof col == 'string') col = hexToHsba(col);
-					else if (col.r != undefined && col.g != undefined && col.b != undefined) col = rgbaToHsba(fixRGBA(col));
-					else if (col.h != undefined && col.s != undefined && col.b != undefined) col = fixHSBA(col);
-					else if (col.h != undefined && col.s != undefined && col.l != undefined) col = hslaToHsba(fixHSLA(col));
+				if (col !== undefined) { //If color is undefined, do nothing!
+					if (typeof col === 'string') col = hexToHsba(col);
+					else if (col.r !== undefined && col.g !== undefined && col.b !== undefined) col = rgbaToHsba(fixRGBA(col));
+					else if (col.h !== undefined && col.s !== undefined && col.b !== undefined) col = fixHSBA(col);
+					else if (col.h !== undefined && col.s !== undefined && col.l !== undefined) col = hslaToHsba(fixHSLA(col));
 					else return this; //If color is not recognized, do nothing!
 					if (setCurrent === undefined) setCurrent = false; //Default: Set only as new color
 					return this.each(function(){
@@ -785,17 +777,17 @@ Last Edit: 2018/01/01 19:00
 			getColor: function(type, getCurrent) {
 				var cal = $('#' + $(this).data('colpickRmxId'));
 				if (getCurrent === undefined) getCurrent = false; //Default: Get new color (not current)
-				if (type === undefined) type = "hsba"; //Default: Hsb color with alpha value
-				var withAlpha = (type.indexOf("a") != -1);
+				if (type === undefined) type = 'hsba'; //Default: Hsb color with alpha value
+				var withAlpha = (type.indexOf('a') != -1);
 				//Getting the color
 				var col = getCurrent ? cloneHSBA(cal.data('colpickRmx').origColor, true) : cloneHSBA(cal.data('colpickRmx').color, true);
-				if (type.indexOf("rgb") != -1) {
+				if (type.indexOf('rgb') != -1) {
 					var rgba = hsbaToRgba(col);
 					return withAlpha ? {r:rgba.r, g:rgba.g, b:rgba.b, a:rgba.a} : {r:rgba.r, g:rgba.g, b:rgba.b};
-				} else if (type.indexOf("hsl") != -1) {
+				} else if (type.indexOf('hsl') != -1) {
 					var hsla = hsbaToHsla(col);
 					return withAlpha ? {h:hsla.h, s:hsla.s, l:hsla.l, a:hsla.a} : {h:hsla.h, s:hsla.s, l:hsla.l};
-				} else if (type.indexOf("hex") != -1) return withAlpha ? hsbaToHex(col) : hsbaToHex(col).substring(0,6);
+				} else if (type.indexOf('hex') != -1) return withAlpha ? hsbaToHex(col) : hsbaToHex(col).substring(0,6);
 				else return withAlpha ? {h:col.h, s:col.s, b:col.b, a:col.a} : {h:col.h, s:col.s, b:col.b};
 			}
 		};
@@ -805,9 +797,9 @@ Last Edit: 2018/01/01 19:00
 		if (hex === undefined) return {r:0, g:0, b:0, a:1};
 		if (hex.indexOf('#') == 0) hex = hex.substring(1);
 		if (isValidHex(hex)) {
-			if (hex.length == 3) hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2] + "ff";
+			if (hex.length == 3) hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2] + 'ff';
 			else if (hex.length == 4) hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2] + hex[3] + hex[3];
-			else if (hex.length == 6) hex = hex + "ff";
+			else if (hex.length == 6) hex = hex + 'ff';
 			else if (hex.length != 8) return {r:0, g:0, b:0, a:1};
 		} else { return {r:0, g:0, b:0, a:1}; }
 		var hexI = parseInt(hex,16);
@@ -822,7 +814,7 @@ Last Edit: 2018/01/01 19:00
 		return rgbaToHsla(hexToRgba(hex));
 	};
 	var rgbaToHex = function (rgba) {
-		if (rgba === undefined) return "000000ff";
+		if (rgba === undefined) return '000000ff';
 		if (rgba.a === undefined) rgba.a = 1;
 		var alpha = Math.round(rgba.a * 255);
 		var hex = [
@@ -930,7 +922,7 @@ Last Edit: 2018/01/01 19:00
 		while (hex.indexOf('0') == 0) {
 			hex = hex.substring(1);
 		}
-		if(hex == "") hex = "0";
+		if(hex == '') hex = '0';
 		return (parseInt(hex,16).toString(16) === hex.toLowerCase());
 	};
 	//Fix the values, if the user enters a wrong value
@@ -961,38 +953,34 @@ Last Edit: 2018/01/01 19:00
 			a: Math.min(1, Math.max(0, isNaN(hsla.a) ? 1 : hsla.a))
 		};
 	};
-	//Converts a css color string in a color object
-	var encodeToCSS = function (colobj) {
-		if (colobj === undefined) return "rgb(0,0,0)";
-		if (colobj.r != undefined && colobj.g != undefined && colobj.b != undefined) {
-			var rgba = fixRGBA(colobj);
-			return "rgba("+rgba.r+","+rgba.g+","+rgba.b+","+rgba.a+")";
-		} else if (colobj.h != undefined && colobj.s != undefined && colobj.l != undefined) {
-			var hsla = fixHSLA(colobj);
-			return "hsla("+hsla.h+","+hsla.s+"%,"+hsla.l+"%,"+hsla.a+")";
-		} else if (colobj.h != undefined && colobj.s != undefined && colobj.b != undefined) {
-			var hsla = hsbaToHsla(fixHSBA(colobj));
-			return "hsla("+hsla.h+","+hsla.s+"%,"+hsla.l+"%,"+hsla.a+")";
-		} else if (typeof colobj == 'string') { //If colobj is a string: Trying to treat it as an hexadecimal, and, in case, return the hexadecimal (with #)
-			if (colobj.indexOf('#') == 0) colobj = colobj.substring(1);
-			if (isValidHex(colobj)) return "#" + colobj; //N.B. Is checked only if the hexadecimal is valid, but not if is a valid css hexadecimal color value!
-			else return "#000000ff";
-		} else return "rgb(0,0,0)";
-	};
 	//Converts a color object in a css color string
+	var encodeToCSS = function (colobj) {
+		if (colobj === undefined) return 'rgb(0,0,0)';
+		if (colobj.r !== undefined && colobj.g !== undefined && colobj.b !== undefined) {
+			var rgba = fixRGBA(colobj);
+			return 'rgba('+rgba.r+','+rgba.g+','+rgba.b+','+rgba.a+')';
+		} else if (colobj.h !== undefined && colobj.s !== undefined && colobj.l !== undefined) {
+			var hsla = fixHSLA(colobj);
+			return 'hsla('+hsla.h+','+hsla.s+'%,'+hsla.l+'%,'+hsla.a+')';
+		} else if (colobj.h !== undefined && colobj.s !== undefined && colobj.b !== undefined) {
+			var hsla = hsbaToHsla(fixHSBA(colobj));
+			return 'hsla('+hsla.h+','+hsla.s+'%,'+hsla.l+'%,'+hsla.a+')';
+		} else if (typeof colobj === 'string') {
+			return colobj; //If colobj is a string, returns the string untouched (maybe is a string like "green", "blue", "black", ...).
+		} else return 'rgb(0,0,0)';
+	};
+	//Converts a css color string in a color object
 	var decodeFromCSS = function (colstr) {
 		if (colstr === undefined) return {r:0, g:0, b:0, a:1};
-		if (typeof colstr != 'string') colstr = colstr.toString();
-		if (colstr.indexOf("rgb") != -1) {
-			var elems = colstr.substring(colstr.indexOf("(")+1, colstr.indexOf(")")).split(",");
+		if (typeof colstr !== 'string') colstr = colstr.toString();
+		if (colstr.indexOf('rgb') != -1) {
+			var elems = colstr.substring(colstr.indexOf('(')+1, colstr.indexOf(')')).split(',');
 			return fixRGBA({r:parseInt(elems[0]), g:parseInt(elems[1]), b:parseInt(elems[2]), a:parseFloat(elems[3])});
-		} else if (colstr.indexOf("hsl") != -1) {
-			var elems = colstr.substring(colstr.indexOf("(")+1, colstr.indexOf(")")).split(",");
+		} else if (colstr.indexOf('hsl') != -1) {
+			var elems = colstr.substring(colstr.indexOf('(')+1, colstr.indexOf(')')).split(',');
 			return fixHSLA({h:parseFloat(elems[0]), s:parseFloat(elems[1]), l:parseFloat(elems[2]), a:parseFloat(elems[3])});
-		} else { //Trying to treat the unidentified object as an hexadecimal string, and, in case, return the hexadecimal (without #)
-			if (colstr.indexOf('#') == 0) colstr = colstr.substring(1);
-			if (isValidHex(colstr)) return colstr; //N.B. Is checked only if the hexadecimal is valid, but not if is a valid css hexadecimal color value!
-			else return "000000ff";
+		} else {
+			return hexToHsba(colstr); //Tries to treat the unidentified string as an hexadecimal string, and, in case, returns an hsba object (ready for input).
 		}
 	};
 	//External accessible functions

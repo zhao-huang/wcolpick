@@ -3,19 +3,19 @@ Photoshop-like jQuery Color Picker plugin with various skins and layouts, touch,
 
 ### Features
 * Photoshop-like interface.
-* Supports RGB, HSB, Hexadecimal, and HSL (partially).
-* Supports alpha channel (opacity).
+* Supports RGB, HSB, Hexadecimal, and HSL.*
+* Supports Alpha channel (opacity).
 * 3 Variants: Standard, Small, and Extra Large.
 * 4 Skins:
   * 2 Main-skins: Light and Dark.
-  * 2 Sub-skins: Standard (with transparent background), and Full (with opaque background).
-* ​6 Layouts:
-  * 3 Main-layouts: Full, only RGB + Hexadecimal, only Hexadecimal.
-  * 2 Sub-layouts: With or without the Select button.
+  * 2 Sub-skins: Standard (without background), and Full (with an opaque background).
+* 3 Layouts: Full, RGB + Hexadecimal, only Hexadecimal (each with or without the submit button).
 * Compact Layout: Makes the layouts more compact, to save space.
 * Responsive.
 * Supports Touch.
 * Easy to implement and customize.
+
+> \* The plugin supports input/output of HSL colors, but there are no fields for choosing an HSL color.
 
 <br>
 <b>Complete description and documentation here:</b> <br>
