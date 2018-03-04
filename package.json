@@ -1,19 +1,20 @@
 {
-  "name": "colpick-remix",
-  "version": "2.3.0",
-  "description": "Photoshop-style Full featured Color Picker for jQuery - Colpick RemiX",
-  "main": "colpick-remix/colpickRmx.js",
+  "name": "wcolpick",
+  "version": "2.3.1",
+  "description": "Photoshop-style Full featured Color Picker for jQuery - Wcolpick",
+  "main": "wcolpick/wcolpick.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/firestormxyz/colpick-remix.git"
+    "url": "https://github.com/firestormxyz/wcolpick.git"
   },
   "keywords": [
     "jquery-plugin",
+    "web",
     "colpick",
-    "remix",
+    "wcolpick",
     "colpick-remix",
     "color",
     "picker",
@@ -26,9 +27,9 @@
   "author": "Salvatore Peluso (https://github.com/firestormxyz)",
   "license": "(GPL-3.0 AND MIT)",
   "bugs": {
-    "url": "https://github.com/firestormxyz/colpick-remix/issues"
+    "url": "https://github.com/firestormxyz/wcolpick/issues"
   },
-  "homepage": "https://github.com/firestormxyz/colpick-remix",
+  "homepage": "https://github.com/firestormxyz/wcolpick",
   "dependencies": {
     "jquery": ">=1.7.0 || ^3.2.1"
   }

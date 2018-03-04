@@ -1,4 +1,4 @@
-# Colpick RemiX
+# Wcolpick
 Photoshop-like jQuery Color Picker plugin with various skins and layouts, touch, and responsive. <br>
 
 ### Features
@@ -19,14 +19,14 @@ Photoshop-like jQuery Color Picker plugin with various skins and layouts, touch,
 
 <br>
 <b>Complete description and documentation here:</b> <br>
-Website: <a href="https://fire-space.weebly.com/colpick-remix">https://fire-space.weebly.com/colpick-remix</a> <br>
-Repository wiki: <a href="https://github.com/firestormxyz/colpick-remix/wiki">https://github.com/firestormxyz/colpick-remix/wiki</a> <br><br>
+Website: <a href="https://fire-space.weebly.com/wcolpick">https://fire-space.weebly.com/wcolpick</a> <br>
+Repository wiki: <a href="https://github.com/firestormxyz/wcolpick/wiki">https://github.com/firestormxyz/wcolpick/wiki</a> <br><br>
 
 ### Example of a full standard color picker with full light theme
 ![full](https://raw.githubusercontent.com/firestormxyz/files/master/images/cr-full.png) <br><br>
 
 ### Latest release
-Download link: <a href="https://github.com/firestormxyz/colpick-remix/releases/latest">https://github.com/firestormxyz/colpick-remix/releases/latest</a> <br><br>
+Download link: <a href="https://github.com/firestormxyz/wcolpick/releases/latest">https://github.com/firestormxyz/wcolpick/releases/latest</a> <br><br>
 
 ### Requirements
 This plugin requires jQuery 1.7.0 or later. <br>
