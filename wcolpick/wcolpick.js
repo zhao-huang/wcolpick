@@ -7,7 +7,7 @@ Dual licensed under GPL v3.0 and MIT licenses.
 
 Description, how to use, and examples: https://github.com/firestormxyz/wcolpick
 
-Last Edit: 2018/03/04 21:00
+Last Edit: 2018/03/04 23:20
 */
 
 
@@ -985,10 +985,10 @@ Last Edit: 2018/03/04 21:00
 	};
 	//External accessible functions
 	$.fn.extend({
-		load: wcolpick.init,
-		show: wcolpick.showColpick,
-		hide: wcolpick.hideColpick,
-		destroy: wcolpick.destroyColpick,
+		loads: wcolpick.init,
+		shows: wcolpick.showColpick,
+		hides: wcolpick.hideColpick,
+		destroys: wcolpick.destroyColpick,
 		setColor: wcolpick.setColpickColor,
 		getColor: wcolpick.getColpickColor
 	});
