@@ -7,7 +7,7 @@ Dual licensed under GPL v3.0 and MIT licenses.
 
 Description, how to use, and examples: https://github.com/firestormxyz/wcolpick
 
-Last Edit: 2018/03/04 23:20
+Last Edit: 2018/03/20 20:45
 */
 
 
@@ -29,6 +29,7 @@ Last Edit: 2018/03/04 23:20
 				compactLayout: false,
 				enableAlpha: true,
 				enableSubmit: true,
+				enableUpDown: true,
 				fieldsBackground: 'default',
 				flat: true,
 				hueOutline: true,
@@ -327,6 +328,23 @@ Last Edit: 2018/03/04 23:20
 				$(document).off('mouseup touchend',upSelector);
 				$(document).off('mousemove touchmove',moveSelector);
 				return false;
+			},
+			//Change values of the fields with up/down keys
+			keyDownFields = function(ev) {
+				if ($(this).parent().parent().data('wcolpick').enableUpDown) {
+					//Not triggered for hexadecimal field (there is no standard to define an order among the colors)
+					if (this.parentNode.className.indexOf('_hex_field') == -1) {
+						if (ev.which == 38 || ev.which == 40) {
+							ev.preventDefault();
+							//Get the value from the selected element
+							var value = $(this).val();
+							if (ev.which == 38) value++; //Up
+							else value--; //Down
+							//Set the new value and apply changes
+							change.apply($(this).val(value).get(0));
+						}
+					}
+				}
 			},
 			//Submit button
 			clickSubmit = function () {
@@ -634,7 +652,7 @@ Last Edit: 2018/03/04 23:20
 						//Setup submit button
 						options.submit = cal.find('div.wcolpick_submit').click(clickSubmit);
 						//Setup input fields
-						options.fields = cal.find('input').change(change).blur(blur).focus(focus);
+						options.fields = cal.find('input').change(change).keydown(keyDownFields).blur(blur).focus(focus);
 						//If alpha channel is disabled, set hex field maxlength to 6
 						if (!options.enableAlpha) options.fields.eq(0).prop('maxlength', 6);
 						//Setup readonly attribute to fields
