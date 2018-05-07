@@ -1,13 +1,14 @@
 /*
 Wcolpick - A Web Color Picker
 
-Copyright (C) 2017-2018 Salvatore Peluso (Firestorm): https://github.com/firestormxyz
+Copyright (C) 2017-2018  firestormxyz (Salvatore Peluso)
+Find me on github: https://github.com/firestormxyz
 Dual licensed under GPL v3.0 and MIT licenses.
 (Based on Jose Vargas' Color Picker)
 
 Description, how to use, and examples: https://github.com/firestormxyz/wcolpick
 
-Last Edit: 2018/03/20 20:45
+Last Edit: 2018/05/07 02:10
 */
 
 
