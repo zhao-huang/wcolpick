@@ -8,7 +8,7 @@ Dual licensed under GPL v3.0 and MIT licenses.
 
 Description, how to use, and examples: https://github.com/firestormxyz/wcolpick
 
-Last Edit: 2018/05/07 02:10
+Last Edit: 2018/05/18 12:40
 */
 
 
@@ -28,8 +28,8 @@ Last Edit: 2018/05/07 02:10
 	width: 549px;
 	height: 276px;
 	-webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
 	overflow: hidden;
 	text-align: left;
 	font-family: Arial;
@@ -125,11 +125,11 @@ Last Edit: 2018/05/07 02:10
 	outline: 1px solid;
 }
 .wcolpick_hue_overlay {
-  position: absolute;
+	position: absolute;
 	top: 0px;
 	left: 0px;
 	width: 100%;
-  height: 100%;
+	height: 100%;
 }
 /*Hue bar indicator*/
 .wcolpick_hue_arrs {
@@ -158,11 +158,11 @@ Last Edit: 2018/05/07 02:10
 }
 /*Alpha bar*/
 .wcolpick_alpha {
-  position: absolute;
+	position: absolute;
 	top: 244px;
 	left: 5px;
 	width: 225px;
-  height: 20px;
+	height: 20px;
 	cursor: ew-resize;
 }
 .wcolpick_alpha_underlay {
@@ -174,11 +174,11 @@ Last Edit: 2018/05/07 02:10
 	outline: 1px solid;
 }
 .wcolpick_alpha_overlay {
-  position: absolute;
+	position: absolute;
 	top: 0px;
 	left: 0px;
 	width: 100%;
-  height: 100%;
+	height: 100%;
 }
 /*Alpha bar indicator*/
 .wcolpick_alpha_arrs {
@@ -233,8 +233,8 @@ Last Edit: 2018/05/07 02:10
 	left: -1px;
 	height: 30px;
 	-webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 	min-width: 10px;
 	max-width: 10px;
 	line-height: 30px;
@@ -249,8 +249,8 @@ Last Edit: 2018/05/07 02:10
 	height: 30px;
 	margin: 0px;
 	-webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 	padding: 0px;
 	line-height: 30px;
 	text-align: right;
@@ -345,18 +345,18 @@ Last Edit: 2018/05/07 02:10
 	width: 15px;
 	height: 15px;
 	margin-top: 2px;
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  border: none;
-  -webkit-border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	border: none;
+	-webkit-border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
 	-moz-border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
-  border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
-  -webkit-transform: rotateZ(-45deg);
+	border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
+	-webkit-transform: rotateZ(-45deg);
 	-moz-transform: rotateZ(-45deg);
 	-ms-transform: rotateZ(-45deg);
 	-o-transform: rotateZ(-45deg);
-  transform: rotateZ(-45deg);
+	transform: rotateZ(-45deg);
 }
 /*Checkerboards*/
 .wcolpick_checkerboards {
