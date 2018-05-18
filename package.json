@@ -1,6 +1,6 @@
 {
   "name": "wcolpick",
-  "version": "2.4.1",
+  "version": "2.5.0",
   "description": "Photoshop-style Full featured Color Picker for jQuery - Wcolpick",
   "main": "wcolpick/wcolpick.js",
   "scripts": {
