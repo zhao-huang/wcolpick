@@ -8,7 +8,7 @@ Dual licensed under GPL v3.0 and MIT licenses.
 
 Description, how to use, and examples: https://github.com/firestormxyz/wcolpick
 
-Last Edit: 2018/05/07 02:10
+Last Edit: 2018/05/18 12:40
 */
 
 
@@ -21,7 +21,9 @@ Last Edit: 2018/05/07 02:10
 				alphaOutline: true,
 				appendToBody: false,
 				arrowsColor: 'default',
+				backgroundColor: 'default',
 				border: 1,
+				borderColor: 'default',
 				checkersColor: 'default',
 				color: {h:0, s:0, b:20, a:1},
 				colorOutline: true,
@@ -659,12 +661,14 @@ Last Edit: 2018/05/07 02:10
 						//Setup readonly attribute to fields
 						for (var i = 0; i < 8; i++) options.fields.eq(i).prop('readonly', options.readonlyFields);
 						if (options.readonlyHexField) options.fields.eq(0).prop('readonly', options.readonlyHexField);
-						//Setup color of fields and submit button
+						//Setup color of fields, submit button, external border, and background (if a color is different than default, it will override the default color)
 						if (options.fieldsBackground != 'default') {
 							var colstr = encodeToCSS(options.fieldsBackground);
 							for (var i = 0; i < 8; i++) options.fields.eq(i).parent().css('background',colstr);
 						}
 						if (options.submitBackground != 'default') options.submit.css('background',encodeToCSS(options.submitBackground));
+						if (options.backgroundColor != 'default') cal.css('background',encodeToCSS(options.backgroundColor));
+						if (options.borderColor != 'default') cal.css('borderColor',encodeToCSS(options.borderColor));
 						//Setup restoreOriginal to current color's click event
 						cal.find('div.wcolpick_field_arrs').mousedown(downIncrement).end().find('div.wcolpick_current_color').click(restoreOriginal);
 						//Setup color selector
