@@ -37,3 +37,5 @@ Latest version of jQuery (if you need it): <a href="https://code.jquery.com">htt
 Copyright (C) 2017-2018  firestormxyz (Salvatore Peluso) <br>
 Dual licensed under GPL v3.0 and MIT licenses. <br>
 (Based on Jose Vargas' <a href="https://github.com/josedvq/colpick-jQuery-Color-Picker">Color Picker</a>)
+
+<a href="https://github.com/firestormxyz/wcolpick/blob/master/LICENSE"><img title="Licensed under GPL v3.0" src="https://www.gnu.org/graphics/gplv3-88x31.png"></a>
