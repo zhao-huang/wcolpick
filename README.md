@@ -22,7 +22,7 @@ Website: [https://fire-space.weebly.com/wcolpick](https://fire-space.weebly.com/
 Repository wiki: [https://github.com/firestormxyz/wcolpick/wiki](../../wiki)
 
 ### Example of a full standard color picker with full light theme
-![full](https://cdn.rawgit.com/firestormxyz/files/6/images/wcp-full.png "Wcolpick")  
+![wcolpick](https://cdn.jsdelivr.net/gh/firestormxyz/files@25/images/wcp-full.png "Wcolpick")  
 
 ### Latest release
 Download link: [https://github.com/firestormxyz/wcolpick/releases/latest](../../releases/latest)  
