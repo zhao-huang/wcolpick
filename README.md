@@ -17,8 +17,8 @@ Photoshop-like jQuery Color Picker plugin with various skins and layouts, touch,
 
 > \* The plugin supports input/output of HSL colors, but there are no fields for choosing an HSL color.  
 
-![wcolpick-dark](https://cdn.jsdelivr.net/gh/firestormxyz/files@27/images/wcp-dark.png "Wcolpick Dark") 
-![wcolpick-light](https://cdn.jsdelivr.net/gh/firestormxyz/files@27/images/wcp-light.png "Wcolpick Light")  
+![wcolpick-dark](https://cdn.jsdelivr.net/gh/firestormxyz/files@25/images/wcp-dark.png "Wcolpick Dark") 
+![wcolpick-light](https://cdn.jsdelivr.net/gh/firestormxyz/files@25/images/wcp-light.png "Wcolpick Light")  
 
 **Complete description and documentation here:**  
 Website: [https://fire-space.weebly.com/wcolpick](https://fire-space.weebly.com/wcolpick)  
