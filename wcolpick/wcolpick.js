@@ -1,14 +1,14 @@
 /*
 Wcolpick - A Web Color Picker
 
-Copyright (C) 2017-2018  firestormxyz (Salvatore Peluso)
+Copyright (C) 2017-2019  firestormxyz (Salvatore Peluso)
 Find me on github: https://github.com/firestormxyz
 Dual licensed under GPL v3.0 and MIT licenses.
 (Based on Jose Vargas' Color Picker)
 
 Description, how to use, and examples: https://github.com/firestormxyz/wcolpick
 
-Last Edit: 2018/05/18 12:40
+Last Edit: 2019/03/23 03:30
 */
 
 
@@ -191,7 +191,7 @@ Last Edit: 2018/05/18 12:40
 			},
 			moveIncrement = function (ev) {
 				//livePreview = true: update colors | livePreview = false: update only field's value
-				ev.data.field.val(Math.max(0, Math.min(ev.data.max, Math.round(ev.data.val - ev.pageY + ev.data.y))));
+				ev.data.field.val(fixVal(Math.round(ev.data.val - ev.pageY + ev.data.y), 0, ev.data.max));
 				if (ev.data.preview) change.apply(ev.data.field.get(0));
 				return false;
 			},
@@ -217,14 +217,14 @@ Last Edit: 2018/05/18 12:40
 				var pageX = ((ev.type == 'touchstart') ? ev.originalEvent.changedTouches[0].pageX : ev.pageX);
 				change.apply(
 					current.cal.data('wcolpick').fields
-					.eq(7).val(Math.round(100*Math.max(0,Math.min(current.cal.data('wcolpick').size,(pageX - current.x)))/current.cal.data('wcolpick').size))
+					.eq(7).val(Math.round(100 * fixVal(pageX - current.x, 0, current.cal.data('wcolpick').size) / current.cal.data('wcolpick').size))
 					.get(0)
 				);
 				return false;
 			},
 			moveAlpha = function (ev) {
 				var pageX = ((ev.type == 'touchmove') ? ev.originalEvent.changedTouches[0].pageX : ev.pageX);
-				var alpha = Math.round(100*Math.max(0,Math.min(ev.data.cal.data('wcolpick').size,(pageX - ev.data.x)))/ev.data.cal.data('wcolpick').size);
+				var alpha = Math.round(100 * fixVal(pageX - ev.data.x, 0, ev.data.cal.data('wcolpick').size) / ev.data.cal.data('wcolpick').size);
 				//livePreview = true: update colors | livePreview = false: update only position
 				if (ev.data.preview) change.apply(ev.data.cal.data('wcolpick').fields.eq(7).val(alpha).get(0));
 				else setAlphaPos({a:alpha/100}, ev.data.cal.get(0));
@@ -236,7 +236,7 @@ Last Edit: 2018/05/18 12:40
 					var pageX = ((ev.type == 'touchend') ? ev.originalEvent.changedTouches[0].pageX : ev.pageX);
 					change.apply(
 						ev.data.cal.data('wcolpick').fields
-						.eq(7).val(Math.round(100*Math.max(0,Math.min(ev.data.cal.data('wcolpick').size,(pageX - ev.data.x)))/ev.data.cal.data('wcolpick').size))
+						.eq(7).val(Math.round(100 * fixVal(pageX - ev.data.x, 0, ev.data.cal.data('wcolpick').size) / ev.data.cal.data('wcolpick').size))
 						.get(0)
 					);
 				}
@@ -258,14 +258,14 @@ Last Edit: 2018/05/18 12:40
 				var pageY = ((ev.type == 'touchstart') ? ev.originalEvent.changedTouches[0].pageY : ev.pageY);
 				change.apply(
 					current.cal.data('wcolpick').fields
-					.eq(4).val(Math.round(360*(current.cal.data('wcolpick').size - Math.max(0,Math.min(current.cal.data('wcolpick').size,(pageY - current.y))))/current.cal.data('wcolpick').size))
+					.eq(4).val(Math.round(360 * (current.cal.data('wcolpick').size - fixVal(pageY - current.y, 0, current.cal.data('wcolpick').size)) / current.cal.data('wcolpick').size))
 					.get(0)
 				);
 				return false;
 			},
 			moveHue = function (ev) {
 				var pageY = ((ev.type == 'touchmove') ? ev.originalEvent.changedTouches[0].pageY : ev.pageY);
-				var hue = Math.round(360*(ev.data.cal.data('wcolpick').size - Math.max(0,Math.min(ev.data.cal.data('wcolpick').size,(pageY - ev.data.y))))/ev.data.cal.data('wcolpick').size);
+				var hue = Math.round(360 * (ev.data.cal.data('wcolpick').size - fixVal(pageY - ev.data.y, 0, ev.data.cal.data('wcolpick').size)) / ev.data.cal.data('wcolpick').size);
 				//livePreview = true: update colors | livePreview = false: update only position
 				if (ev.data.preview) change.apply(ev.data.cal.data('wcolpick').fields.eq(4).val(hue).get(0));
 				else setHuePos({h:hue}, ev.data.cal.get(0));
@@ -277,7 +277,7 @@ Last Edit: 2018/05/18 12:40
 					var pageY = ((ev.type == 'touchend') ? ev.originalEvent.changedTouches[0].pageY : ev.pageY);
 					change.apply(
 						ev.data.cal.data('wcolpick').fields
-						.eq(4).val(Math.round(360*(ev.data.cal.data('wcolpick').size - Math.max(0,Math.min(ev.data.cal.data('wcolpick').size,(pageY - ev.data.y))))/ev.data.cal.data('wcolpick').size))
+						.eq(4).val(Math.round(360 * (ev.data.cal.data('wcolpick').size - fixVal(pageY - ev.data.y, 0, ev.data.cal.data('wcolpick').size)) / ev.data.cal.data('wcolpick').size))
 						.get(0)
 					);
 				}
@@ -300,8 +300,8 @@ Last Edit: 2018/05/18 12:40
 				if(ev.type == 'touchstart') {pageX = ev.originalEvent.changedTouches[0].pageX; pageY = ev.originalEvent.changedTouches[0].pageY;} else {pageX = ev.pageX; pageY = ev.pageY;}
 				change.apply(
 					current.cal.data('wcolpick').fields
-					.eq(6).val(Math.round(100*(current.cal.data('wcolpick').size - Math.max(0,Math.min(current.cal.data('wcolpick').size,(pageY - current.pos.top))))/current.cal.data('wcolpick').size)).end()
-					.eq(5).val(Math.round(100*(Math.max(0,Math.min(current.cal.data('wcolpick').size,(pageX - current.pos.left))))/current.cal.data('wcolpick').size))
+					.eq(6).val(Math.round(100 * (current.cal.data('wcolpick').size - fixVal(pageY - current.pos.top, 0, current.cal.data('wcolpick').size)) / current.cal.data('wcolpick').size)).end()
+					.eq(5).val(Math.round(100 * fixVal(pageX - current.pos.left, 0, current.cal.data('wcolpick').size) / current.cal.data('wcolpick').size))
 					.get(0)
 				);
 				return false;
@@ -309,8 +309,8 @@ Last Edit: 2018/05/18 12:40
 			moveSelector = function (ev) {
 				var pageX, pageY;
 				if(ev.type == 'touchmove') {pageX = ev.originalEvent.changedTouches[0].pageX; pageY = ev.originalEvent.changedTouches[0].pageY;} else {pageX = ev.pageX; pageY = ev.pageY;}
-				var saturation = Math.round(100*(Math.max(0,Math.min(ev.data.cal.data('wcolpick').size,(pageX - ev.data.pos.left))))/ev.data.cal.data('wcolpick').size);
-				var brightness = Math.round(100*(ev.data.cal.data('wcolpick').size - Math.max(0,Math.min(ev.data.cal.data('wcolpick').size,(pageY - ev.data.pos.top))))/ev.data.cal.data('wcolpick').size);
+				var saturation = Math.round(100 * fixVal(pageX - ev.data.pos.left, 0, ev.data.cal.data('wcolpick').size) / ev.data.cal.data('wcolpick').size);
+				var brightness = Math.round(100 * (ev.data.cal.data('wcolpick').size - fixVal(pageY - ev.data.pos.top, 0, ev.data.cal.data('wcolpick').size)) / ev.data.cal.data('wcolpick').size);
 				//livePreview = true: update colors | livePreview = false: update only position
 				if (ev.data.preview) change.apply(ev.data.cal.data('wcolpick').fields.eq(6).val(brightness).end().eq(5).val(saturation).get(0));
 				else setSelectorPos({s:saturation, b:brightness}, ev.data.cal.get(0));
@@ -323,8 +323,8 @@ Last Edit: 2018/05/18 12:40
 					if(ev.type == 'touchend') {pageX = ev.originalEvent.changedTouches[0].pageX; pageY = ev.originalEvent.changedTouches[0].pageY; } else { pageX = ev.pageX; pageY = ev.pageY;}
 					change.apply(
 						ev.data.cal.data('wcolpick').fields
-						.eq(6).val(Math.round(100*(ev.data.cal.data('wcolpick').size - Math.max(0,Math.min(ev.data.cal.data('wcolpick').size,(pageY - ev.data.pos.top))))/ev.data.cal.data('wcolpick').size)).end()
-						.eq(5).val(Math.round(100*(Math.max(0,Math.min(ev.data.cal.data('wcolpick').size,(pageX - ev.data.pos.left))))/ev.data.cal.data('wcolpick').size))
+						.eq(6).val(Math.round(100 * (ev.data.cal.data('wcolpick').size - fixVal(pageY - ev.data.pos.top, 0, ev.data.cal.data('wcolpick').size)) / ev.data.cal.data('wcolpick').size)).end()
+						.eq(5).val(Math.round(100 * fixVal(pageX - ev.data.pos.left, 0, ev.data.cal.data('wcolpick').size) / ev.data.cal.data('wcolpick').size))
 						.get(0)
 					);
 				}
@@ -385,7 +385,7 @@ Last Edit: 2018/05/18 12:40
 			},
 			//Fix alpha value, if the user enters a wrong value
 			fixAlpha = function (alpha) {
-				return Math.min(1, Math.max(0, isNaN(alpha) ? 1 : alpha));
+				return fixVal(isNaN(alpha) ? 1 : alpha, 0, 1);
 			},
 			//Remove alpha from hexadecimal, if alpha channel is disabled
 			adaptHex = function (hex, cal) {
@@ -826,8 +826,7 @@ Last Edit: 2018/05/18 12:40
 			else if (hex.length != 8) return {r:0, g:0, b:0, a:1};
 		} else { return {r:0, g:0, b:0, a:1}; }
 		var hexI = parseInt(hex,16);
-		var rgba = {r: hexI >>> 24, g: (hexI & 0x00FF0000) >>> 16, b: (hexI & 0x0000FF00) >>> 8, a: (hexI & 0x000000FF)};
-		rgba.a = rgba.a / 255;
+		var rgba = {r: hexI >>> 24, g: (hexI & 0x00FF0000) >>> 16, b: (hexI & 0x0000FF00) >>> 8, a: (hexI & 0x000000FF) / 255};
 		return rgba;
 	};
 	var hexToHsba = function (hex) {
@@ -839,42 +838,38 @@ Last Edit: 2018/05/18 12:40
 	var rgbaToHex = function (rgba) {
 		if (rgba === undefined) return '000000ff';
 		if (rgba.a === undefined) rgba.a = 1;
-		var alpha = Math.round(rgba.a * 255);
-		var hex = [
-			rgba.r.toString(16),
-			rgba.g.toString(16),
-			rgba.b.toString(16),
-			alpha.toString(16)
-		];
+		var a = Math.round(rgba.a * 255);
+		var hex = [ rgba.r.toString(16), rgba.g.toString(16), rgba.b.toString(16), a.toString(16) ];
 		$.each(hex, function (nr, val) {
-			if (val.length == 1) {
-				hex[nr] = '0' + val;
-			}
+			if (val.length == 1) hex[nr] = '0' + val;
 		});
 		return hex.join('');
 	};
 	var rgbaToHsba = function (rgba) {
 		if (rgba === undefined) return {h:0, s:0, b:0, a:1};
 		if (rgba.a === undefined) rgba.a = 1;
-		var hsba = {h:0, s:0, b:0, a:rgba.a};
-		var min = Math.min(rgba.r, rgba.g, rgba.b);
-		var max = Math.max(rgba.r, rgba.g, rgba.b);
+		var r = rgba.r / 255, g = rgba.g / 255, b = rgba.b / 255;
+		var min = Math.min(r, Math.min(g, b));
+		var max = Math.max(r, Math.max(g, b));
 		var delta = max - min;
-		hsba.b = max;
-		hsba.s = max != 0 ? 255 * delta / max : 0;
-		if (hsba.s != 0) {
-			if (rgba.r == max) hsba.h = (rgba.g - rgba.b) / delta;
-			else if (rgba.g == max) hsba.h = 2 + (rgba.b - rgba.r) / delta;
-			else hsba.h = 4 + (rgba.r - rgba.g) / delta;
-		} else hsba.h = -6;
-		hsba.h *= 60;
-		if (hsba.h < 0) hsba.h += 360;
-		hsba.s *= 100/255;
-		hsba.b *= 100/255;
-		return hsba;
+		var brightness = max;
+		var saturation = max != 0 ? delta / max : 0;
+		var hue = delta != 0 ? (r == max ? (g - b) / delta : g == max ? ((b - r) / delta) + 2 : ((r - g) / delta) + 4) * 60 : 0;
+		if (hue < 0) hue += 360;
+		return fixHSBA({h: hue, s: saturation * 100, b: brightness * 100, a: rgba.a});
 	};
 	var rgbaToHsla = function (rgba) {
-		return hsbaToHsla(rgbaToHsba(rgba));
+		if (rgba === undefined) return {h:0, s:0, l:0, a:1};
+		if (rgba.a === undefined) rgba.a = 1;
+		var r = rgba.r / 255, g = rgba.g / 255, b = rgba.b / 255;
+		var min = Math.min(r, Math.min(g, b));
+		var max = Math.max(r, Math.max(g, b));
+		var delta = max - min;
+		var lightness = (max + min) / 2;
+		var saturation = delta != 0 ? delta / (1 - Math.abs(max + min - 1)) : 0;
+		var hue = delta != 0 ? (r == max ? (g - b) / delta : g == max ? ((b - r) / delta) + 2 : ((r - g) / delta) + 4) * 60 : 0;
+		if (hue < 0) hue += 360;
+		return fixHSLA({h: hue, s: saturation * 100, l: lightness * 100, a: rgba.a});
 	};
 	var hsbaToHex = function (hsba) {
 		return rgbaToHex(hsbaToRgba(hsba));
@@ -882,69 +877,62 @@ Last Edit: 2018/05/18 12:40
 	var hsbaToRgba = function (hsba) {
 		if (hsba === undefined) return {r:0, g:0, b:0, a:1};
 		if (hsba.a === undefined) hsba.a = 1;
-		var rgba = {};
-		var h = hsba.h;
-		var s = hsba.s*255/100;
-		var v = hsba.b*255/100;
-		if(s == 0) {
-			rgba.r = rgba.g = rgba.b = v;
-		} else {
-			var t1 = v;
-			var t2 = (255-s)*v/255;
-			var t3 = (t1-t2)*(h%60)/60;
-			if(h==360) h = 0;
-			if(h<60) {rgba.r=t1;	rgba.b=t2; rgba.g=t2+t3}
-			else if(h<120) {rgba.g=t1; rgba.b=t2;	rgba.r=t1-t3}
-			else if(h<180) {rgba.g=t1; rgba.r=t2;	rgba.b=t2+t3}
-			else if(h<240) {rgba.b=t1; rgba.r=t2;	rgba.g=t1-t3}
-			else if(h<300) {rgba.b=t1; rgba.g=t2;	rgba.r=t2+t3}
-			else if(h<360) {rgba.r=t1; rgba.g=t2;	rgba.b=t1-t3}
-			else {rgba.r=0; rgba.g=0;	rgba.b=0}
+		var hsbaL = {h: hsba.h, s: hsba.s / 100, b: hsba.b / 100, a: hsba.a};
+		var red, green, blue;
+		if (hsbaL.s == 0) red = green = blue = hsbaL.b;
+		else
+		{
+			var t1 = hsbaL.b;
+			var t2 = (1 - hsbaL.s) * hsbaL.b;
+			var t3 = (t1 - t2) * (hsbaL.h % 60) / 60;
+			if (hsbaL.h < 60 || hsbaL.h == 360) { red = t1; blue = t2; green = t2 + t3; }
+			else if (hsbaL.h < 120) { green = t1; blue = t2; red = t1 - t3; }
+			else if (hsbaL.h < 180) { green = t1; red = t2; blue = t2 + t3; }
+			else if (hsbaL.h < 240) { blue = t1; red = t2; green = t1 - t3; }
+			else if (hsbaL.h < 300) { blue = t1; green = t2; red = t2 + t3; }
+			else { red = t1; green = t2; blue = t1 - t3; }
 		}
-		return {r:Math.round(rgba.r), g:Math.round(rgba.g), b:Math.round(rgba.b), a:hsba.a};
+		return fixRGBA({r: Math.round(red * 255), g: Math.round(green * 255), b: Math.round(blue * 255), a: hsbaL.a});
 	};
 	var hsbaToHsla = function (hsba) {
 		if (hsba === undefined) return {h:0, s:0, l:0, a:1};
 		if (hsba.a === undefined) hsba.a = 1;
-		var hsla = {h:hsba.h, s:0, l:0, a:hsba.a};
-		var s = hsba.s / 100;
-		var b = hsba.b / 100;
-		hsla.l = b * (2 - s) / 2;
-		if (hsla.l != 0 && hsla.l != 1) {
-			hsla.s = (b * s) / (1 - Math.abs(2 * hsla.l - 1));
-		} else hsla.s = 0;
-		if (hsla.s == 0) hsla.h = 0;
-		hsla.s *= 100;
-		hsla.l *= 100;
-		return hsla;
+		var hsbaL = {h: hsba.h, s: hsba.s / 100, b: hsba.b / 100, a: hsba.a};
+		var lightness = hsbaL.b * (2 - hsbaL.s) / 2;
+		var saturation = lightness != 0 && lightness != 1 ? ahsb.b * ahsb.s / (1 - Math.abs((2 * lightness) - 1)) : 0;
+		return fixHSLA({h: hsbaL.h, s: saturation * 100, l: lightness * 100, a: hsbaL.a});
 	};
 	var hslaToHex = function (hsla) {
 		return rgbaToHex(hslaToRgba(hsla));
 	};
 	var hslaToRgba = function (hsla) {
-		return hsbaToRgba(hslaToHsba(hsla));
+		if (hsla === undefined) return {r:0, g:0, b:0, a:1};
+		if (hsla.a === undefined) hsla.a = 1;
+		var hslaL = {h: hsla.h, s: hsla.s / 100, l: hsla.l / 100, a: hsla.a};
+		var red, green, blue;
+		var c = (1 - Math.abs(2 * hslaL.l - 1)) * hslaL.s;
+		var x = c * (1 - Math.abs((hslaL.h / 60 % 2) - 1));
+		var m = hslaL.l - (c / 2);
+		if (hslaL.h < 60 || hslaL.h == 360) { red = c + m; green = x + m; blue = m; }
+		else if (hslaL.h < 120) { red = x + m; green = c + m; blue = m; }
+		else if (hslaL.h < 180) { red = m; green = c + m; blue = x + m; }
+		else if (hslaL.h < 240) { red = m; green = x + m; blue = c + m; }
+		else if (hslaL.h < 300) { red = x + m; green = m; blue = c + m; }
+		else { red = c + m; green = m; blue = x + m; }
+		return fixRGBA({r: Math.round(red * 255), g: Math.round(green * 255), b: Math.round(blue * 255), a: hslaL.a});
 	};
 	var hslaToHsba = function (hsla) {
 		if (hsla === undefined) return {h:0, s:0, b:0, a:1};
 		if (hsla.a === undefined) hsla.a = 1;
-		var hsba = {h:hsla.h, s:0, b:0, a:hsla.a};
-		var s = hsla.s / 100;
-		var l = hsla.l / 100;
-		hsba.b = (2 * l + s * (1 - Math.abs(2 * l - 1))) / 2;
-		if (hsba.b != 0) {
-			hsba.s = 2 * (hsba.b - l) / hsba.b;
-		} else hsba.s = 0;
-		if (hsba.s == 0) hsba.h = 0;
-		hsba.s *= 100;
-		hsba.b *= 100;
-		return hsba;
+		var hslaL = {h: hsla.h, s: hsla.s / 100, l: hsla.l / 100, a: hsla.a};
+		var brightness = ((2 * hslaL.l) + (hslaL.s * (1 - Math.abs((2 * hslaL.l) - 1)))) / 2;
+		var saturation = brightness != 0 ? 2 * (brightness - hslaL.l) / brightness : 0;
+		return fixHSBA({h: hslaL.h, s: saturation * 100, b: brightness * 100, a: hslaL.a});
 	};
 	//Check if a string is a valid hexadecimal string
 	var isValidHex = function (hex) {
 		if (hex === undefined) return false;
-		while (hex.indexOf('0') == 0) {
-			hex = hex.substring(1);
-		}
+		while (hex.indexOf('0') == 0) hex = hex.substring(1);
 		if(hex == '') hex = '0';
 		return (parseInt(hex,16).toString(16) === hex.toLowerCase());
 	};
@@ -952,29 +940,32 @@ Last Edit: 2018/05/18 12:40
 	var fixRGBA = function (rgba) {
 		if (rgba === undefined) return {r:0, g:0, b:0, a:1};
 		return {
-			r: Math.min(255, Math.max(0, isNaN(rgba.r) ? 0 : rgba.r)),
-			g: Math.min(255, Math.max(0, isNaN(rgba.g) ? 0 : rgba.g)),
-			b: Math.min(255, Math.max(0, isNaN(rgba.b) ? 0 : rgba.b)),
-			a: Math.min(1, Math.max(0, isNaN(rgba.a) ? 1 : rgba.a))
+			r: fixVal(isNaN(rgba.r) ? 0 : rgba.r, 0, 255),
+			g: fixVal(isNaN(rgba.g) ? 0 : rgba.g, 0, 255),
+			b: fixVal(isNaN(rgba.b) ? 0 : rgba.b, 0, 255),
+			a: fixVal(isNaN(rgba.a) ? 1 : rgba.a, 0, 1)
 		};
 	};
 	var fixHSBA = function (hsba) {
 		if (hsba === undefined) return {h:0, s:0, b:0, a:1};
 		return {
-			h: Math.min(360, Math.max(0, isNaN(hsba.h) ? 0 : hsba.h)),
-			s: Math.min(100, Math.max(0, isNaN(hsba.s) ? 0 : hsba.s)),
-			b: Math.min(100, Math.max(0, isNaN(hsba.b) ? 0 : hsba.b)),
-			a: Math.min(1, Math.max(0, isNaN(hsba.a) ? 1 : hsba.a))
+			h: fixVal(isNaN(hsba.h) ? 0 : hsba.h, 0, 360),
+			s: fixVal(isNaN(hsba.s) ? 0 : hsba.s, 0, 100),
+			b: fixVal(isNaN(hsba.b) ? 0 : hsba.b, 0, 100),
+			a: fixVal(isNaN(hsba.a) ? 1 : hsba.a, 0, 1)
 		};
 	};
 	var fixHSLA = function (hsla) {
 		if (hsla === undefined) return {h:0, s:0, l:0, a:1};
 		return {
-			h: Math.min(360, Math.max(0, isNaN(hsla.h) ? 0 : hsla.h)),
-			s: Math.min(100, Math.max(0, isNaN(hsla.s) ? 0 : hsla.s)),
-			l: Math.min(100, Math.max(0, isNaN(hsla.l) ? 0 : hsla.l)),
-			a: Math.min(1, Math.max(0, isNaN(hsla.a) ? 1 : hsla.a))
+			h: fixVal(isNaN(hsla.h) ? 0 : hsla.h, 0, 360),
+			s: fixVal(isNaN(hsla.s) ? 0 : hsla.s, 0, 100),
+			l: fixVal(isNaN(hsla.l) ? 0 : hsla.l, 0, 100),
+			a: fixVal(isNaN(hsla.a) ? 1 : hsla.a, 0, 1)
 		};
+	};
+	var fixVal = function (val, min, max) {
+		return val >= max ? max : val <= min ? min : val;
 	};
 	//Converts a color object in a css color string
 	var encodeToCSS = function (colobj) {
